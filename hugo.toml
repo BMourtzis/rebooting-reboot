@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = "FixIt"
+theme = "blowfish"
 
 [params.home]
     enable = true
@@ -14,4 +14,6 @@ theme = "FixIt"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+
 
