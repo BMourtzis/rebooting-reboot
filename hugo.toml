@@ -3,7 +3,7 @@ languageCode = 'el-gr'
 title = 'My New Hugo Site'
 theme = "blowfish"
 publishDir = "public"
-
+homepage.layout = "page"
 
 [params.home]
     enable = true
