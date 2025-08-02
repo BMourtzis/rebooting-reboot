@@ -1,7 +1,9 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
+baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
+languageCode = 'el-gr'
 title = 'My New Hugo Site'
 theme = "blowfish"
+publishDir = "public"
+
 
 [params.home]
     enable = true
