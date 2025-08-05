@@ -1,0 +1,95 @@
+{{ define "main" }}
+<main style="max-width: 1200px; margin: auto; padding: 2rem; background: #eaeaea;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem;">
+    <!-- Left: Logo -->
+    <div style="text-align: center;">
+      <a href="/" style="display: inline-block;">
+        <img src="/images/rrlogo.png" alt="Radio Reboot Logo" style="height: 170px; margin-bottom: 0.5rem;">
+      </a>
+      <div style="font-size: 2rem; font-weight: bold; color: #222; margin-top: 0.5rem;">
+        radioreboot.gr
+      </div>
+    </div>
+
+    <!-- Center: Music Player Placeholder -->
+    <div style="flex: 1; margin-left: 2rem; margin-right: 2rem;">
+      <div style="background: #111; color: #fff; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <!-- Left controls -->
+        <div style="display: flex; align-items: center;">
+          <span style="font-size: 2rem; margin-right: 1rem;">&#9654;</span>
+          <span style="font-size: 1.5rem; margin-right: 1rem;">🔊</span>
+          <div style="width: 120px; height: 6px; background: #c00; border-radius: 3px; margin-right: 1rem; position: relative;">
+            <div style="position: absolute; left: 60px; top: -5px;">
+              <span style="display: inline-block; width: 16px; height: 16px; background: #fff; border-radius: 50%; border: 2px solid #c00;"></span>
+            </div>
+          </div>
+        </div>
+        <!-- Right info -->
+        <div style="display: flex; align-items: center;">
+          <span style="font-weight: bold; font-size: 1.2rem; margin-right: 1.5rem;">Sophia Loiz</span>
+          <span style="font-size: 1.5rem; margin-right: 0.5rem;">&#xf09a;</span><!-- Facebook icon placeholder -->
+          <span style="font-size: 1.5rem; margin-right: 0.5rem;">&#xf16d;</span><!-- Instagram icon placeholder -->
+          <span style="font-size: 1.5rem; margin-right: 0.5rem;">&#xf1be;</span><!-- Soundcloud icon placeholder -->
+          <span style="font-size: 1.5rem;">&#128247;</span><!-- Gallery icon placeholder -->
+        </div>
+      </div>
+      <div style="background: #c00; color: #fff; font-weight: bold; text-align: center; padding: 0.7rem 0; font-size: 1.1rem;">
+        alternative players
+      </div>
+    </div>
+
+    <!-- Right: Navigation Links -->
+    <nav style="display: flex; flex-direction: column; align-items: flex-end; margin-top: 2rem;">
+      <a href="#" style="color: #222; text-decoration: none; font-size: 1.3rem; margin-bottom: 1rem;">events</a>
+      <a href="#" style="color: #222; text-decoration: none; font-size: 1.3rem; margin-bottom: 1rem;">shows</a>
+      <a href="#" style="color: #222; text-decoration: none; font-size: 1.3rem;">blog</a>
+    </nav>
+  </div>
+  
+  <!-- Music Player Placeholder -->
+  <section style="margin-bottom: 2rem; text-align: center;">
+    <div style="border: 2px dashed #aaa; padding: 1.5rem;">
+      <strong>Music Player Placeholder</strong>
+      <p>The live music player will appear here.</p>
+    </div>
+  </section>
+
+  <!-- Image Carousel Placeholder -->
+  <section style="margin-bottom: 2rem; text-align: center;">
+    <div style="border: 2px dashed #aaa; padding: 1.5rem;">
+      <strong>Image Carousel Placeholder</strong>
+      <p>Featured images or events will be shown here.</p>
+    </div>
+  </section>
+
+  <!-- Chat Placeholder -->
+  <section style="margin-bottom: 2rem; text-align: center;">
+    <div style="border: 2px dashed #aaa; padding: 1.5rem;">
+      <strong>Chat Placeholder</strong>
+      <p>Live chat will be available here.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section style="margin-bottom: 2rem;">
+    <h2>About Radio Reboot</h2>
+    <p>
+      Radio Reboot is an alternative web radio station streaming music and culture 24/7. Tune in for live shows, podcasts, and more!
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section style="margin-bottom: 2rem;">
+    <h2>Contact</h2>
+    <p>
+      Email: <a href="mailto:info@radioreboot.gr">info@radioreboot.gr</a>
+    </p>
+    <p>
+      Follow us on social media:
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </p>
+  </section>
+</main>
+{{ end }}
