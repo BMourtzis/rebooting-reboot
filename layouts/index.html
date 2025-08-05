@@ -6,9 +6,6 @@
       <a href="/" style="display: inline-block;">
         <img src="/images/rrlogo.png" alt="Radio Reboot Logo" style="height: 170px; margin-bottom: 0.5rem;">
       </a>
-      <div style="font-size: 2rem; font-weight: bold; color: #222; margin-top: 0.5rem;">
-        radioreboot.gr
-      </div>
     </div>
 
     <!-- Center: Music Player Placeholder -->
@@ -55,12 +52,38 @@
   </div>
 
   <!-- Music Player Placeholder -->
-  <section style="margin-bottom: 2rem; text-align: center;">
-    <div style="border: 2px dashed #aaa; padding: 1.5rem;">
-      <strong>Music Player Placeholder</strong>
-      <p>The live music player will appear here.</p>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem;">
+  <!-- ...existing left and right columns... -->
+
+  <!-- Center: Image Carousel -->
+  <div style="flex: 0 0 50%; max-width: 50%; margin-left: 2rem; margin-right: 2rem;">
+    <link rel="stylesheet" href="/css/glider.min.css">
+    <div class="glider-contain">
+      <div class="glider">
+        <img src="/images/carouselmain.png" alt="Image 1" style="width: auto; height: auto; max-width: 100%; border-radius:4px; border:2px solid #c00;">
+
+      </div>
+      <button aria-label="Previous" class="glider-prev">&laquo;</button>
+      <button aria-label="Next" class="glider-next">&raquo;</button>
+      <div role="tablist" class="dots"></div>
     </div>
-  </section>
+    <script src="/js/glider.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function(){
+        new Glider(document.querySelector('.glider'), {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          draggable: true,
+          dots: '.dots',
+          arrows: {
+            prev: '.glider-prev',
+            next: '.glider-next'
+          }
+        });
+      });
+    </script>
+  </div>
+</div>
 
   <!-- Image Carousel Placeholder -->
   <section style="margin-bottom: 2rem; text-align: center;">
