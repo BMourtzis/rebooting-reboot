@@ -1,6 +1,6 @@
 {{ define "main" }}
 <main style="max-width: 1200px; margin: auto; padding: 2rem; background: #eaeaea;">
-  <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
     <!-- Left: Logo -->
     <div style="text-align: center;">
       <a href="/" style="display: inline-block;">
@@ -8,42 +8,72 @@
       </a>
     </div>
 
-    <!-- Center: Music Player Placeholder -->
-    <div style="flex: 1; margin-left: 2rem; margin-right: 2rem;">
-      <div style="background: #111; color: #fff; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-        <!-- Left controls -->
-        <div style="display: flex; align-items: center;">
-          <span style="font-size: 2rem; margin-right: 1rem;">&#9654;</span>
-          <span style="font-size: 1.5rem; margin-right: 1rem;">🔊</span>
-          <div style="width: 120px; height: 6px; background: #c00; border-radius: 3px; margin-right: 1rem; position: relative;">
-            <div style="position: absolute; left: 60px; top: -5px;">
-              <span style="display: inline-block; width: 16px; height: 16px; background: #fff; border-radius: 50%; border: 2px solid #c00;"></span>
-            </div>
+    <!-- Center: Music Player and Info -->
+    <div style="flex: 1; margin-left: 2rem; margin-right: 2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+      <!-- Top half: Player and CentovaCast Info side by side -->
+      <div style="display: flex; flex-direction: row; height: 30px;">
+        <!-- OpenPlayerJS Audio Player -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
+          <div class="audio__container" style="width: 140px;">
+            <audio class="op-player__media" controls preload="none" id="audio">
+              <source src="https://radioreb.radioca.st/stream" type="audio/mp3">
+            </audio>
           </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.js"></script>
+          <script>
+            window.addEventListener('DOMContentLoaded', function() {
+              const player = new OpenPlayerJS('audio', {
+                controls: {
+                  layers: {
+                    left: ['play', 'volume'],
+                    middle: [],
+                    right: [],
+                  },
+                },
+              });
+              player.init();
+            });
+          </script>
         </div>
-        <!-- Right info -->
-       <div style="display: flex; align-items: center;">
-          <span style="font-weight: bold; font-size: 1.2rem; margin-right: 1.5rem;">Sophia Loiz</span>
-          <a href="https://www.facebook.com/radioreboot.gr" style="margin-right: 0.5rem;">
+        <!-- CentovaCast Info -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+          <script language="javascript">
+            (function(){ var centovacast = (window.centovacast||(window.centovacast={}));
+            (centovacast.streaminfo||(centovacast.streaminfo={})).config = {
+                poll_limit: 5000,
+                poll_frequency: 5000
+            };})();
+          </script>
+          <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
+          <marquee behavior="scroll" direction="right" scrollamount="1" style="width: 90%; color: #fff;">
+            <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
+          </marquee>
+        </div>
+      </div>
+      <!-- Bottom half: Alternative Players (all red) and Social Media (black), side by side with no gap -->
+      <div style="display: flex; flex-direction: row; height: 30px;">
+        <!-- Alternative Players (all red) -->
+        <div style="flex: 1 1 0; background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.1rem; border-radius: 0;">
+          alternative players
+        </div>
+        <!-- Social Media Icons (black) -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center; border-radius: 0;">
+          <a href="https://www.facebook.com/radioreboot.gr" style="margin: 0.5rem;">
             <img src="/images/fblogo.png" alt="Facebook" style="height: 28px;">
           </a>
-          <a href="https://www.instagram.com/radio.reboot/" style="margin-right: 0.5rem;">
+          <a href="https://www.instagram.com/radio.reboot/" style="margin: 0.5rem;">
             <img src="/images/iglogo.png" alt="Instagram" style="height: 28px;">
           </a>
-          <a href="https://www.mixcloud.com/RadioReboot/" style="margin-right: 0.5rem;">
+          <a href="https://www.mixcloud.com/RadioReboot/" style="margin: 0.5rem;">
             <img src="/images/mclogo.png" alt="Mixcloud" style="height: 28px;">
           </a>
-          <a href="mailto:radiorebootgr@gmail.com" style="margin-right: 0.5rem;">
-            <img src="/images/mailogo.png" alt="Gallery" style="height: 28px;">
+          <a href="mailto:radiorebootgr@gmail.com" style="margin: 0.5rem;">
+            <img src="/images/mailogo.png" alt="Email" style="height: 28px;">
           </a>
         </div>
       </div>
-      <div style="background: #c00; color: #fff; font-weight: bold; text-align: center; padding: 0.7rem 0; font-size: 1.1rem;">
-        alternative players
-      </div>
     </div>
-
-    <!-- Right: Navigation Links -->
     <nav style="display: flex; flex-direction: column; align-items: flex-end; margin-top: 2rem;">
       <a href="#" style="color: #222; text-decoration: none; font-size: 1.3rem; margin-bottom: 1rem;">events</a>
       <a href="#" style="color: #222; text-decoration: none; font-size: 1.3rem; margin-bottom: 1rem;">shows</a>
@@ -51,415 +81,713 @@
     </nav>
   </div>
 
-<div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center; margin-bottom: 2rem;">
-  <!-- Carousel Column -->
-  <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box;">
-    <link rel="stylesheet" href="/css/glider.min.css">
-    <div class="glider-contain" style="width: 100%; height: 300px; background: #000; display: flex; align-items: center; justify-content: center;">
-      <div class="glider" style="width: 100%; height: 100%;">
-        <img src="/images/carouselmain.png" alt="Image 1" style="width: 100%; height: 100%; object-fit: contain; background: #000;">
-        <!-- Add more images as needed -->
+  <div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center; margin-bottom: 2rem;">
+    <!-- Carousel Column -->
+    <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box;">
+      <link rel="stylesheet" href="/css/glider.min.css">
+      <div class="glider-contain" style="width: 100%; height: 480px; background: #000; display: flex; align-items: center; justify-content: center;">
+        <div class="glider" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+          <img src="/images/carouselmain.png" alt="Image 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: #000; display: block;">
+          <!-- Add more images as needed -->
+        </div>
+        <button aria-label="Previous" class="glider-prev" style="background: #222; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 1;">&laquo;</button>
+        <button aria-label="Next" class="glider-next" style="background: #222; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 1;">&raquo;</button>
       </div>
-      <button aria-label="Previous" class="glider-prev" style="background: #222; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px;">&laquo;</button>
-      <button aria-label="Next" class="glider-next" style="background: #222; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px;">&raquo;</button>
-      <!-- Remove dots if you want only arrows -->
-    </div>
-    <script src="/js/glider.min.js"></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', function(){
-        new Glider(document.querySelector('.glider'), {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          draggable: true,
-          arrows: {
-            prev: '.glider-prev',
-            next: '.glider-next'
-          }
+      <script src="/js/glider.min.js"></script>
+      <script>
+        window.addEventListener('DOMContentLoaded', function(){
+          new Glider(document.querySelector('.glider'), {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true,
+            arrows: {
+              prev: '.glider-prev',
+              next: '.glider-next'
+            }
+          });
         });
-      });
-    </script>
+      </script>
+    </div>
+
+    <!-- Chat Column -->
+    <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box;">
+      <iframe
+        src="https://tlk.io/rebootchat?theme=theme--minimal"
+        style="width: 100%; height: 480px; background: #fff; box-sizing: border-box;"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 
-  <!-- Chat Column -->
-  <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box;">
-    <iframe
-      src="https://tlk.io/rebootchat?theme=theme--minimal"
-      style="width: 100%; height: 300px; background: #fff; box-sizing: border-box;"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+  <section style="margin-bottom: 2rem;">
+    <div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center;">
+      <!-- Left: Image -->
+      <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+        <img src="/images/rrwr.png" alt="Radio Reboot WR" style="max-width: 100%; max-height: 300px; background: #000;">
+      </div>
+      <!-- Right: Facebook Feed -->
+      <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; height: 300px; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 340px; height: 300px; display: flex; align-items: center; justify-content: center;">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+            style="width: 340px; height: 300px; border: none; border-radius: 8px; background: #fff;"
+            frameborder="0" allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section style="margin-bottom: 2rem;">
-  <div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center;">
-    <!-- Left: Image -->
-    <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
-      <img src="/images/rrwr.png" alt="Radio Reboot WR" style="max-width: 100%; max-height: 300px; background: #000;">
-    </div>
-    <!-- Right: Facebook Feed -->
-    <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; height: 300px; display: flex; align-items: center; justify-content: center;">
-      <div style="width: 340px; height: 300px; display: flex; align-items: center; justify-content: center;">
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-          style="width: 340px; height: 300px; border: none; border-radius: 8px; background: #fff;"
-          frameborder="0" allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section style="margin-bottom: 2rem;">
-  <h2 style="font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; text-align: left;">
-    <span style="vertical-align: middle;">🎤</span> shows
-  </h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
-    <!-- Monday -->
-    <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Δευτέρα</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
+  <section style="margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; text-align: left;">
+      <span style="vertical-align: middle;">🎤</span> shows
+    </h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+      <!-- Monday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Δευτέρα</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 18:00</div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 18:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/asperimenei.jpg" alt="Ας περιμένει το hip-hop" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Ας περιμένει το hip-hop</h6>
-              <div style="color: #444;">18:00 - 20:00</div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/asperimenei.jpg" alt="Ας περιμένει το hip-hop" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Ας περιμένει το hip-hop</h6>
+                <div style="color: #444;">18:00 - 20:00</div>
+              </div>
             </div>
-          </div>
-         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/kosmonot.png" alt="ΚΟΣΜΟΝόΤ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>ΚΟΣΜΟΝόΤ</h6>
-              <div style="color: #444;">20:00 - 22:00</div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/kosmonot.png" alt="ΚΟΣΜΟΝόΤ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">ΚΟΣΜΟΝόΤ</h6>
+                <div style="color: #444;">20:00 - 22:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/twofortheroad.jpg" alt="Two For The Road" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Two For The Road</h6>
-              <div style="color: #444;">22:00 - 00:00</div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/twofortheroad.jpg" alt="Two For The Road" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Two For The Road</h6>
+                <div style="color: #444;">22:00 - 00:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">00:00 - 06:00</div>
-            </div>
-          </div>          
-        </div>
-      </div>
-    </div>
-    <!-- Tuesday -->
-    <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τρίτη</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 19:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/babel.png" alt="Βαβέλ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Βαβέλ</h6>
-              <div style="color: #444;">19:00 - 21:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/newwavegirlph.jpg" alt="New Wave Girl" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>New Wave Girl</h6>
-              <div style="color: #444;">21:00 - 23:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">23:00 - 06:00</div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">00:00 - 06:00</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Wednesday -->
-    <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τετάρτη</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
+      <!-- Tuesday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τρίτη</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 19:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/babel.png" alt="Βαβέλ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Βαβέλ</h6>
+                <div style="color: #444;">19:00 - 21:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/newwavegirlph.jpg" alt="New Wave Girl" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">New Wave Girl</h6>
+                <div style="color: #444;">21:00 - 23:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">23:00 - 06:00</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 16:00</div>
+        </div>
+      </div>
+      <!-- Wednesday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τετάρτη</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 16:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/monplano_crpd.jpg" alt="Μονοπλάνο" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Μονοπλάνο</h6>
+                <div style="color: #444;">16:00 - 18:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/letmeridenewlogo.png" alt="Let Me Ride" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Let Me Ride</h6>
+                <div style="color: #444;">18:00 - 19:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/tsepesupd.jpg" alt="Με τα χέρια στις τσέπες" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Mε τα χέρια στις τσέπες</h6>
+                <div style="color: #444;">19:00 - 20:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/teenagekicks.jpg" alt="Teenage Kicks" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Teenage Kicks</h6>
+                <div style="color: #444;">20:00 - 22:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/thedudes.jpg" alt="The Dudes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">The Dudes</h6>
+                <div style="color: #444;">22:00 - 23:12:56</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">23:12:56 - 06:00</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/monplano_crpd.jpg" alt="Μονοπλάνο" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Μονοπλάνο</h6>
-              <div style="color: #444;">16:00 - 18:00</div>
+        </div>
+      </div>
+      <!-- Thursday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Πέμπτη</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 18:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/electricfrequencies.png" alt="Electric Frequencies" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Electric Frequencies</h6>
+                <div style="color: #444;">18:00 - 20:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/redflag.jpg" alt="Red Flag" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Red Flag</h6>
+                <div style="color: #444;">20:00 - 22:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">22:00 - 06:00</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/letmeridenewlogo.png" alt="Let Me Ride" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Let Me Ride</h6>
-              <div style="color: #444;">18:00 - 19:00</div>
+        </div>
+      </div>
+      <!-- Friday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Παρασκευή</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 18:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/ektos.jpg" alt="Εκτός" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Εκτός</h6>
+                <div style="color: #444;">18:00 - 20:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/parias.jpg" alt="Παρίας" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Παρίας</h6>
+                <div style="color: #444;">20:00 - 22:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/psyvibes.jpg" alt="Psy Vibes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Psy Vibes</h6>
+                <div style="color: #444;">22:00 - 00:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">00:00 - 06:00</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/tsepesupd.jpg" alt="Με τα χέρια στις τσέπες" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Mε τα χέρια στις τσέπες</h6>
-              <div style="color: #444;">19:00 - 20:00</div>
+        </div>
+      </div>
+      <!-- Saturday -->
+      <div style="flex: 1 1 45%; min-width: 340px;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Σάββατο</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Snooze</h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Noontide</h6>
+                <div style="color: #444;">12:00 - 16:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/lostandfound.jpg" alt="Lost & Found" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Lost & Found</h6>
+                <div style="color: #444;">16:00 - 18:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/canislupus.jpg" alt="Canis Lupus" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Canis Lupus</h6>
+                <div style="color: #444;">18:00 - 20:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">Nocturne</h6>
+                <div style="color: #444;">20:00 - 06:00</div>
+              </div>
             </div>
           </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/teenagekicks.jpg" alt="Teenage Kicks" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Teenage Kicks</h6>
-              <div style="color: #444;">20:00 - 22:00</div>
+        </div>
+      </div>
+      <!-- Sunday -->
+      <div style="flex: 1 1 45%; min-width: 340px; max-width: 48%; align-self: flex-start;">
+        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Κυριακή</div>
+        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Snooze
+                </h6>
+                <div style="color: #444;">06:00 - 12:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/thedudes.jpg" alt="The Dudes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>The Dudes</h6>
-              <div style="color: #444;">22:00 - 23:12:56</div>
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Noontide
+                </h6>
+                <div style="color: #444;">12:00 - 19:00</div>
+              </div>
             </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">23:12:56 - 06:00</div>
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/lovenotes.png" alt="Love Notes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Love Notes
+                </h6>
+                <div style="color: #444;">19:00 - 20:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/sundazed.jpg" alt="Sundazed" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Sundazed
+                </h6>
+                <div style="color: #444;">20:00 - 21:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/blackmagic.jpg" alt="Black Magic" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Black Magic
+                </h6>
+                <div style="color: #444;">21:00 - 23:00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
+              <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <div style="min-width: 0;">
+                <h6 style="
+                  font-size: clamp(0.8rem, 2vw, 1.1rem);
+                  margin: 0;
+                  max-width: 140px;
+                  overflow-wrap: break-word;
+                  word-break: break-word;
+                  white-space: normal;
+                ">
+                  Nocturne
+                </h6>
+                <div style="color: #444;">23:00 - 06:00</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Thursday -->
-    <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Πέμπτη</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 18:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/electricfrequencies.png" alt="Electric Frequencies" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Electric Frequencies</h6>
-              <div style="color: #444;">18:00 - 20:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/redflag.jpg" alt="Red Flag" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Red Flag</h6>
-              <div style="color: #444;">20:00 - 22:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">22:00 - 06:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Friday -->
-     <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Παρασκευή</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 18:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/ektos.jpg" alt="Εκτός" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Εκτός</h6>
-              <div style="color: #444;">18:00 - 20:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/parias.jpg" alt="Παρίας" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Παρίας</h6>
-              <div style="color: #444;">20:00 - 22:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/psyvibes.jpg" alt="Psy Vibes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Psy Vibes</h6>
-              <div style="color: #444;">22:00 - 00:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">00:00 - 06:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Saturday -->
-     <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Σάββατο</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 16:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/lostandfound.jpg" alt="Lost & Found" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Lost & Found</h6>
-              <div style="color: #444;">16:00 - 18:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/canislupus.jpg" alt="Canis Lupus" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Canis Lupus</h6>
-              <div style="color: #444;">18:00 - 20:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">20:00 - 06:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Sunday -->
-    <div style="flex: 1 1 45%; min-width: 340px;">
-      <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Κυριακή</div>
-      <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
-        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Snooze</h6>
-              <div style="color: #444;">06:00 - 12:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Noontide</h6>
-              <div style="color: #444;">12:00 - 19:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/lovenotes.png" alt="Love Notes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Love Notes</h6>
-              <div style="color: #444;">19:00 - 20:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/sundazed.jpg" alt="Sundazed" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Sundazed</h6>
-              <div style="color: #444;">20:00 - 21:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/blackmagic.jpg" alt="Black Magic" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Black Magic</h6>
-              <div style="color: #444;">21:00 - 23:00</div>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-            <img src="/images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div>
-              <h6>Nocturne</h6>
-              <div style="color: #444;">23:00 - 06:00</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 {{ end }}
