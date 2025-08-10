@@ -1,74 +1,76 @@
-<div class="header-flex" style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 2rem;">
-  <!-- Left: Logo -->
-  <div class="header-logo" style="text-align: center;">
-    <a href="/" style="display: inline-block;">
-      <img src="/images/rrlogo.png" alt="Radio Reboot Logo" style="height: 170px; margin-bottom: 0.5rem;">
-    </a>
-  </div>
-
-  <!-- Center: Music Player and Info -->
-  <div class="header-center" style="width: 50%; min-width: 400px; max-width: 900px; margin-left: 2rem; margin-right: 2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-    <!-- Top half: Player and CentovaCast Info side by side -->
-    <div style="display: flex; flex-direction: row; height: 30px;">
-      <!-- OpenPlayerJS Audio Player -->
-      <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
-        <div class="audio__container" style="width: 140px;">
-          <audio class="op-player__media" controls preload="none" id="audio">
-            <source src="https://radioreb.radioca.st/stream" type="audio/mp3">
-          </audio>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.js"></script>
-        <script>
-          window.addEventListener('DOMContentLoaded', function() {
-            const player = new OpenPlayerJS('audio', {
-              controls: {
-                layers: {
-                  left: ['play', 'volume'],
-                  middle: [],
-                  right: [],
-                },
-              },
-            });
-            player.init();
-          });
-        </script>
-      </div>
-      <!-- CentovaCast Info -->
-      <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
-        <script language="javascript">
-          (function(){ var centovacast = (window.centovacast||(window.centovacast={}));
-          (centovacast.streaminfo||(centovacast.streaminfo={})).config = {
-              poll_limit: 5000,
-              poll_frequency: 5000
-          };})();
-        </script>
-        <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
-        <marquee behavior="scroll" direction="right" scrollamount="1" style="width: 90%; color: #fff;">
-          <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
-        </marquee>
-      </div>
-    </div>
-    <!-- Bottom half: Alternative Players (all red) and Social Media (black), side by side with no gap -->
-    <div style="display: flex; flex-direction: row; height: 30px;">
-      <!-- Alternative Players (all red) -->
-      <a href="/alternativeplayers" style="flex: 1 1 0; background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.1rem; border-radius: 0; text-decoration: none;">
-        alternative players
+<div style="max-width: 1200px; margin: auto; padding: 2rem;">
+  <div class="header-flex" style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 2rem;">
+    <!-- Left: Logo -->
+    <div class="header-logo" style="text-align: center;">
+      <a href="/" style="display: inline-block;">
+        <img src="/images/rrlogo.png" alt="Radio Reboot Logo" style="height: 170px; margin-bottom: 0.5rem;">
       </a>
-      <!-- Social Media Icons (black) -->
-      <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center; border-radius: 0;">
-        <a href="https://www.facebook.com/radioreboot.gr" style="margin: 0.5rem;">
-          <img src="/images/fblogo.png" alt="Facebook" style="height: 28px;">
+    </div>
+
+    <!-- Center: Music Player and Info -->
+    <div class="header-center" style="width: 50%; min-width: 400px; max-width: 900px; margin-left: 2rem; margin-right: 2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+      <!-- Top half: Player and CentovaCast Info side by side -->
+      <div style="display: flex; flex-direction: row; height: 30px;">
+        <!-- OpenPlayerJS Audio Player -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
+          <div class="audio__container" style="width: 140px;">
+            <audio class="op-player__media" controls preload="none" id="audio">
+              <source src="https://radioreb.radioca.st/stream" type="audio/mp3">
+            </audio>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.js"></script>
+          <script>
+            window.addEventListener('DOMContentLoaded', function() {
+              const player = new OpenPlayerJS('audio', {
+                controls: {
+                  layers: {
+                    left: ['play', 'volume'],
+                    middle: [],
+                    right: [],
+                  },
+                },
+              });
+              player.init();
+            });
+          </script>
+        </div>
+        <!-- CentovaCast Info -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+          <script language="javascript">
+            (function(){ var centovacast = (window.centovacast||(window.centovacast={}));
+            (centovacast.streaminfo||(centovacast.streaminfo={})).config = {
+                poll_limit: 5000,
+                poll_frequency: 5000
+            };})();
+          </script>
+          <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
+          <marquee behavior="scroll" direction="right" scrollamount="1" style="width: 90%; color: #fff;">
+            <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
+          </marquee>
+        </div>
+      </div>
+      <!-- Bottom half: Alternative Players (all red) and Social Media (black), side by side with no gap -->
+      <div style="display: flex; flex-direction: row; height: 30px;">
+        <!-- Alternative Players (all red) -->
+        <a href="/alternativeplayers" style="flex: 1 1 0; background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.1rem; border-radius: 0; text-decoration: none;">
+          alternative players
         </a>
-        <a href="https://www.instagram.com/radio.reboot/" style="margin: 0.5rem;">
-          <img src="/images/iglogo.png" alt="Instagram" style="height: 28px;">
-        </a>
-        <a href="https://www.mixcloud.com/RadioReboot/" style="margin: 0.5rem;">
-          <img src="/images/mclogo.png" alt="Mixcloud" style="height: 28px;">
-        </a>
-        <a href="mailto:radiorebootgr@gmail.com" style="margin: 0.5rem;">
-          <img src="/images/mailogo.png" alt="Email" style="height: 28px;">
-        </a>
+        <!-- Social Media Icons (black) -->
+        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center; border-radius: 0;">
+          <a href="https://www.facebook.com/radioreboot.gr" style="margin: 0.5rem;">
+            <img src="/images/fblogo.png" alt="Facebook" style="height: 28px;">
+          </a>
+          <a href="https://www.instagram.com/radio.reboot/" style="margin: 0.5rem;">
+            <img src="/images/iglogo.png" alt="Instagram" style="height: 28px;">
+          </a>
+          <a href="https://www.mixcloud.com/RadioReboot/" style="margin: 0.5rem;">
+            <img src="/images/mclogo.png" alt="Mixcloud" style="height: 28px;">
+          </a>
+          <a href="mailto:radiorebootgr@gmail.com" style="margin: 0.5rem;">
+            <img src="/images/mailogo.png" alt="Email" style="height: 28px;">
+          </a>
+        </div>
       </div>
     </div>
   </div>
