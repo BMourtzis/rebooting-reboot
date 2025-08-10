@@ -1,9 +1,6 @@
-baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
-languageCode = 'el-gr'
-title = 'My New Hugo Site'
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
 theme = "blowfish"
-publishDir = "public"
-homepage.layout = "page"
 
 [params.home]
     enable = true
@@ -16,6 +13,3 @@ homepage.layout = "page"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
-
-
