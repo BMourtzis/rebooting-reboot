@@ -2,8 +2,6 @@ baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
 languageCode = 'el-gr'
 title = 'Radio Reboot'
 theme = "blowfish"
-publishDir = "public"
-homepage.layout = "page"
 
 [params]
     favicon = "favicon.png"
@@ -20,6 +18,3 @@ homepage.layout = "page"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
-
-
