@@ -1,1 +1,212 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Radio Reboot</title><link>https://bmourtzis.github.io/rebooting-reboot/</link><description>Recent content on Radio Reboot</description><generator>Hugo -- gohugo.io</generator><language>el-gr</language><copyright>© 2025</copyright><lastBuildDate>Thu, 31 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://bmourtzis.github.io/rebooting-reboot/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://bmourtzis.github.io/rebooting-reboot/posts/hello-world/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/posts/hello-world/</guid><description>&lt;p>Welcome to my first Hugo site!&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on Radio Reboot</title><link>https://bmourtzis.github.io/rebooting-reboot/</link><description>Recent content in Home on Radio Reboot</description><generator>Hugo -- gohugo.io</generator><language>el-gr</language><copyright>© 2025</copyright><lastBuildDate>Thu, 31 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://bmourtzis.github.io/rebooting-reboot/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://bmourtzis.github.io/rebooting-reboot/posts/hello-world/</link><pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/posts/hello-world/</guid><description>&lt;p>Welcome to my first Hugo site!&lt;/p></description></item><item><title>Alternative players</title><link>https://bmourtzis.github.io/rebooting-reboot/alternativeplayers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/alternativeplayers/</guid><description>&lt;div style="max-width: 1200px; margin: auto; padding: 2rem;">
+&lt;div align="left">
+&lt;h2 style="font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; text-align: left; display: flex; align-items: center; gap: 0.7rem;">
+&lt;img src="https://bmourtzis.github.io/rebooting-reboot/images/ic_play_circle_filled_black_24dp_2x.png" style="height: 2.2rem; width: auto; vertical-align: middle;">
+Alternative players
+&lt;/h2>
+&lt;/div>
+&lt;!-- jPlayer CSS -->
+&lt;link rel="stylesheet" href="https://dl.dropboxusercontent.com/s/ko3c04wnzi309yo/jplayernew2.css">
+&lt;!-- jQuery and jPlayer JS -->
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js">&lt;/script>
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js">&lt;/script>
+&lt;!-- jPlayer HTML -->
+&lt;div id="jquery_jplayer_1" class="jp-jplayer">&lt;/div>
+&lt;div id="jp_container_1" class="jp-audio-stream" role="application" aria-label="media player">
+&lt;div class="jp-type-single">
+&lt;div class="jp-gui jp-interface">
+&lt;div class="jp-controls">
+&lt;button class="jp-play" role="button" tabindex="0">play&lt;/button>
+&lt;/div>
+&lt;div class="jp-volume-controls">
+&lt;button class="jp-mute" role="button" tabindex="0">mute&lt;/button>
+&lt;button class="jp-volume-max" role="button" tabindex="0">max volume&lt;/button>
+&lt;div class="jp-volume-bar">
+&lt;div class="jp-volume-bar-value">&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;!-- jPlayer JS Setup -->
+&lt;script type="text/javascript">
+//&lt;![CDATA[
+$(document).ready(function(){
+var stream = {
+title: "Radio Reboot",
+mp3: "https://radioreb.radioca.st/stream"
+},
+ready = false;
+$("#jquery_jplayer_1").jPlayer({
+ready: function (event) {
+ready = true;
+$(this).jPlayer("setMedia", stream);
+},
+pause: function() {
+$(this).jPlayer("clearMedia");
+},
+error: function(event) {
+if(ready &amp;&amp; event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+// Setup the media stream again and play it.
+$(this).jPlayer("setMedia", stream).jPlayer("play");
+}
+},
+swfPath: "https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.swf",
+supplied: "mp3",
+preload: "none",
+wmode: "window",
+useStateClassSkin: true,
+autoBlur: false,
+keyEnabled: true
+});
+});
+//]]>
+&lt;/script>
+&lt;!-- Plyr CSS -->
+&lt;link rel="stylesheet" href="https://dl.dropboxusercontent.com/s/32kpuohwqi11hjn/plyrnew.css">
+&lt;!-- Plyr HTML -->
+&lt;div class="container" style="margin-top:2rem;">
+&lt;audio id="plyr-audio" src="https://radioreb.radioca.st/stream" type="audio/mp3">&lt;/audio>
+&lt;/div>
+&lt;!-- Plyr JS -->
+&lt;script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js">&lt;/script>
+&lt;script>
+const controls = `
+&lt;div class="plyr__controls">
+&lt;button type="button" class="plyr__control" aria-label="Play, {title}" data-plyr="play">
+&lt;svg class="icon--pressed" role="presentation">&lt;use xlink:href="#plyr-pause">&lt;/use>&lt;/svg>
+&lt;svg class="icon--not-pressed" role="presentation">&lt;use xlink:href="#plyr-play">&lt;/use>&lt;/svg>
+&lt;/button>
+&lt;button type="button" class="plyr__control" aria-label="Mute" data-plyr="mute">
+&lt;svg class="icon--pressed" role="presentation">&lt;use xlink:href="#plyr-muted">&lt;/use>&lt;/svg>
+&lt;svg class="icon--not-pressed" role="presentation">&lt;use xlink:href="#plyr-volume">&lt;/use>&lt;/svg>
+&lt;/button>
+&lt;div class="plyr__volume">
+&lt;input data-plyr="volume" type="range" min="0" max="1" step="0.05" value="1" autocomplete="off" aria-label="Volume">
+&lt;/div>
+&lt;button type="button" class="plyr__control" data-plyr="captions">
+&lt;svg class="icon--pressed" role="presentation">&lt;use xlink:href="#plyr-captions-on">&lt;/use>&lt;/svg>
+&lt;svg class="icon--not-pressed" role="presentation">&lt;use xlink:href="#plyr-captions-off">&lt;/use>&lt;/svg>
+&lt;/button>
+&lt;button type="button" class="plyr__control" data-plyr="fullscreen">
+&lt;svg class="icon--pressed" role="presentation">&lt;use xlink:href="#plyr-exit-fullscreen">&lt;/use>&lt;/svg>
+&lt;svg class="icon--not-pressed" role="presentation">&lt;use xlink:href="#plyr-enter-fullscreen">&lt;/use>&lt;/svg>
+&lt;/button>
+&lt;/div>
+`;
+// Setup the player
+const player = new Plyr('#plyr-audio', { controls });
+// Expose player so it can be used from the console
+window.player = player;
+&lt;/script>
+&lt;div align="left">
+&lt;h2 style="font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; text-align: left; display: flex; align-items: center; gap: 0.7rem;">
+&lt;img src="https://bmourtzis.github.io/rebooting-reboot/images/ic_queue_music_black_24dp_2x.png" style="height: 2.2rem; width: auto; vertical-align: middle;">
+Playlists
+&lt;/h2>
+&lt;/div>
+&lt;a href="https://radioreb.radioca.st/stream.m3u">&lt;img src="https://bmourtzis.github.io/rebooting-reboot/images/m3u.png">&lt;/a>
+&lt;a href="https://radioreb.radioca.st/stream.xspf">&lt;img src="https://bmourtzis.github.io/rebooting-reboot/images/xspf.png">&lt;/a>
+&lt;a href="https://radioreb.radioca.st/stream.pls">&lt;img src="https://bmourtzis.github.io/rebooting-reboot/images/pls.png">&lt;/a>
+&lt;div style="width: 20%; min-width: 220px; margin: 2rem 0;">
+&lt;a href="https://www.live24.gr/radio/generic.jsp?sid=2957" target="_blank" style="display: block; text-decoration: none;">
+&lt;div style="background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.3rem; border-radius: 0; padding: 2rem 0; margin-bottom: 2rem;">
+radio reboot on live24.gr!
+&lt;/div>
+&lt;/a>
+&lt;a href="https://radio.garden/listen/radio-reboot/0k2y7k5u" target="_blank" style="display: block; text-decoration: none;">
+&lt;div style="background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.3rem; border-radius: 0; padding: 2rem 0; margin-bottom: 2rem;">
+radio reboot on radio garden!
+&lt;/div>
+&lt;/a>
+&lt;a href="https://radioreb.radioca.st/stream" target="_blank" style="display: block; text-decoration: none;">
+&lt;div style="background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.3rem; border-radius: 0; padding: 2rem 0;">
+direct stream link
+&lt;/div>
+&lt;/a>
+&lt;/div>
+&lt;/div></description></item><item><title>Black Magic</title><link>https://bmourtzis.github.io/rebooting-reboot/blackmagic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/blackmagic/</guid><description>&lt;p>Κυριακή, 21:00 - 23:00&lt;/p>
+&lt;p>​Ένα πειρατικό καράβι, ονόματι Ναρόντναγια. Κουμανταδόρος, ένας απρόβλεπτος καπετάνιος από τις δυτικές συνοικίες της νύμφης του Θερμαϊκού, κραδαίνει τιμόνι και φωτοβολίδα έτοιμος για νέες περιπέτειες σε ανεξερεύνητες&amp;hellip; μουσικές επιλογές, προερχόμενες από πολύ σουρεαλιστικές εποχές.&lt;/p>
+&lt;p>Έκπτωτοι, Μαύρα Πρόβατα, Φρικιά, Κάγκουρες, Μεταλλάδες, Πόντιοι, Τζιβάτοι, Χούλιγκανς, Ντίσκο Γκέρλς, Περμανάντες, Θρασάδες, Πασιφιστές, Ποινικοί, Χίππιδες, Γκοθούδες, Κιουράδες, Σαϊκεντελάδες, ενώνουν τις φωνές τους, με το Α κεφαλαίο και κυκλωμένο και ανοίγουν την πόρτα της Περσεφόνης. Στον κόσμο αυτόν μπορούν να συνυπάρξουν τα πάντα, φτάνει η σύγκρουση να είναι από τα κάτω προς τα πάνω.&lt;/p></description></item><item><title>Canis Lupus</title><link>https://bmourtzis.github.io/rebooting-reboot/canislupus/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/canislupus/</guid><description>&lt;p>Σάββατο, 18:00 - 20:00&lt;/p>
+&lt;p>​Canis Lupus, η αλλιώς η στιγμή που ο Fantastic Mr. Fox κάνει τη συνειδητοποίηση οτι το δίπολο άγριου ή πολιτισμένου ζώου είναι πλασματικό. Υπάρχουμε ως πολύπλευρες οντότητες άλλωστε, και ως τέτοιες αντανακλούμε τη λάμψη και το φως μας.&lt;/p>
+&lt;p>Υπαρξιακά ερωτήματα, συζητήσεις για ταινίες (κουλτουρέ και μη) και μουσική βαϊμπαριστή από όλες τις χώρες και τα πιθανά είδη (ε, σχεδόν).&lt;/p>
+&lt;p>Ίσως και κάνα κουλ αφισάκι για να αλλάζουμε παραστάσεις.&lt;/p></description></item><item><title>Electric Frequencies</title><link>https://bmourtzis.github.io/rebooting-reboot/electricfrequencies/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/electricfrequencies/</guid><description>&lt;p>Πέμπτη, 18:00 - 20:00&lt;/p></description></item><item><title>Let Me ride</title><link>https://bmourtzis.github.io/rebooting-reboot/letmeride/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/letmeride/</guid><description>&lt;p>Τετάρτη, 18:00 - 19:00&lt;/p>
+&lt;p>Αισθάνεται μεγαλύτερη άνεση στις παρυφές, παρά στο κέντρο&amp;hellip; Εγγενώς αμφίσημη και πολύμορφη, διαπερνά τα συμβατικά όρια και διαφεύγει τον ορισμό&amp;hellip;&lt;/p></description></item><item><title>Listeners</title><link>https://bmourtzis.github.io/rebooting-reboot/listeners/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/listeners/</guid><description>&lt;script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js">&lt;/script>
+&lt;body style=color:black>Current listeners: &lt;span id="cc_strinfo_listeners_radioreb" class="cc_streaminfo">&lt;/span>&lt;br />&lt;/body>
+&lt;script language="javascript" type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">&lt;/script>&lt;script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/googlemaps.js">&lt;/script>
+&lt;div id="cc_gmaps_radioreb" class="cc_gmaps_map" style="width: 400px; height: 400px">&lt;/div>
+&lt;script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR2R0dXEeN3pUcj66LhpO3nHrvKYdrFdo&amp;callback=initMap" type="text/javascript">&lt;/script></description></item><item><title>Lost &amp; Found</title><link>https://bmourtzis.github.io/rebooting-reboot/lostandfound/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/lostandfound/</guid><description>&lt;p>Σάββατο, 16:00 - 18:00&lt;/p>
+&lt;p>Στα μουσικά απολεσθέντα βρίσκεις ό,τι ψάχνεις και ό,τι δεν ξέρεις πως σου λείπει.&lt;/p></description></item><item><title>Love Notes</title><link>https://bmourtzis.github.io/rebooting-reboot/lovenotes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/lovenotes/</guid><description>&lt;p>Κυριακή, 19:00 - 20:00&lt;/p>
+&lt;p>Στον έρωτα κρύβεται το πιο γλυκό μάταιο, σου λέει και αν σε ήθελε θα το είχες καταλάβει, άσε τα ψόφια και μην μοιράζεις άλλους πονοκεφάλους στις φιλενάδες σου που δικαίως κρίνουν, μα δεν εγκρίνουν.&lt;/p>
+&lt;p>Τα άστρα και τα ζώδια μας φέρανε εμπόδια, λες εσύ και γουστάρεις και λίγο που ζεις τον έρωτα ως παιδεμό - και τέτοιος είναι.&lt;/p>
+&lt;p>Μωρό μου, ο δρόμος που δεν έχεις ξαναπερπατήσει είναι πάντοτε μακρύτερος, αλλά τον είδες και τον άλλο που είναι μες στη λακκούβα. Δεν είσαι τώρα για εργολαβίες.&lt;/p></description></item><item><title>New Wave Girl</title><link>https://bmourtzis.github.io/rebooting-reboot/newwavegirl/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/newwavegirl/</guid><description>&lt;p>Τρίτη, 21:00 - 23:00&lt;/p>
+&lt;p>Ο νεοκυματισμός, λένε, μπαίνει από τ&amp;rsquo; αυτιά.&lt;/p></description></item><item><title>Nocturne</title><link>https://bmourtzis.github.io/rebooting-reboot/nocturne/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/nocturne/</guid><description>&lt;p>Μουσική για τη διαδρομή από τον ομφαλό της νύχτας μέχρι την κόμη της ημέρας ή κάτι εξίσου ψαρωτικό.&lt;/p></description></item><item><title>Noontide</title><link>https://bmourtzis.github.io/rebooting-reboot/noontide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/noontide/</guid><description>&lt;p>Σύμφωνα με αμφισβητούμενες μελέτες που βαριόμαστε να παραθέσουμε, οι ώρες του μεσημεριού και του απογεύματος είναι ώρες χαμηλής αποδοτικότητας. Το ευέλικτο δυναμικό του Radio Reboot, τηρώντας τις διεθνείς προδιαγραφές, έχει επιλέξει με αυστηρά κριτήρια μουσική που απλώς κολλάει στις συγκεκριμένες ώρες, χωρίς να υπόσχεται τίποτα.&lt;/p></description></item><item><title>Psy Vibes</title><link>https://bmourtzis.github.io/rebooting-reboot/psyvibes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/psyvibes/</guid><description>&lt;p>Παρασκευή, 22:00 - 00:00&lt;/p>
+&lt;p>Mια εκπομπή ηλεκτρονικής μουσικής ψυχεδέλειας, με dark, forest, full on αλλά και progressive ακούσματα. Κάθε Παρασκευή 22:00 - 00:00, ψυχεδελικά και πολεμικά.&lt;/p></description></item><item><title>Red Flag</title><link>https://bmourtzis.github.io/rebooting-reboot/redflag/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/redflag/</guid><description>&lt;p>Πέμπτη, 20:00 - 22:00&lt;/p>
+&lt;p>Εκπομπή που δίνει κομμάτια που δεν έχει, σε ακροατές που δεν τα θέλουν. Εβδομαδιαία ανασκόπηση νέων και παλιών μουσικών εμμονών χωρίς δέσμευση στο είδος, αλλά με εμφανή αδυναμία στην post-punk σκηνή και με ξεκάθαρη εξάρτηση από την εκάστοτε διάθεση.&lt;/p></description></item><item><title>Snooze</title><link>https://bmourtzis.github.io/rebooting-reboot/snooze/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/snooze/</guid><description>&lt;p>Οι κόκορες δεν έχουν snooze και τα ξυπνητήρια δεν έχουν χάρη, αλλά το Reboot έχει και τα δύο! Πιο φτηνή από έναν καφέ και πιο πρακτική από έναν κουβά νερό στο πρόσωπο, η πρωινή ζώνη του Radio Reboot δίνει ενέργεια χωρίς θερμίδες, από τις έξι το πρωί μέχρι τις δώδεκα το μεσημέρι.&lt;/p></description></item><item><title>Sundazed</title><link>https://bmourtzis.github.io/rebooting-reboot/sundazed/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/sundazed/</guid><description>&lt;p>Κυριακή, 20:00 - 21:00&lt;/p>
+&lt;p>Για αυτά τα μοναχικά, αλλά ίσως και γλυκά απογεύματα της Κυριακής, θα κάνουμε παρέα με όμορφες μουσικές και συζητήσεις για ό,τι μας έρθει στο μυαλό. Indie rock, jazz και soul θα είναι τα βασικά στοιχεία της εκπομπής ετούτης, για να μπεις στο μουντ μαζί με ό,τι άλλο προκύψει! Sundazed and confused λοιπόν, γιατί έτσι είναι τα Κυριακάτικα τα απογεύματα.&lt;/p></description></item><item><title>Teenage Kicks</title><link>https://bmourtzis.github.io/rebooting-reboot/teenagekicks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/teenagekicks/</guid><description>&lt;p>Τετάρτη, 20:00 - 22:00&lt;/p>
+&lt;p>Μια περιπλάνηση σε όλο το φάσμα του rock n’ roll (garage, punk, grunge, darkwave κ.ά.), με απαραίτητη προϋπόθεση απ’ τα κομμάτια να ξεπηδάνε φλόγα, πάθος, ψυχή και τσαγανό. Κομμάτια που μαζί τους μεγαλώσαμε, ερωτευτήκαμε, πολιτικοποιηθήκαμε, ξενυχτήσαμε, χορέψαμε, κλάψαμε. Γιατί τα εφηβικά μας σκιρτήματα και όνειρα δεν ξεπερνιούνται εύκολα. Γιατί όλα αυτά μας κάνανε αυτό που είμαστε τώρα. Γιατί πατρίδα μας είναι τα παιδικά μας χρόνια.&lt;/p></description></item><item><title>The Dudes</title><link>https://bmourtzis.github.io/rebooting-reboot/thedudes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/thedudes/</guid><description>&lt;p>Τετάρτη, 22:00 - 23:12:56&lt;/p>
+&lt;p>Οι Dudes δεν πίνουν White Russian, δεν παίζουν μπόουλινγκ, ούτε κυκλοφορούν με μπουρνούζι. Αλλά τους αρέσει το σινεμά. Κι αφού έχουν διαφωνήσει μεταξύ τους αμέτρητες φορές, σας καλούν αγωνιωδώς να βοηθήσετε να διατηρηθεί η φιλία τους, συμμετέχοντας στις κινηματογραφικές (και όχι μόνο) αναζητήσεις τους.&lt;/p></description></item><item><title>Two For The Road</title><link>https://bmourtzis.github.io/rebooting-reboot/twofortheroad/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/twofortheroad/</guid><description>&lt;p>Δευτέρα, 22:00 - 00:00&lt;/p>
+&lt;p>Μουσικές από το κουτί της indie/post punk κλπ κλπ Πανδώρας και αναλύσεις για αγρίους. Ένα ραδιόφωνο, μια εκπομπή, μια τζατζίκι, μια πατάτες. Two For The Road, κάθε Δευτέρα, 10-12, στο καλύτερο ραδιόφωνο του γαλαξία.&lt;/p></description></item><item><title>Ας περιμένει το hip-hop</title><link>https://bmourtzis.github.io/rebooting-reboot/asperimenei/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/asperimenei/</guid><description>&lt;p>Δευτέρα, 18:00 - 20:00&lt;/p>
+&lt;p>Δύο κολλητοί, Θείοι, μπατζανάκηδες, δεν έχει σημασία. Σημασία έχει το ταξίδι τους σε κάθε γωνιά της μουσικής που αγάπησαν ως έφηβοι, της μουσικής που τους συντρόφευε, τους συντροφεύει και πάντα θα τους συντροφεύει. Το Hip-Hop θα τους περιμένει, καθώς εκείνοι καταπιάνονται με κάθε σχετικό και άσχετο κομμάτι της ιστορίας του. Ας περιμένει το hip-hop, κάθε Δευτέρα 18:00 - 20:00, στο καλύτερο web radio του γαλαξία.&lt;/p></description></item><item><title>Βαβέλ</title><link>https://bmourtzis.github.io/rebooting-reboot/babel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/babel/</guid><description>&lt;p>Τρίτη, 19:00 - 21:00&lt;/p>
+&lt;p>Κάθε απόγευμα Τρίτης, η Μίρκα και η Χαρά περιπλανώνται στον πύργο της Βαβέλ αναζητώντας ξεχασμένους δίσκους και συνθέσεις απ&amp;rsquo;όλο τον κόσμο. Συνήθως στα μικρόφωνα μοιράζονται αισθήματα &amp;amp; ιστορίες που πλαισιώνουν την μουσική, και συζητάνε για τα δρώμενα της πόλης. Post-punk, trip-hop, post-rock και hip hop κάποιες από τις βασικές μουσικές στάσεις τους.&lt;/p></description></item><item><title>Δευτέρα</title><link>https://bmourtzis.github.io/rebooting-reboot/monday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/monday/</guid><description>&lt;p>&lt;strong>Δευτέρα&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 18:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>18:00 - 20:00 | &lt;strong>Ας περιμένει το hip-hop&lt;/strong>&lt;/li>
+&lt;li>20:00 - 22:00 | &lt;strong>ΚΟΣΜΟΝόΤ&lt;/strong>&lt;/li>
+&lt;li>22:00 - 00:00 | &lt;strong>Two For The Road&lt;/strong>&lt;/li>
+&lt;li>00:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Εκτός</title><link>https://bmourtzis.github.io/rebooting-reboot/ektos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/ektos/</guid><description>&lt;p>Παρασκευή, 18:00 - 20:00&lt;/p>
+&lt;p>Εκτός ρεύματος, εκτός γραμμής, εκτός των τειχών. Επίκαιρα θέματα, πολιτιστική κίνηση και μουσική, με σχόλια και προσεγγίσεις εκτός των καθιερωμένων.&lt;/p></description></item><item><title>ΚΟΣΜΟΝόΤ</title><link>https://bmourtzis.github.io/rebooting-reboot/kosmonot/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/kosmonot/</guid><description>&lt;p>Δευτέρα, 20:00 - 22:00&lt;/p>
+&lt;p>Μουσική εκπομπή με αντικείμενο την ηλεκτρονική μουσική και την εξέλιξή της στο πέρασμα των δεκαετιών απ&amp;rsquo; το 1950 έως και σήμερα, θεματικά αφιερώματα στα χορευτικά της είδη, ενημέρωση για καινούριες κυκλοφορίες, ιστορικά στοιχεία για δισκογραφικές εταιρίες του είδους, για καλλιτέχνες, DJs και παραγωγούς, καθώς και για τις επιρροές που δέχτηκαν τα διάφορα υβρίδια της electronica και πώς επηρρέασαν με τη σειρά τους άλλους μουσικούς χώρους. Είναι ο Βαγγέλης, Δευτέρα, 20:00 με 22:00.&lt;/p></description></item><item><title>Κυριακή</title><link>https://bmourtzis.github.io/rebooting-reboot/sunday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/sunday/</guid><description>&lt;p>&lt;strong>Κυριακή&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 19:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>19:00 - 20:00 | &lt;strong>Love Notes&lt;/strong>&lt;/li>
+&lt;li>20:00 - 21:00 | &lt;strong>Sundazed&lt;/strong>&lt;/li>
+&lt;li>21:00 - 23:00 | &lt;strong>Black Magic&lt;/strong>&lt;/li>
+&lt;li>23:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Με τα χέρια στις τσέπες</title><link>https://bmourtzis.github.io/rebooting-reboot/metaheriastistsepes/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/metaheriastistsepes/</guid><description>&lt;p>Τετάρτη, 19:00 - 20:00&lt;/p></description></item><item><title>Μονοπλάνο</title><link>https://bmourtzis.github.io/rebooting-reboot/monoplano/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/monoplano/</guid><description>&lt;p>Τετάρτη, 16:00 - 18:00&lt;/p>
+&lt;p>Μεγάλης διάρκειας πλάνο, συνήθως με σύνθετη δράση ή/και κίνηση της κάμερας που καλύπτει μια ολόκληρη σκηνή (πλάνο σεκάνς).&lt;/p>
+&lt;p>Στις δύο ώρες της λήψης, θ&amp;rsquo;ακούσουμε πολλή μουσική, σύντομα σχόλια περί ταινιών (και όχι μόνο), χωρίς μοντάζ, αλλά με κινηματογραφική ταχύτητα και ακρίβεια.&lt;/p>
+&lt;p>Κάθε Τετάρτη 16:00-18:00 στο Radio Reboot, με τον Jason B.&lt;/p></description></item><item><title>Παρασκευή</title><link>https://bmourtzis.github.io/rebooting-reboot/friday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/friday/</guid><description>&lt;p>&lt;strong>Παρασκευή&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 18:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>18:00 - 20:00 | &lt;strong>Εκτός&lt;/strong>&lt;/li>
+&lt;li>20:00 - 22:00 | &lt;strong>Παρίας&lt;/strong>&lt;/li>
+&lt;li>22:00 - 00:00 | &lt;strong>Psy Vibes&lt;/strong>&lt;/li>
+&lt;li>00:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Παρίας</title><link>https://bmourtzis.github.io/rebooting-reboot/parias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/parias/</guid><description>&lt;p>Παρασκευή, 20:00 - 22:00&lt;/p>
+&lt;p>Ο Παρίας καταπιάνεται με θεματικές εκπομπές για κοινωνικοπολιτικά ζητήματα, μουσικά αφιερώματα, συνεντεύξεις /κουβέντες με πολλούς καλεσμένους και γενικότερα ό,τι άλλο του αρέσει και τον απασχολεί. Τις ηχογραφημένες εκπομπές του τις βρίσκετε στο Mixcloud του Radio Reboot!&lt;/p></description></item><item><title>Πέμπτη</title><link>https://bmourtzis.github.io/rebooting-reboot/thursday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/thursday/</guid><description>&lt;p>&lt;strong>Πέμπτη&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 18:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>18:00 - 20:00 | &lt;strong>Electric Frequencies&lt;/strong>&lt;/li>
+&lt;li>20:00 - 22:00 | &lt;strong>Red Flag&lt;/strong>&lt;/li>
+&lt;li>22:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Σάββατο</title><link>https://bmourtzis.github.io/rebooting-reboot/saturday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/saturday/</guid><description>&lt;p>&lt;strong>Σάββατο&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 16:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>16:00 - 18:00 | &lt;strong>Lost &amp;amp; Found&lt;/strong>&lt;/li>
+&lt;li>18:00 - 20:00 | &lt;strong>Canis Lupus&lt;/strong>&lt;/li>
+&lt;li>20:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Τετάρτη</title><link>https://bmourtzis.github.io/rebooting-reboot/wednesday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/wednesday/</guid><description>&lt;p>&lt;strong>Τετάρτη&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 16:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>16:00 - 18:00 | &lt;strong>Μονοπλάνο&lt;/strong>&lt;/li>
+&lt;li>18:00 - 19:00 | &lt;strong>Let Me Ride&lt;/strong>&lt;/li>
+&lt;li>19:00 - 20:00 | &lt;strong>Με τα χέρια στις τσέπες&lt;/strong>&lt;/li>
+&lt;li>20:00 - 22:00 | &lt;strong>Teenage Kicks&lt;/strong>&lt;/li>
+&lt;li>22:00 - 23:12:56 | &lt;strong>The Dudes&lt;/strong>&lt;/li>
+&lt;li>23:12:56 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Τρίτη</title><link>https://bmourtzis.github.io/rebooting-reboot/tuesday/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bmourtzis.github.io/rebooting-reboot/tuesday/</guid><description>&lt;p>&lt;strong>Τρίτη&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>06:00 - 12:00 | &lt;strong>Snooze&lt;/strong>&lt;/li>
+&lt;li>12:00 - 19:00 | &lt;strong>Noontide&lt;/strong>&lt;/li>
+&lt;li>19:00 - 21:00 | &lt;strong>Βαβέλ&lt;/strong>&lt;/li>
+&lt;li>21:00 - 23:00 | &lt;strong>New Wave Girl&lt;/strong>&lt;/li>
+&lt;li>23:00 - 06:00 | &lt;strong>Nocturne&lt;/strong>&lt;/li>
+&lt;/ul></description></item></channel></rss>
