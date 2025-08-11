@@ -1,4 +1,5 @@
 ---
+title: "Τετάρτη"
 url: "/wednesday"
 ---
 

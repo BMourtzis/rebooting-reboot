@@ -1,4 +1,5 @@
 ---
+title: "Τρίτη"
 url: "/tuesday"
 ---
 

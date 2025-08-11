@@ -1,4 +1,5 @@
 ---
+title: "Σάββατο"
 url: "/saturday"
 ---
 
