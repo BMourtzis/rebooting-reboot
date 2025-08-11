@@ -1,5 +1,5 @@
 ---
-title: "Radio Reboot"
+title: "Home"
 ---
 
 Welcome to Radio Reboot!
