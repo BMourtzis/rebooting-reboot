@@ -4,9 +4,8 @@ title = 'Radio Reboot'
 theme = "blowfish"
 
 [params]
-    favicon = "favicon.png"
-    colorMode = "light"
-    colorModeToggle = false
+    favicon = "favicon-32x32.png"
+
 [params.home]
     enable = true
     name = "Welcome!"
