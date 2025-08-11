@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="/css/glider.min.css">
       <div class="glider-contain" style="width: 100%; height: 480px; background: #000; display: flex; align-items: center; justify-content: center;">
         <div class="glider" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-          <img src="images/carouselmain.png" alt="Image 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: #000; display: block;">
+          <img src="{{ "images/carouselmain.png" | absURL }}" alt="Image 1" style="max-width: 100%; max-height: 100%; object-fit: contain; background: #000; display: block;">
           <!-- Add more images as needed -->
         </div>
         <button aria-label="Previous" class="glider-prev" style="background: #222; color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 1;">&laquo;</button>
@@ -45,7 +45,7 @@
     <div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center;">
       <!-- Left: Image -->
       <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
-        <img src="images/rrwr.png" alt="Radio Reboot WR" style="max-width: 100%; max-height: 300px; background: #000;">
+        <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR" style="max-width: 100%; max-height: 300px; background: #000;">
       </div>
       <!-- Right: Facebook Feed -->
       <div style="flex: 1 1 0; max-width: 50%; box-sizing: border-box; height: 300px; display: flex; align-items: center; justify-content: center;">
@@ -68,13 +68,13 @@
     <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
       <!-- Monday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <a href="/monday" style="text-decoration: none;">
+        <a href="{{ "monday" | absURL  }}" style="text-decoration: none;">
           <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Δευτέρα</div>
         </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -88,7 +88,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -102,7 +102,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/asperimenei.jpg" alt="Ας περιμένει το hip-hop" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/asperimenei.jpg" | absURL  }}" alt="Ας περιμένει το hip-hop" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -116,7 +116,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="/images/kosmonot.jpg" alt="ΚΟΣΜΟΝόΤ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/kosmonot.png" | absURL  }}" alt="ΚΟΣΜΟΝόΤ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -130,7 +130,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/twofortheroad.jpg" alt="Two For The Road" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/twofortheroad.jpg" | absURL  }}" alt="Two For The Road" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -144,7 +144,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -162,13 +162,13 @@
       </div>
       <!-- Tuesday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <a href="/tuesday" style="text-decoration: none;">
+        <a href="{{ "tuesday" | absURL  }}" style="text-decoration: none;">
           <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τρίτη</div>
         </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -182,7 +182,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -196,7 +196,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/babel.png" alt="Βαβέλ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/babel.png" | absURL  }}" alt="Βαβέλ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -210,7 +210,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/newwavegirlph.jpg" alt="New Wave Girl" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/newwavegirlph.jpg" | absURL  }}" alt="New Wave Girl" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -224,7 +224,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -242,13 +242,13 @@
       </div>
       <!-- Wednesday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <a href="/wednesday" style="text-decoration: none;">
+        <a href="{{ "wednesday" | absURL  }}" style="text-decoration: none;">
           <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τετάρτη</div>
         </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -262,7 +262,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -276,7 +276,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/monplano_crpd.jpg" alt="Μονοπλάνο" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/monplano_crpd.jpg" | absURL  }}" alt="Μονοπλάνο" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -290,7 +290,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/letmeridenewlogo.png" alt="Let Me Ride" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/letmeridenewlogo.png" | absURL  }}" alt="Let Me Ride" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -304,7 +304,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/tsepesupd.jpg" alt="Με τα χέρια στις τσέπες" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/tsepesupd.jpg" | absURL  }}" alt="Με τα χέρια στις τσέπες" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -318,7 +318,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/teenagekicks.jpg" alt="Teenage Kicks" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/teenagekicks.jpg" | absURL  }}" alt="Teenage Kicks" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -332,7 +332,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/thedudes.jpg" alt="The Dudes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/thedudes.jpg" | absURL  }}" alt="The Dudes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -346,7 +346,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -364,11 +364,13 @@
       </div>
       <!-- Thursday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Πέμπτη</div>
+        <a href="{{ "thrusday" | absURL  }}" style="text-decoration: none;">
+          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Πέμπτη</div>
+        </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -382,7 +384,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -396,7 +398,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/electricfrequencies.png" alt="Electric Frequencies" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/electricfrequencies.png" | absURL  }}" alt="Electric Frequencies" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -410,7 +412,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/redflag.jpg" alt="Red Flag" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/redflag.jpg" | absURL  }}" alt="Red Flag" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -424,7 +426,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -442,11 +444,13 @@
       </div>
       <!-- Friday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Παρασκευή</div>
+        <a href="{{ "friday" | absURL  }}" style="text-decoration: none;">
+          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Παρασκευή</div>
+        </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -460,7 +464,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -474,7 +478,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/ektos.jpg" alt="Εκτός" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/ektos.jpg" | absURL  }}" alt="Εκτός" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -488,7 +492,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/parias.jpg" alt="Παρίας" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/parias.jpg" | absURL  }}" alt="Παρίας" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -502,7 +506,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/psyvibes.jpg" alt="Psy Vibes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/psyvibes.jpg" | absURL  }}" alt="Psy Vibes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -516,7 +520,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -534,11 +538,13 @@
       </div>
       <!-- Saturday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
-        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Σάββατο</div>
+        <a href="{{ "saturday" | absURL  }}" style="text-decoration: none;">
+          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Σάββατο</div>
+        </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -552,7 +558,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -566,7 +572,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/lostandfound.jpg" alt="Lost & Found" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/lostandfound.jpg" | absURL  }}" alt="Lost & Found" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -580,7 +586,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/canislupus.jpg" alt="Canis Lupus" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/canislupus.jpg" | absURL  }}" alt="Canis Lupus" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -594,7 +600,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -612,11 +618,13 @@
       </div>
       <!-- Sunday -->
       <div style="flex: 1 1 45%; min-width: 340px; max-width: 48%; align-self: flex-start;">
-        <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Κυριακή</div>
+        <a href="{{ "sunday" | absURL  }}" style="text-decoration: none;">
+          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Κυριακή</div>
+        </a>
         <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -632,7 +640,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/noontide.png" | absURL  }}" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -648,7 +656,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/lovenotes.png" alt="Love Notes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/lovenotes.png" | absURL  }}" alt="Love Notes" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -664,7 +672,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/sundazed.jpg" alt="Sundazed" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/sundazed.jpg" | absURL  }}" alt="Sundazed" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -680,7 +688,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/blackmagic.jpg" alt="Black Magic" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/blackmagic.jpg" | absURL  }}" alt="Black Magic" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
@@ -696,7 +704,7 @@
               </div>
             </div>
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
-              <img src="images/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
+              <img src="{{ "images/nocturne.png" | absURL  }}" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
               <div style="min-width: 0;">
                 <h6 style="
                   font-size: clamp(0.8rem, 2vw, 1.1rem);
