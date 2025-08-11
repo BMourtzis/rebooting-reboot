@@ -7,6 +7,7 @@ homepage.layout = "page"
 
 [params]
     favicon = "favicon.png"
+    colorMode = "light"
 [params.home]
     enable = true
     name = "Welcome!"
