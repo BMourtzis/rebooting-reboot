@@ -1,4 +1,4 @@
-baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
+baseURL = "https://radioreboot.gr/"
 languageCode = 'el-gr'
 title = 'Radio Reboot'
 theme = "blowfish"
