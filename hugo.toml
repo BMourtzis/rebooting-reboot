@@ -1,7 +1,12 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
+baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
+languageCode = 'el-gr'
+title = 'Radio Reboot'
 theme = "blowfish"
 
+[params]
+    favicon = "favicon.png"
+    colorMode = "light"
+    colorModeToggle = false
 [params.home]
     enable = true
     name = "Welcome!"

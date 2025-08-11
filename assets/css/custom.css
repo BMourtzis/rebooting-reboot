@@ -1,0 +1,9 @@
+body {
+    background-color: #eaeaea !important; /* your desired color */
+  }
+
+body, 
+.main-content, 
+.content {
+  color: black !important;
+}
