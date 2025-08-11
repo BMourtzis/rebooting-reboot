@@ -1,10 +1,13 @@
 baseURL = "https://bmourtzis.github.io/rebooting-reboot/"
 languageCode = 'el-gr'
-title = 'My New Hugo Site'
+title = 'Radio Reboot'
 theme = "blowfish"
 publishDir = "public"
 homepage.layout = "page"
 
+[params]
+    favicon = "favicon.png"
+    colorMode = "light"
 [params.home]
     enable = true
     name = "Welcome!"
