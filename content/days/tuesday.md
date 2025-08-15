@@ -1,6 +1,8 @@
 ---
 title: "Τρίτη"
-url: "/tuesday"
+day: Tuesday
+aliases :
+    - /tuesday
 ---
 
 **Τρίτη**
