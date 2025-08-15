@@ -1,8 +1,6 @@
 ---
 title: "Με τα χέρια στις τσέπες"
-image: "/images/tsepesupd.jpg"
-url: "metaheriastistsepes"
+show_id: "metaheriastistsepes"
+aliases:
+  - /metaheriastistsepes
 ---
-
-
-Τετάρτη, 19:00 - 20:00

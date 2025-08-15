@@ -1,10 +1,6 @@
 ---
 title: "Let Me ride"
-image: "/images/letmeridenewlogo.png"
-url: "letmeride"
+show_id: "letmeride"
+aliases:
+  - /letmeride
 ---
-
-
-Τετάρτη, 18:00 - 19:00
-
-Αισθάνεται μεγαλύτερη άνεση στις παρυφές, παρά στο κέντρο... Εγγενώς αμφίσημη και πολύμορφη, διαπερνά τα συμβατικά όρια και διαφεύγει τον ορισμό...

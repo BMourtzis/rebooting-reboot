@@ -1,8 +1,6 @@
 ---
 title: "Electric Frequencies"
-image: "/images/electricfrequencies.png"
-url: "/electricfrequencies"
+show_id: "electricfrequencies"
+aliases:
+  - /electricfrequencies
 ---
-
-
-Πέμπτη, 18:00 - 20:00
