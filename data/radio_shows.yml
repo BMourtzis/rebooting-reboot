@@ -32,7 +32,7 @@
     Wednesday: "00:00 - 06:00"
     Thursday: "22:00 - 06:00"
     Friday: "00:00 - 06:00"
-    Saturday: "22:00 - 06:00"
+    Saturday: "20:00 - 06:00"
     Sunday: "23:00 - 06:00"
 - id: asperimenei
   title: Ας περιμένει το hip-hop
@@ -123,7 +123,7 @@
   image: "images/radio-shows/psyvibes.jpg"
   description: "Mια εκπομπή ηλεκτρονικής μουσικής ψυχεδέλειας, με dark, forest, full on αλλά και progressive ακούσματα. Κάθε Παρασκευή 22:00 - 00:00, ψυχεδελικά και πολεμικά."
   schedule:
-    Wednesday: "22:00 - 00:00"
+    Friday: "22:00 - 00:00"
 - id: lostandfound
   title: Lost & Found
   image: "images/radio-shows/lostandfound.jpg"
