@@ -1,6 +1,6 @@
 - id: snooze
   title: Snooze
-  image: "images/radio-shows/snooze.jpg"
+  image: "images/radio-shows/snooze.png"
   description: "Οι κόκορες δεν έχουν snooze και τα ξυπνητήρια δεν έχουν χάρη, αλλά το Reboot έχει και τα δύο! Πιο φτηνή από έναν καφέ και πιο πρακτική από έναν κουβά νερό στο πρόσωπο, η πρωινή ζώνη του Radio Reboot δίνει ενέργεια χωρίς θερμίδες, από τις έξι το πρωί μέχρι τις δώδεκα το μεσημέρι."
   schedule:
     Monday: "06:00 - 12:00"
@@ -12,7 +12,7 @@
     Sunday: "06:00 - 12:00"
 - id: noontide
   title: Noontide
-  image: "images/radio-shows/noontide.jpg"
+  image: "images/radio-shows/noontide.png"
   description: "Σύμφωνα με αμφισβητούμενες μελέτες που βαριόμαστε να παραθέσουμε, οι ώρες του μεσημεριού και του απογεύματος είναι ώρες χαμηλής αποδοτικότητας. Το ευέλικτο δυναμικό του Radio Reboot, τηρώντας τις διεθνείς προδιαγραφές, έχει επιλέξει με αυστηρά κριτήρια μουσική που απλώς κολλάει στις συγκεκριμένες ώρες, χωρίς να υπόσχεται τίποτα."
   schedule:
     Monday: "12:00 - 18:00"
@@ -23,8 +23,8 @@
     Saturday: "12:00 - 18:00"
     Sunday: "12:00 - 16:00"
 - id: nocturne
-  title: Noontide
-  image: "images/radio-shows/nocturne.jpg"
+  title: Nocturne
+  image: "images/radio-shows/nocturne.png"
   description: "Μουσική για τη διαδρομή από τον ομφαλό της νύχτας μέχρι την κόμη της ημέρας ή κάτι εξίσου ψαρωτικό."
   schedule:
     Monday: "00:00 - 06:00"
@@ -54,31 +54,31 @@
     Monday: "22:00 - 00:00"
 - id: babel
   title: Βαβέλ
-  image: "images/radio-shows/babel.jpg"
+  image: "images/radio-shows/babel.png"
   description: "Κάθε απόγευμα Τρίτης, η Μίρκα και η Χαρά περιπλανώνται στον πύργο της Βαβέλ αναζητώντας ξεχασμένους δίσκους και συνθέσεις απ’όλο τον κόσμο. Συνήθως στα μικρόφωνα μοιράζονται αισθήματα & ιστορίες που πλαισιώνουν την μουσική, και συζητάνε για τα δρώμενα της πόλης. Post-punk, trip-hop, post-rock και hip hop κάποιες από τις βασικές μουσικές στάσεις τους."
   schedule:
     Tuesday: "19:00 - 21:00"
 - id: newwavegirl
   title: New Wave Girl
-  image: "images/radio-shows/newwavegirl.jpg"
+  image: "images/radio-shows/newwavegirlph.jpg"
   description: "Ο νεοκυματισμός, λένε, μπαίνει από τ’ αυτιά."
   schedule:
     Tuesday: "21:00 - 23:00"
 - id: monoplano
   title: Μονοπλάνο
-  image: "images/radio-shows/monoplano.jpg"
+  image: "images/radio-shows/monplano_crpd.jpg"
   description: "Μεγάλης διάρκειας πλάνο, συνήθως με σύνθετη δράση ή/και κίνηση της κάμερας που καλύπτει μια ολόκληρη σκηνή (πλάνο σεκάνς).\n\nΣτις δύο ώρες της λήψης, θ’ακούσουμε πολλή μουσική, σύντομα σχόλια περί ταινιών (και όχι μόνο), χωρίς μοντάζ, αλλά με κινηματογραφική ταχύτητα και ακρίβεια.\n\nΚάθε Τετάρτη 16:00-18:00 στο Radio Reboot, με τον Jason B."
   schedule:
     Wednesday: "16:00 - 18:00"
 - id: letmeride
   title: Let Me ride
-  image: "images/radio-shows/letmeride.jpg"
+  image: "images/radio-shows/letmeridenewlogo.png"
   description: "Αισθάνεται μεγαλύτερη άνεση στις παρυφές, παρά στο κέντρο… Εγγενώς αμφίσημη και πολύμορφη, διαπερνά τα συμβατικά όρια και διαφεύγει τον ορισμό…"
   schedule:
     Wednesday: "18:00 - 19:00"
 - id: metaheriastistsepes
   title: Με τα χέρια στις τσέπες
-  image: "images/radio-shows/metaheriastistsepes.jpg"
+  image: "images/radio-shows/tsepesupd.jpg"
   description: ""
   schedule:
     Wednesday: "19:00 - 20:00"
@@ -96,7 +96,7 @@
     Wednesday: "22:00 - 23:12:56"
 - id: electricfrequencies
   title: Electric Frequencies
-  image: "images/radio-shows/electricfrequencies.jpg"
+  image: "images/radio-shows/electricfrequencies.png"
   description: ""
   schedule:
     Thursday: "18:00 - 20:00"
@@ -138,7 +138,7 @@
     Saturday: "18:00 - 20:00"
 - id: lovenotes
   title: Love Notes
-  image: "images/radio-shows/lovenotes.jpg"
+  image: "images/radio-shows/lovenotes.png"
   description: "Στον έρωτα κρύβεται το πιο γλυκό μάταιο, σου λέει και αν σε ήθελε θα το είχες καταλάβει, άσε τα ψόφια και μην μοιράζεις άλλους πονοκεφάλους στις φιλενάδες σου που δικαίως κρίνουν, μα δεν εγκρίνουν.\n\nΤα άστρα και τα ζώδια μας φέρανε εμπόδια, λες εσύ και γουστάρεις και λίγο που ζεις τον έρωτα ως παιδεμό - και τέτοιος είναι.\n\nΜωρό μου, ο δρόμος που δεν έχεις ξαναπερπατήσει είναι πάντοτε μακρύτερος, αλλά τον είδες και τον άλλο που είναι μες στη λακκούβα. Δεν είσαι τώρα για εργολαβίες.\n\nΑγάπες και άλλα τέτοια δύσκολα, εδώ.\n\n- φιλάκι με κραγιονάκι -"
   schedule:
     Sunday: "19:00 - 20:00"
