@@ -1,18 +1,18 @@
-<header style="max-width: 1200px; margin: auto; padding: 2rem;">
-  <div class="header-flex" style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 2rem;">
+<header>
+  <div class="header-flex">
     <!-- Left: Logo -->
-    <div class="header-logo" style="text-align: center;">
-      <a href="{{ "." | absURL }}" style="display: inline-block;">
-        <img src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo" style="height: 120px; margin-bottom: 0.5rem;">
+    <div class="header-logo">
+      <a href="{{ "." | absURL }}">
+        <img src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo">
       </a>
     </div>
 
     <!-- Center: Music Player and Info -->
-    <div class="header-center" style="width: 50%; min-width: 400px; max-width: 900px; margin-left: 2rem; margin-right: 2rem; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <div class="header-center">
       <!-- Top half: Player and CentovaCast Info side by side -->
-      <div style="display: flex; flex-direction: row; height: 30px;">
+      <div class="player-top-half">
         <!-- OpenPlayerJS Audio Player -->
-        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+        <div class="audio-player">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
           <div class="audio__container" style="width: 140px;">
             <audio class="op-player__media" controls preload="none" id="audio">
@@ -36,7 +36,7 @@
           </script>
         </div>
         <!-- CentovaCast Info -->
-        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center;">
+        <div class="centovaCast-info">
           <script language="javascript">
             (function(){ var centovacast = (window.centovacast||(window.centovacast={}));
             (centovacast.streaminfo||(centovacast.streaminfo={})).config = {
@@ -51,24 +51,24 @@
         </div>
       </div>
       <!-- Bottom half: Alternative Players (all red) and Social Media (black), side by side with no gap -->
-      <div style="display: flex; flex-direction: row; height: 30px;">
+      <div class="player-bot-half">
         <!-- Alternative Players (all red) -->
-        <a href="{{ "./alternativeplayers" | absURL }}" style="flex: 1 1 0; background: #c00; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 1.1rem; border-radius: 0; text-decoration: none;">
+        <a class="alt-players" href="{{ "./alternativeplayers" | absURL }}">
           alternative players
         </a>
         <!-- Social Media Icons (black) -->
-        <div style="flex: 1 1 0; background: #000; display: flex; align-items: center; justify-content: center; border-radius: 0;">
-          <a href="https://www.facebook.com/radioreboot.gr" style="margin: 0.5rem;">
-            <img src="{{ "images/fblogo.png" | absURL }}" alt="Facebook" style="height: 28px;">
+        <div class="social-media">
+          <a href="https://www.facebook.com/radioreboot.gr">
+            <img src="{{ "images/fblogo.png" | absURL }}" alt="Facebook">
           </a>
-          <a href="https://www.instagram.com/radio.reboot/" style="margin: 0.5rem;">
-            <img src="{{ "images/iglogo.png" | absURL }}" alt="Instagram" style="height: 28px;">
+          <a href="https://www.instagram.com/radio.reboot/">
+            <img src="{{ "images/iglogo.png" | absURL }}" alt="Instagram">
           </a>
-          <a href="https://www.mixcloud.com/RadioReboot/" style="margin: 0.5rem;">
-            <img src="{{ "images/mclogo.png" | absURL }}" alt="Mixcloud" style="height: 28px;">
+          <a href="https://www.mixcloud.com/RadioReboot/">
+            <img src="{{ "images/mclogo.png" | absURL }}" alt="Mixcloud">
           </a>
-          <a href="mailto:radiorebootgr@gmail.com" style="margin: 0.5rem;">
-            <img src="{{ "images/mailogo.png" | absURL }}" alt="Email" style="height: 28px;">
+          <a href="mailto:radiorebootgr@gmail.com">
+            <img src="{{ "images/mailogo.png" | absURL }}" alt="Email">
           </a>
         </div>
       </div>
