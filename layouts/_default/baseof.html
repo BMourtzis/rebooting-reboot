@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="light" lang="en">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/styles.css">
     <title>{{ .Title }} | radioreboot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body style="background: #f8f8f8; font-family: Arial, sans-serif;">
+  <body>
     {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
   </body>
 </html>
