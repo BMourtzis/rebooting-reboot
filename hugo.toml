@@ -3,9 +3,6 @@ languageCode = 'el-gr'
 title = 'Radio Reboot'
 theme = "blowfish"
 
-[params]
-    favicon = "favicon-32x32.png"
-
 [params.home]
     enable = true
     name = "Welcome!"
@@ -16,4 +13,4 @@ theme = "blowfish"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true
+      unsafe = true 
