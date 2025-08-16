@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main style="max-width: 1200px; margin: auto; padding: 2rem; background: #eaeaea;">
+<main>
   
 
   <div style="display: flex; gap: 2rem; align-items: flex-start; justify-content: center; margin-bottom: 2rem;">
@@ -69,9 +69,9 @@
       <!-- Monday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "monday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Δευτέρα</div>
+          <div class="day-button">Δευτέρα</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content" style="padding: 1rem; border-radius: 4px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -163,9 +163,9 @@
       <!-- Tuesday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "tuesday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τρίτη</div>
+          <div class="day-button">Τρίτη</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content"s>
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -243,9 +243,9 @@
       <!-- Wednesday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "wednesday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Τετάρτη</div>
+          <div class="day-button">Τετάρτη</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -365,9 +365,9 @@
       <!-- Thursday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "thrusday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Πέμπτη</div>
+          <div class="day-button">Πέμπτη</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -445,9 +445,9 @@
       <!-- Friday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "friday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Παρασκευή</div>
+          <div class="day-button">Παρασκευή</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -539,9 +539,9 @@
       <!-- Saturday -->
       <div style="flex: 1 1 45%; min-width: 340px;">
         <a href="{{ "saturday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Σάββατο</div>
+          <div class="day-button">Σάββατο</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
@@ -619,9 +619,9 @@
       <!-- Sunday -->
       <div style="flex: 1 1 45%; min-width: 340px; max-width: 48%; align-self: flex-start;">
         <a href="{{ "sunday" | absURL  }}" style="text-decoration: none;">
-          <div style="background: #c00; color: #fff; font-weight: bold; font-size: 1.4rem; padding: 0.7rem 1.5rem; margin-bottom: 1rem; width: fit-content;">Κυριακή</div>
+          <div class="day-button">Κυριακή</div>
         </a>
-        <div style="background: #e0e0e0; padding: 1rem; border-radius: 4px;">
+        <div class="day-content">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
             <div style="display: flex; align-items: center; margin-bottom: 1rem; min-width: 0;">
               <img src="{{ "images/snooze.png" | absURL  }}" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">

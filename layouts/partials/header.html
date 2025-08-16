@@ -1,9 +1,9 @@
-<div style="max-width: 1200px; margin: auto; padding: 2rem;">
+<header style="max-width: 1200px; margin: auto; padding: 2rem;">
   <div class="header-flex" style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 2rem;">
     <!-- Left: Logo -->
     <div class="header-logo" style="text-align: center;">
       <a href="{{ "." | absURL }}" style="display: inline-block;">
-        <img src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo" style="height: 170px; margin-bottom: 0.5rem;">
+        <img src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo" style="height: 120px; margin-bottom: 0.5rem;">
       </a>
     </div>
 
@@ -73,5 +73,17 @@
         </div>
       </div>
     </div>
+
+    <!-- Right: theme switcher -->
+    <a
+      id="theme-toggle"
+      href="#"
+      aria-label="Toggle dark mode"
+      class="p-2">
+      <!-- <span id="theme-toggle-light" class="hidden">🌙</span> -->
+      <!-- <span id="theme-toggle-dark" class="hidden">☀️</span> -->
+      <img id="theme-toggle-light" src="{{ "icons/moon.svg" | relURL }}" alt="Dark Mode" width="30px" class="w-6 h-6">
+      <img id="theme-toggle-dark" src="{{ "icons/sun.svg" | relURL }}" alt="Light Mode" width="30px" class="w-6 h-6">
+    </a>
   </div>
-</div>
+</header>

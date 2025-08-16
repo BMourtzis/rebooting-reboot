@@ -1,3 +1,71 @@
+:root {
+  --color-bg: #f8f8f8;
+  --main-bg: #eaeaea;
+  --color-text: #111111;
+  --day-content-bg: #e0e0e0;
+  --day-button-bg: #c00;
+  --day-button-color: #fff;
+  --theme-light-display: block;
+  --theme-dark-display: none;
+}
+
+[data-theme="dark"] {
+  --color-bg: #393E46;
+  --main-bg: #222831;
+  --color-text: #eeeeee;
+  --day-content-bg: #948979;
+  --theme-light-display: none;
+  --theme-dark-display: block;
+} 
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  background: var(--main-bg);
+  max-width: 1200px; 
+  margin: auto; 
+  padding: 2rem;
+}
+
+#theme-toggle-light {
+  display: var(--theme-light-display);
+  filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg);
+}
+
+#theme-toggle-dark {
+  display :var(--theme-dark-display);
+  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(180deg);
+}
+
+#theme-toggle {
+  text-decoration: none;
+  font-size: 1.5rem;
+  filter: var(--icon-filter, none);
+  transition: opacity 0.3s ease;
+}
+
+.day-button {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 0.7rem 1.5rem;
+  margin-bottom: 1rem; 
+  width: fit-content;
+}
+
+.day-content {
+  background-color: var(--day-content-bg);
+  padding: 1rem; 
+  border-radius: 4px;
+}
+
+
 /* Responsive for main flex columns */
 @media (max-width: 800px) {
   main > div[style*="display: flex"] {
