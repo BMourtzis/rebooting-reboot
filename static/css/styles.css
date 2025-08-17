@@ -68,7 +68,8 @@ main {
 header {
   max-width: 1200px; 
   margin: auto; 
-  padding: 2rem;
+  padding: 0.5rem;
+  padding-top: 0;
 }
 
 .header-flex {
@@ -87,7 +88,7 @@ header {
 }
 
 .header-logo a img {
-  height: 120px; 
+  height: 130px; 
   margin-bottom: 0.5rem;
 }
 
@@ -238,6 +239,84 @@ main section {
   background: #fff; 
   box-sizing: border-box;
 }
+
+#main-second-row {
+  display: flex; 
+  gap: 2rem; 
+  align-items: flex-start; 
+  justify-content: center;
+} 
+
+#main-second-row .left-image {
+  flex: 1 1 0; 
+  max-width: 50%; 
+  box-sizing: border-box; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+#main-second-row .left-image img {
+  max-width: 100%;
+  max-height: 300px;
+  background: #000;
+}
+
+#main-second-row .right-fb {
+  flex: 1 1 0; 
+  max-width: 50%; 
+  box-sizing: border-box; 
+  height: 300px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+#main-second-row .right-fb div {
+  width: 340px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-second-row .right-fb div iframe {
+  width: 340px;
+  height: 300px; 
+  border: none;
+  border-radius: 8px; 
+  background: #fff;
+}
+
+#main-weekly-schedule h2 {
+  font-size: 2rem;
+  font-weight: 500; 
+  margin-bottom: 1.5rem; 
+  text-align: left;
+}
+
+#main-weekly-schedule h2 span {
+  vertical-align: middle;
+}
+
+#main-weekly-schedule .weekly-schedule {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 2rem; 
+  justify-content: space-between;
+}
+
+#main-weekly-schedule .weekly-schedule .day-schedule {
+  flex: 1 1 45%;
+  min-width: 340px; 
+  max-width: 48%; 
+  align-self: flex-start;
+}
+
+#main-weekly-schedule .weekly-schedule .day-schedule a {
+  text-decoration: none;
+}
+
 
 /* Responsive for main flex columns */
 @media (max-width: 800px) {
