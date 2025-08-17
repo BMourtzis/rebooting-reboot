@@ -1,11 +1,11 @@
 {{ define "main" }}
 
-<div class="main-top-row">
+<div class="main-top-row row">
   <!-- Carousel Column -->
   {{ partial "carousel.html" . }}
 
   <!-- Chat Column -->
-  <div id="chat">
+  <div id="chat" class="box">
     <iframe
       src="https://tlk.io/rebootchat?theme=theme--minimal"
       frameborder="0"
@@ -14,13 +14,13 @@
   </div>
 </div>
 
-<section id="main-second-row">
+<section id="main-second-row" class="row">
     <!-- Left: Image -->
-    <div class="left-image">
+    <div class="left-image box">
       <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR">
     </div>
     <!-- Right: Facebook Feed -->
-    <div class="right-fb">
+    <div class="right-fb box">
       <div>
         <iframe
           src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
@@ -31,13 +31,13 @@
     </div>
 </section>
 
-<section id="main-weekly-schedule">
-  <h2>
+<section id="main-weekly-schedule" class="row">
+  <h2 class="weekly-schedule-header box">
     <span>🎤</span> shows
   </h2>
-  <div class="weekly-schedule">
+  <div class="weekly-schedule box row">
     <!-- Monday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "monday" | absURL  }}">
         <div class="day-button">Δευτέρα</div>
       </a>
@@ -131,7 +131,7 @@
       </div>
     </div>
     <!-- Tuesday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "tuesday" | absURL  }}">
         <div class="day-button">Τρίτη</div>
       </a>
@@ -211,7 +211,7 @@
       </div>
     </div>
     <!-- Wednesday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "wednesday" | absURL  }}">
         <div class="day-button">Τετάρτη</div>
       </a>
@@ -333,7 +333,7 @@
       </div>
     </div>
     <!-- Thursday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "thrusday" | absURL  }}">
         <div class="day-button">Πέμπτη</div>
       </a>
@@ -413,7 +413,7 @@
       </div>
     </div>
     <!-- Friday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "friday" | absURL  }}">
         <div class="day-button">Παρασκευή</div>
       </a>
@@ -507,7 +507,7 @@
       </div>
     </div>
     <!-- Saturday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "saturday" | absURL  }}">
         <div class="day-button">Σάββατο</div>
       </a>
@@ -587,7 +587,7 @@
       </div>
     </div>
     <!-- Sunday -->
-    <div class="day-schedule">
+    <div class="day-schedule box">
       <a href="{{ "sunday" | absURL  }}">
         <div class="day-button">Κυριακή</div>
       </a>
