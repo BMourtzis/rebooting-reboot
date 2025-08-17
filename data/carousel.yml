@@ -1,0 +1,3 @@
+- id: default
+  image: "images/carousel/carouselmain.png"
+  name: "Main carousel"

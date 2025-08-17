@@ -2,31 +2,7 @@
 
 <div class="main-top-row">
   <!-- Carousel Column -->
-  <div id="carousel">
-    <link rel="stylesheet" href="/css/glider.min.css">
-    <div class="glider-contain">
-      <div class="glider">
-        <img src="{{ "images/carouselmain.png" | absURL }}" alt="Image 1">
-        <!-- Add more images as needed -->
-      </div>
-      <button aria-label="Previous" class="glider-prev">&laquo;</button>
-      <button aria-label="Next" class="glider-next">&raquo;</button>
-    </div>
-    <script src="/js/glider.min.js"></script>
-    <script>
-      window.addEventListener('DOMContentLoaded', function(){
-        new Glider(document.querySelector('.glider'), {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          draggable: true,
-          arrows: {
-            prev: '.glider-prev',
-            next: '.glider-next'
-          }
-        });
-      });
-    </script>
-  </div>
+  {{ partial "carousel.html" . }}
 
   <!-- Chat Column -->
   <div id="chat">
