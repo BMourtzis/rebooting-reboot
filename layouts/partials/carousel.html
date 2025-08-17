@@ -22,7 +22,18 @@
           arrows: {
             prev: '.glider-prev',
             next: '.glider-next'
+          },
+          responsive: [
+          {
+            // Mobile
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              itemWidth: 300,   // ensures images don’t shrink too much
+            }
           }
+        ]
         });
       });
     </script>
