@@ -32,12 +32,49 @@
   flex: 1 1 45%;
 }
 
+.show-image {
+  width: 350px; 
+  height: 350px; 
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.show-page {
+  max-width: 1200px;
+  margin: auto; 
+  padding: 2rem;
+}
+
+.show-details {
+  display: flex; 
+  align-items: flex-start; 
+  gap: 2rem;
+}
+
+.show-title {
+  margin-top: 0;
+}
 
 @media (max-width: 768px) {
   .row .box,
   .row .box {
     flex: 1 1 100%;
   }
+
+  .show-image {
+    width: 250px; 
+    height: 250px; 
+  }
+
+
+.show-page {
+  padding: 0.5rem;
+}
+
+.show-details {
+  gap: 1rem;
+}
+
 }
 
 body {

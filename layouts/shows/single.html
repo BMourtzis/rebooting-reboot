@@ -1,11 +1,11 @@
 {{ define "main" }}
-<div style="max-width: 1200px; margin: auto; padding: 2rem;">
-  <div style="display: flex; align-items: flex-start; gap: 2rem;">
+<div class="show-page">
+  <div class="row show-details">
     {{ with .Params.image }}
-      <img src="{{ . }}" alt="{{ $.Title }}" style="width: 350px; height: 350px; object-fit: cover; border-radius: 8px;">
+      <img class="box show-image" src="{{ . }}" alt="{{ $.Title }}">
     {{ end }}
-    <div>
-      <h1 style="margin-top: 0;">{{ .Title }}</h1>
+    <div class="box">
+      <h1 class="show-title">{{ .Title }}</h1>
       <div>
         {{ .Content }}
       </div>
