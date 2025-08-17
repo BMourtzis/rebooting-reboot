@@ -1,11 +1,11 @@
 {{ define "main" }}
 
-<div class="main-top-row">
+<div class="main-top-row row">
   <!-- Carousel Column -->
   {{ partial "carousel.html" . }}
 
   <!-- Chat Column -->
-  <div id="chat">
+  <div id="chat" class="box">
     <iframe
       src="https://tlk.io/rebootchat?theme=theme--minimal"
       frameborder="0"
@@ -14,13 +14,13 @@
   </div>
 </div>
 
-<section id="main-second-row">
+<section id="main-second-row" class="row">
     <!-- Left: Image -->
-    <div class="left-image">
+    <div class="left-image box">
       <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR">
     </div>
     <!-- Right: Facebook Feed -->
-    <div class="right-fb">
+    <div class="right-fb box">
       <div>
         <iframe
           src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"

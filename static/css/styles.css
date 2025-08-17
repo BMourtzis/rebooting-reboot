@@ -18,6 +18,28 @@
   --theme-dark-display: block;
 } 
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.row .weekly-schedule-header.box {
+  flex: 1 1 100%;
+}
+
+.row .box {
+  flex: 1 1 45%;
+}
+
+
+@media (max-width: 768px) {
+  .row .box,
+  .row .box {
+    flex: 1 1 100%;
+  }
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
@@ -176,13 +198,11 @@ main section {
 }
 
 .main-top-row #carousel {
-  flex: 1 1 0; 
   max-width: 50%; 
   box-sizing: border-box;
 }
 
 .main-top-row #chat {
-  flex: 1 1 0; 
   max-width: 50%; 
   box-sizing: border-box;
 }
@@ -241,14 +261,12 @@ main section {
 }
 
 #main-second-row {
-  display: flex; 
-  gap: 2rem; 
+  gap: 1rem; 
   align-items: flex-start; 
   justify-content: center;
 } 
 
 #main-second-row .left-image {
-  flex: 1 1 0; 
   max-width: 50%; 
   box-sizing: border-box; 
   display: flex; 
@@ -263,11 +281,10 @@ main section {
 }
 
 #main-second-row .right-fb {
-  flex: 1 1 0; 
   max-width: 50%; 
   box-sizing: border-box; 
   height: 300px; 
-  display: flex; 
+  display: flex;
   align-items: center; 
   justify-content: center;
 }
@@ -300,14 +317,12 @@ main section {
 }
 
 #main-weekly-schedule .weekly-schedule {
-  display: flex;
   flex-wrap: wrap; 
   gap: 2rem; 
   justify-content: space-between;
 }
 
 #main-weekly-schedule .weekly-schedule .day-schedule {
-  flex: 1 1 45%;
   min-width: 340px; 
   max-width: 48%; 
   align-self: flex-start;
