@@ -2,11 +2,12 @@
   {{ $showId := .Params.show_id }}
   {{ $show := index (where site.Data.radio_shows "id" $showId) 0 }}
   {{ $daysGR := site.Data.translations.days }}
-  <div style="max-width: 1200px; margin: auto; padding: 2rem;">
-    <div style="display: flex; align-items: flex-start; gap: 2rem;">
-      <img src="{{$show.image | relURL }}" alt="{{ $show.title }}" style="width: 350px; height: 350px; object-fit: cover; border-radius: 8px;"/>
-      <div>
-        <h1 style="margin-top: 0;" >{{ $show.title }}</h1>
+
+  <div class="show-page">
+    <div class="row show-details">
+      <img src="{{$show.image | relURL }}" alt="{{ $show.title }}" lass="box show-image"/>
+      <div class="box">
+        <h1 class="show-title">{{ $show.title }}</h1>
         {{ range $day, $time := $show.schedule }}
         <div><strong>{{ index $daysGR $day }},</strong> {{$time}}</div>
         {{ end }}
