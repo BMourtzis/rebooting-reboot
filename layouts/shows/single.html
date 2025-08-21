@@ -1,15 +1,18 @@
 {{ define "main" }}
-<div class="show-page">
-  <div class="row show-details">
-    {{ with .Params.image }}
-      <img class="box show-image" src="{{ . }}" alt="{{ $.Title }}">
-    {{ end }}
-    <div class="box">
-      <h1 class="show-title">{{ .Title }}</h1>
-      <div>
-        {{ .Content }}
+  {{ $showId := .Params.show_id }}
+  {{ $show := index (where site.Data.radio_shows "id" $showId) 0 }}
+  {{ $daysGR := site.Data.translations.days }}
+
+  <div class="show-page">
+    <div class="row show-details">
+      <img src="{{$show.image | relURL }}" alt="{{ $show.title }}" lass="box show-image"/>
+      <div class="box">
+        <h1 class="show-title">{{ $show.title }}</h1>
+        {{ range $day, $time := $show.schedule }}
+        <div><strong>{{ index $daysGR $day }},</strong> {{$time}}</div>
+        {{ end }}
+        <p>{{ replace $show.description "\n" "<br>" | safeHTML }}</p>
       </div>
     </div>
   </div>
-</div>
 {{ end }}

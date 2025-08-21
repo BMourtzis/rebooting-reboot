@@ -1,7 +1,40 @@
 {{ define "main" }}
-<div style="max-width: 1200px; margin: auto; padding: 2rem;">
-{{ .Content }}
-</div>
+    {{ $daysGR := site.Data.translations.days }}
+    {{ $day := .Params.day }}
 
+    {{ $shows := slice }}
+    {{ range .Site.Data.radio_shows }}
+        {{ $time := index .schedule $day }}
+        {{ if $time }}
+            {{ $start := index (split $time " - ") 0 }}
+    
+            {{ if eq $start "00:00" }}
+                {{ $start = "24:00" }}
+            {{ end }}
+    
+            {{ $shows = $shows | append (dict "show" . "start" $start) }}
+        {{ end }}
+    {{ end }}
+    
+    {{ $sorted := sort $shows "start" "asc" }}
+    
 
+    <div style="max-width: 1200px; margin: auto; padding: 2rem;">
+    <h2>{{ index $daysGR $day}}</h2>
+    
+    {{ if gt (len $sorted) 0 }}
+        <ul>
+            {{ range $sorted }}
+                <li>
+                    {{ index .show.schedule $day}} -
+                    <strong>
+                    <a href="{{ "shows/" | relURL }}{{ .show.id }}" style="text-decoration: none;color: black;">
+                        {{ .show.title }}
+                    </a>
+                </strong>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+    </div>
 {{ end }}
