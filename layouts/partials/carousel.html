@@ -1,0 +1,40 @@
+
+{{ $carouselData := site.Data.carousel }}
+
+<div id="carousel" class="box">
+    <link rel="stylesheet" href="/css/glider.min.css">
+    <div class="glider-contain">
+      <div class="glider">
+        {{ range $carouselData }}
+        <img src="{{ .image | absURL }}" alt="{{ .name }}">
+        {{ end }}
+      </div>
+      <button aria-label="Previous" class="glider-prev">&laquo;</button>
+      <button aria-label="Next" class="glider-next">&raquo;</button>
+    </div>
+    <script src="/js/glider.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function(){
+        new Glider(document.querySelector('.glider'), {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          draggable: true,
+          arrows: {
+            prev: '.glider-prev',
+            next: '.glider-next'
+          },
+          responsive: [
+          {
+            // Mobile
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              itemWidth: 300,   // ensures images don’t shrink too much
+            }
+          }
+        ]
+        });
+      });
+    </script>
+  </div>

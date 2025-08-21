@@ -1,15 +1,18 @@
 {{ define "main" }}
-<div style="max-width: 1200px; margin: auto; padding: 2rem;">
-  <div style="display: flex; align-items: flex-start; gap: 2rem;">
-    {{ with .Params.image }}
-      <img src="{{ . }}" alt="{{ $.Title }}" style="width: 350px; height: 350px; object-fit: cover; border-radius: 8px;">
-    {{ end }}
-    <div>
-      <h1 style="margin-top: 0;">{{ .Title }}</h1>
-      <div>
-        {{ .Content }}
+  {{ $showId := .Params.show_id }}
+  {{ $show := index (where site.Data.radio_shows "id" $showId) 0 }}
+  {{ $daysGR := site.Data.translations.days }}
+
+  <div class="show-page">
+    <div class="row show-details">
+      <img src="{{$show.image | relURL }}" alt="{{ $show.title }}" lass="box show-image"/>
+      <div class="box">
+        <h1 class="show-title">{{ $show.title }}</h1>
+        {{ range $day, $time := $show.schedule }}
+        <div><strong>{{ index $daysGR $day }},</strong> {{$time}}</div>
+        {{ end }}
+        <p>{{ replace $show.description "\n" "<br>" | safeHTML }}</p>
       </div>
     </div>
   </div>
-</div>
 {{ end }}
