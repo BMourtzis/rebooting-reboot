@@ -18,6 +18,19 @@
   --theme-dark-display: block;
 } 
 
+.logo-dark {
+  display: var(--theme-light-display);
+}
+
+.logo-light {
+  display: var(--theme-dark-display);
+}
+
+.link-text {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
