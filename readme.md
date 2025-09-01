@@ -1,5 +1,7 @@
 ## Tasks
-- Select Theme
-- Create main page with shows
-- Web player
+- Radio Player (Marios)
 - Chat
+- Shows of the day (Vasilis)
+- Events
+- Blog
+- New colour scheme
