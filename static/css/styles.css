@@ -359,6 +359,15 @@ main section {
   text-decoration: none;
 }
 
+#shows-of-the-day {
+  height: 100%;
+  background-color: var(--day-content-bg);
+}
+
+#sd-header {
+  color: #000;
+}
+
 @media (max-width: 768px) {
   .row .box,
   .row .box {
