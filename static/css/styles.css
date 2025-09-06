@@ -45,6 +45,27 @@
   flex: 1 1 45%;
 }
 
+.row .box-shows {
+  flex: 0 0 100%;
+  padding-left: 1%;
+}
+
+a.box-shows.active {
+  background-color: var(--day-button-bg);
+  padding: 1% 0 1% 1%;
+}
+
+#shows-of-the-day {
+  padding-bottom: 1%;
+}
+#shows-of-the-day a div div.show-time {
+  color: #444;
+}
+
+#shows-of-the-day a.active div div.show-time {
+  color: var(--color-text);
+}
+
 .show-image {
   width: 350px; 
   height: 350px; 
