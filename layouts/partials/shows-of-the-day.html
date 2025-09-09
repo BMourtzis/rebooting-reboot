@@ -4,96 +4,90 @@
     <h2 id="sd-header" class="box">
         <span>🎤</span> Shows of the Day
     </h2>
-    <div class="row">
-        <a href="/shows/snooze" class="box-shows" style="text-decoration: none; color: #000; width: 100%;">
-            <div style="display: flex; align-items: center; min-width: 0;">
-            <img src="/images/radio-shows/snooze.png" alt="Snooze" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div style="min-width: 0;">
-                <h6 style="
-                font-size: clamp(0.8rem, 2vw, 1.1rem);
-                margin: 0;
-                overflow-wrap: break-word;
-                word-break: break-word;
-                white-space: normal;
-                ">Snooze</h6>
-                <div class="show-time">06:00 - 12:00</div>
-            </div>
-            </div>
-        </a>
-        <a href="/shows/noontide" class="box-shows" style="text-decoration: none; color: #000; width: 100%;">
-        <div style="display: flex; align-items: center; min-width: 0;">
-          <img src="/images/radio-shows/noontide.png" alt="Noontide" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-          <div style="min-width: 0;">
-            <h6 style="
-              font-size: clamp(0.8rem, 2vw, 1.1rem);
-              margin: 0;
-              overflow-wrap: break-word;
-              word-break: break-word;
-              white-space: normal;
-            ">Noontide</h6>
-            <div class="show-time">12:00 - 18:00</div>
-          </div>
-        </div>
-        </a>
-        <a href="/shows/asperimenei" class="box-shows active" style="text-decoration: none; color: #000; width: 100%;">
-          <div style="display: flex; align-items: center; min-width: 0;">
-            <img src="/images/radio-shows/asperimenei.jpg" alt="Ας περιμένει το hip-hop" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div style="min-width: 0;">
-              <h6 style="
-                font-size: clamp(0.8rem, 2vw, 1.1rem);
-                margin: 0;
-                overflow-wrap: break-word;
-                word-break: break-word;
-                white-space: normal;
-              ">Ας περιμένει το hip-hop</h6>
-              <div class="show-time">18:00 - 20:00</div>
-            </div>
-        </div>
-        </a>
-        <a href="/shows/kosmonot" class="box-shows" style="text-decoration: none; color: #000; width: 100%;">
-          <div style="display: flex; align-items: center; min-width: 0;">
-            <img src="/images/radio-shows/kosmonot.jpg" alt="ΚΟΣΜΟΝόΤ" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div style="min-width: 0;">
-              <h6 style="
-                font-size: clamp(0.8rem, 2vw, 1.1rem);
-                margin: 0;
-                overflow-wrap: break-word;
-                word-break: break-word;
-                white-space: normal;
-              ">ΚΟΣΜΟΝόΤ</h6>
-              <div class="show-time">20:00 - 22:00</div>
-            </div>
-          </div>
-        </a>
-        <a href="/shows/twofortheroad" class="box-shows" style="text-decoration: none; color: #000; width: 100%;">
-          <div style="display: flex; align-items: center; min-width: 0;">
-            <img src="/images/radio-shows/twofortheroad.jpg" alt="Two for the Road" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div style="min-width: 0;">
-              <h6 style="
-                font-size: clamp(0.8rem, 2vw, 1.1rem);
-                margin: 0;
-                overflow-wrap: break-word;
-                word-break: break-word;
-                white-space: normal;
-              ">Two for the Road</h6>
-              <div class="show-time">22:00 - 00:00</div>
-            </div>
-          </div>
-        </a>
-        <a href="/shows/nocturne" class="box-shows" style="text-decoration: none; color: #000; width: 100%;">
-          <div style="display: flex; align-items: center; min-width: 0;">
-            <img src="/images/radio-shows/nocturne.png" alt="Nocturne" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
-            <div style="min-width: 0;">
-              <h6 style="
-                font-size: clamp(0.8rem, 2vw, 1.1rem);
-                margin: 0;
-                overflow-wrap: break-word;
-                word-break: break-word;
-                white-space: normal;
-              ">Nocturne</h6>
-              <div class="show-time">00:00 - 06:00</div>
-            </div>
-          </div>
-        </a>
-    </div>
+    <div id="shows-container" class="row">
 </section>
+
+<div id="shows-container"></div>
+
+<script>
+  window.shows = {{ site.Data.radio_shows | jsonify }};
+</script>
+<script>
+  function parseTimeToMinutes(timeStr) {
+    const [h, m] = timeStr.split(":").map(Number);
+    return h * 60 + m;
+  }
+
+  function getGreekNow() {
+    // Get current time in Europe/Athens
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Athens",
+      weekday: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const day = parts.find(p => p.type === "weekday").value;
+    const hour = parseInt(parts.find(p => p.type === "hour").value, 10);
+    const minute = parseInt(parts.find(p => p.type === "minute").value, 10);
+
+    return { day, minutesNow: hour * 60 + minute };
+  }
+
+  function renderTodaysShows() {
+    const shows = JSON.parse(window.shows);
+
+    const { day, minutesNow } = getGreekNow();
+
+    const todayShows = shows.filter(show => show.schedule[day]);
+    
+    todayShows.sort((a, b) => {
+      const [aStartStr] = a.schedule[day].split(" - ");
+      const [bStartStr] = b.schedule[day].split(" - ");
+      const aStart = parseTimeToMinutes(aStartStr);
+      const bStart = parseTimeToMinutes(bStartStr);
+
+      if (aStart === 0 && bStart !== 0) return 1; // put a after b
+      if (bStart === 0 && aStart !== 0) return -1; // put b after a
+      return aStart - bStart;
+    });
+
+    const container = document.getElementById("shows-container");
+    container.innerHTML = todayShows.map(show => `
+    <a id="${show.id}" href="/shows/${show.id}" class="box-shows">
+        <div class="show-box">
+          <img class="show-img" src="/${show.image}" alt="${show.title}">
+          <div style="min-width: 0;">
+            <h6 class="show-header">${show.title}</h6>
+            <div class="show-time">${show.schedule[day]}</div>
+          </div>
+        </div>
+      </a>
+    `).join("");
+
+    let activeId = null;
+    todayShows.forEach(show => {
+      const [startStr, endStr] = show.schedule[day].split(" - ");
+      const start = parseTimeToMinutes(startStr);
+      const end = parseTimeToMinutes(endStr);
+
+      if(minutesNow >= start && minutesNow < end) {
+        activeId = show.id;
+      }
+    });
+
+    if(activeId) {
+      const el = document.getElementById(activeId);
+console.log(el);
+
+      if(el) {
+        el.classList.add("active");
+      }
+    }
+  }
+
+  renderTodaysShows();
+  setInterval(renderTodaysShows, 60 * 1000);
+</script>
