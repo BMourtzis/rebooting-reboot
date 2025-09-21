@@ -20,7 +20,7 @@
         {{ if $time }}
             {{ $start := index (split $time " - ") 0 }}
     
-            {{ if eq $start "00:00" }}
+            {{ if or (eq $start "00:00") (eq $start "01:00") }}
                 {{ $start = "24:00" }}
             {{ end }}
     
