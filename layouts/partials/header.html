@@ -21,20 +21,7 @@
             </audio>
           </div>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.js"></script>
-          <script>
-            window.addEventListener('DOMContentLoaded', function() {
-              const player = new OpenPlayerJS('audio', {
-                controls: {
-                  layers: {
-                    left: ['play', 'volume'],
-                    middle: [],
-                    right: [],
-                  },
-                },
-              });
-              player.init();
-            });
-          </script>
+          <script src="{{ "js/player-controls.js" | relURL }}"></script>
         </div>
         <!-- CentovaCast Info -->
         <div class="centovaCast-info">
