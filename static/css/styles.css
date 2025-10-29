@@ -3,6 +3,7 @@
   --main-bg: #eaeaea;
   --color-text: #111111;
   --day-content-bg: #e0e0e0;
+  --day-content-shade-bg: #b4b3b3;
   --day-button-bg: #c00;
   --day-button-color: #fff;
   --theme-light-display: block;
@@ -14,6 +15,7 @@
   --main-bg: #222831;
   --color-text: #eeeeee;
   --day-content-bg: #948979;
+  --day-content-shade-bg: #746c60;
   --theme-light-display: none;
   --theme-dark-display: block;
 } 
@@ -410,7 +412,13 @@ main section {
 }
 
 #sd-header {
+  font-weight: 500;
+  font-size: 27px;
+  background-color: var(--day-content-shade-bg);
   color: #000;
+  margin:0;
+  margin-bottom: 15px;
+  padding: 0.7rem 0rem;
 }
 
 @media (max-width: 768px) {

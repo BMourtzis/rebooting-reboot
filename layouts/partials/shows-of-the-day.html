@@ -14,7 +14,10 @@
 </script>
 <script>
   function parseTimeToMinutes(timeStr) {
-    const [h, m] = timeStr.split(":").map(Number);
+    let [h, m] = timeStr.split(":").map(Number);
+    if(h < 6) {
+      h += 24;
+    }
     return h * 60 + m;
   }
 
