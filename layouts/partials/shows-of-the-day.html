@@ -1,0 +1,96 @@
+{{/* Shows of the day partial */}}
+
+<section id="shows-of-the-day" class="box">
+    <h2 id="sd-header" class="box">
+        <span>🎤</span> Shows of the Day
+    </h2>
+    <div id="shows-container" class="row">
+</section>
+
+<div id="shows-container"></div>
+
+<script>
+  window.shows = {{ site.Data.radio_shows | jsonify }};
+</script>
+<script>
+  function parseTimeToMinutes(timeStr) {
+    let [h, m] = timeStr.split(":").map(Number);
+    if(h < 6) {
+      h += 24;
+    }
+    return h * 60 + m;
+  }
+
+  function getGreekNow() {
+    // Get current time in Europe/Athens
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Athens",
+      weekday: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const day = parts.find(p => p.type === "weekday").value;
+    const hour = parseInt(parts.find(p => p.type === "hour").value, 10);
+    const minute = parseInt(parts.find(p => p.type === "minute").value, 10);
+
+    return { day, minutesNow: hour * 60 + minute };
+  }
+
+  function renderTodaysShows() {
+    const shows = JSON.parse(window.shows);
+
+    const { day, minutesNow } = getGreekNow();
+
+    const todayShows = shows.filter(show => show.schedule[day]);
+    
+    todayShows.sort((a, b) => {
+      const [aStartStr] = a.schedule[day].split(" - ");
+      const [bStartStr] = b.schedule[day].split(" - ");
+      const aStart = parseTimeToMinutes(aStartStr);
+      const bStart = parseTimeToMinutes(bStartStr);
+
+      if (aStart === 0 && bStart !== 0) return 1; // put a after b
+      if (bStart === 0 && aStart !== 0) return -1; // put b after a
+      return aStart - bStart;
+    });
+
+    const container = document.getElementById("shows-container");
+    container.innerHTML = todayShows.map(show => `
+    <a id="${show.id}" href="/shows/${show.id}" class="box-shows">
+        <div class="show-box">
+          <img class="show-img" src="/${show.image}" alt="${show.title}">
+          <div style="min-width: 0;">
+            <h6 class="show-header">${show.title}</h6>
+            <div class="show-time">${show.schedule[day]}</div>
+          </div>
+        </div>
+      </a>
+    `).join("");
+
+    let activeId = null;
+    todayShows.forEach(show => {
+      const [startStr, endStr] = show.schedule[day].split(" - ");
+      const start = parseTimeToMinutes(startStr);
+      const end = parseTimeToMinutes(endStr);
+
+      if(minutesNow >= start && minutesNow < end) {
+        activeId = show.id;
+      }
+    });
+
+    if(activeId) {
+      const el = document.getElementById(activeId);
+console.log(el);
+
+      if(el) {
+        el.classList.add("active");
+      }
+    }
+  }
+
+  renderTodaysShows();
+  setInterval(renderTodaysShows, 60 * 1000);
+</script>
