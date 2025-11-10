@@ -2,7 +2,7 @@
 
 <div class="main-top-row row">
   <!-- Carousel Column -->
-  {{ partial "carousel.html" . }}
+  {{ partial "shows-of-the-day.html" . }}
 
   <!-- Chat Column -->
   <div id="chat" class="box">
@@ -15,10 +15,11 @@
 </div>
 
 <section id="main-second-row" class="row">
+  {{ partial "carousel.html" . }}
     <!-- Left: Image -->
-    <div class="left-image box">
+    <!-- <div class="left-image box">
       <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR">
-    </div>
+    </div> -->
     <!-- Right: Facebook Feed -->
     <div class="right-fb box">
       <div>
