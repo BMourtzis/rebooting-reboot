@@ -1,5 +1,31 @@
-<footer id="site-footer" class="py-10 print:hidden">
-    
+<footer class="site-footer">
+  <div class="footer-content content">
+    <div class="footer-left">
+      <a href="{{ "." | absURL }}">
+        <img src="{{ "images/rrlogo-white.jpg" | absURL }}" alt="Radio Reboot Logo">
+      </a>
+    </div>
+
+    <div class="footer-center">
+      <ul class="footer-links">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/projects">Program</a></li>
+        <li><a href="/contact">Reboot With Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-right">
+      <a href="https://twitter.com" target="_blank" class="social-icon">
+        <img src="{{ "images/iglogo.png" | relURL }}" alt="Twitter" />
+      </a>
+      <a href="https://github.com" target="_blank" class="social-icon">
+        <img src="{{ "images/fblogo.png" | relURL }}" alt="GitHub" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="social-icon">
+        <img src="{{ "images/mailogo.png" | relURL }}" alt="LinkedIn" />
+      </a>
+    </div>
+  </div>
 </footer>
 
 <script src="{{ "js/theme-toggle.js" | relURL }}"></script>
