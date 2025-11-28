@@ -1,90 +1,41 @@
-<header>
-  <div class="header-flex">
-    <!-- Left: Logo -->
-    <div class="header-logo">
-      <a href="{{ "." | absURL }}">
-        <img class="logo-dark" src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo">
-        <img class="logo-light" src="{{ "images/rrlogo-white.jpg" | absURL }}" alt="Radio Reboot Logo">
-      </a>
-    </div>
-
-    <!-- Center: Music Player and Info -->
-    <div class="header-center">
-      <!-- Top half: Player and CentovaCast Info side by side -->
-      <div class="player-top-half">
-        <!-- OpenPlayerJS Audio Player -->
-        <div class="audio-player">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
-          <div class="audio__container" style="width: 140px;">
-            <audio class="op-player__media" controls preload="none" id="audio">
-              <source src="https://radioreb.radioca.st/stream" type="audio/mp3">
-            </audio>
-          </div>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.js"></script>
-          <script>
-            window.addEventListener('DOMContentLoaded', function() {
-              const player = new OpenPlayerJS('audio', {
-                controls: {
-                  layers: {
-                    left: ['play', 'volume'],
-                    middle: [],
-                    right: [],
-                  },
-                },
-              });
-              player.init();
-            });
-          </script>
-        </div>
-        <!-- CentovaCast Info -->
-        <div class="centovaCast-info">
-          <script language="javascript">
-            (function(){ var centovacast = (window.centovacast||(window.centovacast={}));
-            (centovacast.streaminfo||(centovacast.streaminfo={})).config = {
-                poll_limit: 5000,
-                poll_frequency: 5000
-            };})();
-          </script>
-          <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
-          <marquee behavior="scroll" direction="right" scrollamount="1" style="width: 90%; color: #fff;">
-            <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
-          </marquee>
-        </div>
-      </div>
-      <!-- Bottom half: Alternative Players (all red) and Social Media (black), side by side with no gap -->
-      <div class="player-bot-half">
-        <!-- Alternative Players (all red) -->
-        <a class="alt-players" href="{{ "./alternativeplayers" | absURL }}">
-          alternative players
-        </a>
-        <!-- Social Media Icons (black) -->
-        <div class="social-media">
-          <a href="https://www.facebook.com/radioreboot.gr" target="_blank" rel="noopener">
-            <img src="{{ "images/fblogo.png" | absURL }}" alt="Facebook">
-          </a>
-          <a href="https://www.instagram.com/radio.reboot/" target="_blank" rel="noopener">
-            <img src="{{ "images/iglogo.png" | absURL }}" alt="Instagram">
-          </a>
-          <a href="https://www.mixcloud.com/RadioReboot/" target="_blank" rel="noopener">
-            <img src="{{ "images/mclogo.png" | absURL }}" alt="Mixcloud">
-          </a>
-          <a href="mailto:radiorebootgr@gmail.com" target="_blank" rel="noopener">
-            <img src="{{ "images/mailogo.png" | absURL }}" alt="Email">
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: theme switcher -->
-    <a
-      id="theme-toggle"
-      href="#"
-      aria-label="Toggle dark mode"
-      class="p-2">
-      <!-- <span id="theme-toggle-light" class="hidden">🌙</span> -->
-      <!-- <span id="theme-toggle-dark" class="hidden">☀️</span> -->
-      <img id="theme-toggle-light" src="{{ "icons/moon.svg" | relURL }}" alt="Dark Mode" width="30px" class="w-6 h-6">
-      <img id="theme-toggle-dark" src="{{ "icons/sun.svg" | relURL }}" alt="Light Mode" width="30px" class="w-6 h-6">
+<header class="site-header">
+  <div class="header-left">
+    <a href="{{ "." | absURL }}">
+      <img class="logo-dark" src="{{ "images/rrlogo.png" | absURL }}" alt="Radio Reboot Logo">
+      <img class="logo-light" src="{{ "images/rrlogo-white.jpg" | absURL }}" alt="Radio Reboot Logo">
     </a>
+  </div>
+
+  <!-- Center: Music Player and Info -->
+  <nav class="header-center">
+    <ul class="menu">
+      <li><a href="/about">Home</a></li>
+      <li><a href="/projects">About Us</a></li>
+      <li><a href="/blog">Program</a></li>
+      <li><a href="/contact">Reboot With Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Right: theme switcher -->
+  <div class="header-right">
+    <label class="theme-switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider">
+        <span class="icon sun">
+          <svg class="moon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/>
+          </svg>
+
+          <!-- <img id="theme-toggle-dark" src="{{ "icons/moon.svg" | relURL }}" alt="Light Mode" width="20px"> -->
+        </span>
+        <span class="icon moon">
+          <svg class="sun-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/>
+          </svg>
+
+          <!-- <img id="theme-toggle-light" src="{{ "icons/sun.svg" | relURL }}" alt="Dark Mode" width="20px"> -->
+        </span>
+      </span>
+    </label>
   </div>
 </header>
