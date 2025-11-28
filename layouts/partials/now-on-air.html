@@ -1,0 +1,118 @@
+{{/* Shows of the day partial */}}
+
+<section id="now-on-air">
+  <h2 id="noa-header" class="text-white">Now On Air</h2>
+  <div id="show-image"></div>
+  <div id="show-details" class="text-white"></div>
+</section>
+
+<script>
+  window.shows = {{ site.Data.radio_shows | jsonify }};
+</script>
+<script>
+    function parseTime(str) {
+        const [h, m] = str.split(":").map(Number);
+        return h * 60 + m;
+    }
+
+    function parseRange(range) {
+        const [startStr, endStr] = range.split("-").map((s) => s.trim());
+        const start = parseTime(startStr);
+        const end = parseTime(endStr);
+
+        const wraps = end <= start;
+
+        return { start, end, wraps };
+    }
+
+    function getGreekNow() {
+        const formatter = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/Athens",
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        });
+
+        const parts = formatter.formatToParts(new Date());
+        const day = parts.find((p) => p.type === "weekday").value;
+        const hour = parseInt(parts.find((p) => p.type === "hour").value, 10);
+        const minute = parseInt(parts.find((p) => p.type === "minute").value, 10);
+
+        return { day, minutesNow: hour * 60 + minute };
+    }
+
+    function isNowInRange({ start, end, wraps }, nowMinutes) {
+        if (!wraps) {
+        return nowMinutes >= start && nowMinutes < end;
+        }
+        // Overnight span: valid if after start or before end
+        return nowMinutes >= start || nowMinutes < end;
+    }
+    
+    function findCurrentShow(shows) {
+        const now = new Date();
+        const day = now.toLocaleString('en-US', { weekday: 'long' });
+        const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+        const enriched = shows.map(show => {
+            const todaysRange = show.schedule[day];
+
+            if (!todaysRange) {
+                return {
+                    ...show,
+                    day,
+                    isPlaying: false
+                };
+            }
+
+            const parsed = parseRange(todaysRange);
+            const isPlaying = isNowInRange(parsed, nowMinutes);
+
+            return {
+                ...show,
+                day,
+                range: parsed,
+                isPlaying,
+                todaysRange
+            };
+        });
+
+        return enriched;
+    }
+
+    function getAroundShows(list, index, prev = 2, next = 3) {
+        const result = { prev: [], current: list[index], next: [] };
+        const len = list.length;
+
+        for (let i = 1; i <= prev; i++) {
+            result.prev.unshift(list[(index - i + len) % len]);
+        }
+
+        for (let i = 1; i <= next; i++) {
+            result.next.push(list[(index + i) % len]);
+        }
+
+        return result;
+    }
+
+    function renderShows() {
+        const enriched = findCurrentShow(JSON.parse(window.shows));
+        const currentIndex = enriched.findIndex(s => s.isPlaying);
+        const currentShow = enriched[currentIndex];
+
+        const imageContainer = document.getElementById("show-image");
+        imageContainer.innerHTML = `<img class="current-show-img" src="/${currentShow.image}" alt="${currentShow.title}">`
+
+        const detailsContainer = document.getElementById("show-details");
+        detailsContainer.innerHTML = `
+            <div style="min-width: 0;">
+                <h6 class="show-header">${currentShow.title}</h6>
+                <div class="show-time">${currentShow.day}, ${currentShow.todaysRange}</div>
+            </div>
+        `;
+    }
+
+    renderShows();
+    setInterval(renderShows, 60 * 1000);
+</script>

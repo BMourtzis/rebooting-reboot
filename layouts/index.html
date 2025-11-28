@@ -1,30 +1,30 @@
 {{ define "main" }}
 
-<div class="content">
-  <section class="main-top-row row">
-    {{ partial "shows-of-the-day.html" . }}
+<section class="main-top-row-content">
+  <div class="main-top-row row content">
+    {{ partial "now-on-air.html" . }}
 
-    <div id="chat" class="box">
+    <div id="chat">
       <iframe
         src="https://tlk.io/rebootchat?theme=theme--minimal"
         frameborder="0"
         allowfullscreen>
       </iframe>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="main-second-row" class="row">
-    {{ partial "carousel.html" . }}
-    <div class="right-fb box">
-      <div>
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-          frameborder="0" allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
+<!-- <section id="main-second-row" class="row content">
+  {{ partial "carousel.html" . }}
+  <div class="right-fb box">
+    <div>
+      <iframe
+        src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+        frameborder="0" allowfullscreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
     </div>
-  </section>
-</div>
+  </div>
+</section> -->
 
 {{ end }}

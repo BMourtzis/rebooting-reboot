@@ -1,3 +1,4 @@
+
 :root {
   --color-bg: #f8f8f8;
   --main-bg: #eaeaea;
@@ -37,8 +38,11 @@ body {
 
 main {
   background: var(--main-bg);
-  padding: 2rem;
-  flex: 1; /* takes all remaining space */
+  flex: 1;
+}
+
+.text-white {
+  color: #eeeeee;
 }
 
 .content {
@@ -107,15 +111,30 @@ a.box-shows.active {
   padding: 1% 0 1% 1%;
 }
 
-#shows-of-the-day {
-  padding-bottom: 1%;
-}
-#shows-of-the-day a div div.show-time {
-  color: #444;
+#now-on-air {
+  flex: 0 1 30%;
+  min-width: 0;
 }
 
-#shows-of-the-day a.active div div.show-time {
-  color: var(--color-text);
+#now-on-air #noa-header {
+  background-color: #000;
+  padding: 1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#now-on-air #show-image img {
+  height: 345px;
+}
+
+#now-on-air #show-details {
+  background-color: var(--day-button-bg);
+  padding: 1rem;
+}
+
+#chat {
+  flex: 2 1 60%;
+  min-width: 0;
 }
 
 .show-image {
@@ -164,12 +183,17 @@ a.box-shows.active {
   border-radius: 4px;
 }
 
+.main-top-row-content {
+  background-color: var(--main-bg);
+}
+
 .main-top-row {
   display: flex; 
   gap: 2rem; 
   align-items: flex-start; 
-  justify-content: center; 
-  margin-bottom: 2rem;
+  justify-content: center;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 main section {
