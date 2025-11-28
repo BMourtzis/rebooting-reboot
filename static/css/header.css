@@ -1,13 +1,11 @@
 :root {
   --sun-color: #c6aee4;
   --moon-color: #ffa700;
-  --sun-opacity: 0; 
-  --moon-opacity: 1;
+  --menu-font-color: #666;
 }
 
 [data-theme="dark"] {
-  --sun-opacity: 1; 
-  --moon-opacity: 0;
+  --menu-font-color: #bbb;
 } 
 
 header {
@@ -119,14 +117,13 @@ input:checked + .slider::before {
 .icon svg {
   width: 20px;
   height: 20px;
+  opacity: 1;
   transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 .sun svg {
   color: var(--sun-color);
-  opacity: var(--sun-opacity);
 }
 .moon svg {
   color: var(--moon-color);
-  opacity: var(--moon-opacity);
 }

@@ -1,26 +1,20 @@
 {{ define "main" }}
 
-<div class="main-top-row row">
-  <!-- Carousel Column -->
-  {{ partial "shows-of-the-day.html" . }}
+<div class="content">
+  <section class="main-top-row row">
+    {{ partial "shows-of-the-day.html" . }}
 
-  <!-- Chat Column -->
-  <div id="chat" class="box">
-    <iframe
-      src="https://tlk.io/rebootchat?theme=theme--minimal"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+    <div id="chat" class="box">
+      <iframe
+        src="https://tlk.io/rebootchat?theme=theme--minimal"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
 
-<section id="main-second-row" class="row">
-  {{ partial "carousel.html" . }}
-    <!-- Left: Image -->
-    <!-- <div class="left-image box">
-      <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR">
-    </div> -->
-    <!-- Right: Facebook Feed -->
+  <section id="main-second-row" class="row">
+    {{ partial "carousel.html" . }}
     <div class="right-fb box">
       <div>
         <iframe
@@ -31,6 +25,6 @@
       </div>
     </div>
   </section>
-  {{ partial "weekly-schedule.html" . }}
-</main>
+</div>
+
 {{ end }}

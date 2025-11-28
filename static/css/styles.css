@@ -8,7 +8,6 @@
   --day-button-color: #fff;
   --theme-light-display: block;
   --theme-dark-display: none;
-  --menu-font-color: #666;
 }
 
 [data-theme="dark"] {
@@ -19,7 +18,6 @@
   --day-content-shade-bg: #746c60;
   --theme-light-display: none;
   --theme-dark-display: block;
-  --menu-font-color: #bbb;
 } 
 /* base */
 html, body {
@@ -39,7 +37,6 @@ body {
 
 main {
   background: var(--main-bg);
-  margin: auto; 
   padding: 2rem;
   flex: 1; /* takes all remaining space */
 }
