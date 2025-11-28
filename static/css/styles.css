@@ -9,10 +9,6 @@
   --theme-light-display: block;
   --theme-dark-display: none;
   --menu-font-color: #666;
-  --sun-color: #9096b9;
-  --moon-color: #ffa700;
-  --sun-opacity: 0; 
-  --moon-opacity: 1;
 }
 
 [data-theme="dark"] {
@@ -24,10 +20,6 @@
   --theme-light-display: none;
   --theme-dark-display: block;
   --menu-font-color: #bbb;
-  --sun-color: #c6aee4;
-  --moon-color: #7a6f3a;
-  --sun-opacity: 1; 
-  --moon-opacity: 0;
 } 
 /* base */
 body {
