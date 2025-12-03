@@ -3,7 +3,7 @@
   --color-bg: #f8f8f8;
   --main-bg-top: #eaeaea;
   --main-bg-mid-top: #eaeaea;
-  --main-bg-mid-bot: #eaeaea;
+  --main-bg-mid-bot: #858b94;
   --main-bg-bot: #636972;
   --color-text: #111111;
   --day-content-bg: #e0e0e0;
@@ -46,6 +46,10 @@ main {
 
 .text-white {
   color: #eeeeee;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .content {
@@ -133,7 +137,6 @@ a.box-shows.active {
 #now-on-air #show-details {
   background-color: var(--day-button-bg);
   padding: 1rem;
-  cursor: pointer;
 }
 #now-on-air #show-details:hover #show-panel {
     max-height: 600px;
@@ -145,7 +148,7 @@ a.box-shows.active {
   top: -170%;
   right: 0;
   width: 100%;
-  background: var(--color-bg);
+  background: var(--day-content-bg);
   color: var(--color-text);
   border-radius: 3px;
   max-height: 0;
@@ -218,7 +221,6 @@ main section {
   gap: 2rem; 
   align-items: flex-start; 
   justify-content: center;
-  padding-bottom: 2rem;
   padding-top: 2rem;
 }
 
@@ -227,6 +229,39 @@ main section {
   min-width: 0;
   max-width: 50%; 
   box-sizing: border-box;
+}
+
+.main-mid-bot-row-content {
+  background-color: var(--main-bg-mid-bot);
+  padding-top: 4rem;
+  padding-bottom: 2rem;;
+}
+
+.main-mid-bot-row {
+  display: flex; 
+  align-items: flex-start; 
+  justify-content: center;
+}
+
+.mixcloud-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 60%;
+}
+
+#mixcloud-title {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  font-size: 22px;
+}
+
+#mixcloud-latest {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 200px;
 }
 
 .main-last-row-content {
