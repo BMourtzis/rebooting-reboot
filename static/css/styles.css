@@ -124,12 +124,44 @@ a.box-shows.active {
 }
 
 #now-on-air #show-image img {
-  height: 345px;
+  /* height: 345px; */
+  width: 100%;
 }
 
 #now-on-air #show-details {
   background-color: var(--day-button-bg);
   padding: 1rem;
+  cursor: pointer;
+}
+#now-on-air #show-details:hover #show-panel {
+    max-height: 600px;
+    opacity: 1;
+}
+
+#now-on-air #show-details #show-panel {
+  position: absolute;
+  top: -170%;
+  right: 0;
+  width: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 3px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+#now-on-air #show-details #show-panel .show-panel-details {
+  min-width: 0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0; 
+}
+
+#now-on-air #show-details #show-panel #panel-current-show {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  font-weight:bold; 
 }
 
 #chat {

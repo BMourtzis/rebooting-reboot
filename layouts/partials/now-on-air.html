@@ -3,116 +3,147 @@
 <section id="now-on-air">
   <h2 id="noa-header" class="text-white">Now On Air</h2>
   <div id="show-image"></div>
-  <div id="show-details" class="text-white"></div>
+  <div id="show-details" class="text-white" style="position: relative;"></div>
 </section>
 
 <script>
   window.shows = {{ site.Data.radio_shows | jsonify }};
 </script>
+
 <script>
-    function parseTime(str) {
-        const [h, m] = str.split(":").map(Number);
-        return h * 60 + m;
+function parseTime(str) {
+    const [h, m] = str.split(":").map(Number);
+    return h * 60 + m;
+}
+
+function parseRange(range) {
+    const [startStr, endStr] = range.split("-").map((s) => s.trim());
+    const start = parseTime(startStr);
+    const end = parseTime(endStr);
+    const wraps = end <= start;
+    return { start, end, wraps };
+}
+
+function isNowInRange({ start, end, wraps }, nowMinutes) {
+    if (!wraps) return nowMinutes >= start && nowMinutes < end;
+    return nowMinutes >= start || nowMinutes < end;
+}
+
+function findCurrentShow(shows) {
+    const now = new Date();
+    const day = now.toLocaleString('en-US', { weekday: 'long' });
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+    console.log(shows, day, nowMinutes);
+
+    return shows.map(show => {
+        const todaysRange = show.schedule[day];
+        if (!todaysRange) return { ...show, day, isPlaying: false };
+        const parsed = parseRange(todaysRange);
+        const isPlaying = isNowInRange(parsed, nowMinutes);
+        return { ...show, day, range: parsed, isPlaying, todaysRange };
+    });
+}
+
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+
+function getAroundShowsSmart(shows, day, currentShowId, prevCount = 2, nextCount = 3) {
+    function getShowsForDay(dayName) {
+        return shows
+            .filter(s => s.schedule[dayName])
+            .map(s => ({ ...s, range: parseRange(s.schedule[dayName]) }))
+            .sort((a, b) => a.range.start - b.range.start);
     }
 
-    function parseRange(range) {
-        const [startStr, endStr] = range.split("-").map((s) => s.trim());
-        const start = parseTime(startStr);
-        const end = parseTime(endStr);
+    let todayShows = getShowsForDay(day);
+    let currentIndex = todayShows.findIndex(s => s.id === currentShowId);
+    if (currentIndex === -1) return { prev: [], current: null, next: [] };
 
-        const wraps = end <= start;
+    const result = { prev: [], current: todayShows[currentIndex], next: [] };
+    const lenToday = todayShows.length;
 
-        return { start, end, wraps };
-    }
+    let neededPrev = prevCount;
+    let prevIdx = currentIndex - 1;
+    let dayIdx = DAYS.indexOf(day);
 
-    function getGreekNow() {
-        const formatter = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Europe/Athens",
-        weekday: "long",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-        });
-
-        const parts = formatter.formatToParts(new Date());
-        const day = parts.find((p) => p.type === "weekday").value;
-        const hour = parseInt(parts.find((p) => p.type === "hour").value, 10);
-        const minute = parseInt(parts.find((p) => p.type === "minute").value, 10);
-
-        return { day, minutesNow: hour * 60 + minute };
-    }
-
-    function isNowInRange({ start, end, wraps }, nowMinutes) {
-        if (!wraps) {
-        return nowMinutes >= start && nowMinutes < end;
+    while (neededPrev > 0) {
+        if (prevIdx >= 0) {
+            result.prev.unshift(todayShows[prevIdx]);
+            prevIdx--;
+            neededPrev--;
+        } else {
+            dayIdx = (dayIdx - 1 + 7) % 7;
+            const prevDay = DAYS[dayIdx];
+            const prevDayShows = getShowsForDay(prevDay);
+            if (prevDayShows.length === 0) break;
+            const take = Math.min(neededPrev, prevDayShows.length);
+            result.prev = prevDayShows.slice(-take).concat(result.prev);
+            neededPrev -= take;
+            prevIdx = -1;
         }
-        // Overnight span: valid if after start or before end
-        return nowMinutes >= start || nowMinutes < end;
-    }
-    
-    function findCurrentShow(shows) {
-        const now = new Date();
-        const day = now.toLocaleString('en-US', { weekday: 'long' });
-        const nowMinutes = now.getHours() * 60 + now.getMinutes();
-
-        const enriched = shows.map(show => {
-            const todaysRange = show.schedule[day];
-
-            if (!todaysRange) {
-                return {
-                    ...show,
-                    day,
-                    isPlaying: false
-                };
-            }
-
-            const parsed = parseRange(todaysRange);
-            const isPlaying = isNowInRange(parsed, nowMinutes);
-
-            return {
-                ...show,
-                day,
-                range: parsed,
-                isPlaying,
-                todaysRange
-            };
-        });
-
-        return enriched;
     }
 
-    function getAroundShows(list, index, prev = 2, next = 3) {
-        const result = { prev: [], current: list[index], next: [] };
-        const len = list.length;
+    let neededNext = nextCount;
+    let nextIdx = currentIndex + 1;
+    dayIdx = DAYS.indexOf(day);
 
-        for (let i = 1; i <= prev; i++) {
-            result.prev.unshift(list[(index - i + len) % len]);
+    while (neededNext > 0) {
+        if (nextIdx < lenToday) {
+            result.next.push(todayShows[nextIdx]);
+            nextIdx++;
+            neededNext--;
+        } else {
+            dayIdx = (dayIdx + 1) % 7;
+            const nextDay = DAYS[dayIdx];
+            const nextDayShows = getShowsForDay(nextDay);
+            if (nextDayShows.length === 0) break;
+            const take = Math.min(neededNext, nextDayShows.length);
+            result.next = result.next.concat(nextDayShows.slice(0, take));
+            neededNext -= take;
+            nextIdx = 0;
         }
-
-        for (let i = 1; i <= next; i++) {
-            result.next.push(list[(index + i) % len]);
-        }
-
-        return result;
     }
 
-    function renderShows() {
-        const enriched = findCurrentShow(JSON.parse(window.shows));
-        const currentIndex = enriched.findIndex(s => s.isPlaying);
-        const currentShow = enriched[currentIndex];
+    return result;
+}
 
-        const imageContainer = document.getElementById("show-image");
-        imageContainer.innerHTML = `<img class="current-show-img" src="/${currentShow.image}" alt="${currentShow.title}">`
+function renderShows() {
+    const enriched = findCurrentShow(JSON.parse(window.shows));
+    const currentShow = enriched.find(s => s.isPlaying);
+    if (!currentShow) return;
+    const around = getAroundShowsSmart(enriched, currentShow.day, currentShow.id);
 
-        const detailsContainer = document.getElementById("show-details");
-        detailsContainer.innerHTML = `
-            <div style="min-width: 0;">
-                <h6 class="show-header">${currentShow.title}</h6>
-                <div class="show-time">${currentShow.day}, ${currentShow.todaysRange}</div>
+    const imageContainer = document.getElementById("show-image");
+    imageContainer.innerHTML = `<img class="current-show-img" src="/${around.current.image}" alt="${around.current.title}">`;
+
+    const detailsContainer = document.getElementById("show-details");
+    detailsContainer.innerHTML = `
+        <div style="min-width: 0;">
+            <h6 class="show-header">${around.current.title}</h6>
+            <div class="show-time">${around.current.day}, ${around.current.todaysRange}</div>
+        </div>
+        <div id="show-panel">
+            ${around.prev.map((show, idx) => `
+                <div class="show-panel-details">
+                    <h6 class="show-header">${show.title}</h6>
+                    <div class="show-time">${show.day}, ${show.todaysRange || '-'}</div>
+                </div>
+
+            `).join('')}
+            <div id="panel-current-show" class="show-panel-details">
+                <h6 class="show-header">${around.current.title}</h6>
+                <div class="show-time">${around.current.day}, ${around.current.todaysRange || '-'}</div>
             </div>
-        `;
-    }
+            ${around.next.map((show, idx) => `
+                <div class="show-panel-details">
+                    <h6 class="show-header">${show.title}</h6>
+                    <div class="show-time">${show.day}, ${show.todaysRange || '-'}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
 
-    renderShows();
-    setInterval(renderShows, 60 * 1000);
+renderShows();
+setInterval(renderShows, 60 * 1000);
 </script>
