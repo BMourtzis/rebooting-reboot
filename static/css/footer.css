@@ -1,6 +1,14 @@
+:root {
+  --footer-bg-color: #3a3939;
+}
+
+[data-theme="dark"] {
+  --footer-bg-color: #0f0f0f;
+} 
+
 footer.site-footer {
   padding: 2rem;
-  background-color: #3a3939;
+  background-color: var(--footer-bg-color);
 }
 
 .footer-content {

@@ -16,13 +16,17 @@
 
 [data-theme="dark"] {
   --color-bg: #393E46;
-  --main-bg-top: #222831;
+  --main-bg-top: #36383b;
+  --main-bg-mid-top: #eaeaea;
+  --main-bg-mid-bot: #212325;
+  --main-bg-bot: #222831;
   --color-text: #eeeeee;
   --day-content-bg: #948979;
   --day-content-shade-bg: #746c60;
   --theme-light-display: none;
   --theme-dark-display: block;
 } 
+
 /* base */
 html, body {
   height: 100%;
@@ -377,6 +381,10 @@ main section {
   border: none;
   border-radius: 8px; 
   background: #fff;
+}
+
+#main-weekly-schedule {
+  padding: 1rem 1rem;
 }
 
 #main-weekly-schedule h2 {
