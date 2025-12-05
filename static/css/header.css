@@ -9,11 +9,11 @@
 } 
 
 header {
-  padding: 0.5rem;
   padding-top: 0;
 }
 
 .site-header {
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,4 +126,50 @@ input:checked + .slider::before {
 }
 .moon svg {
   color: var(--moon-color);
+}
+
+.header-player {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  align-items: center;
+}
+
+.player-content {
+  background-color: black;
+  max-width: 1000px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.centovaCast-info {
+  flex: 1 1 48%;
+}
+
+.audio__container #audio {
+  min-height: 20px !important;
+}
+
+.op-controls {
+  font-size: 0.50em !important;
+}
+
+.op-controls button {
+  font-size: 80% !important;
+  padding:0 4px !important;
+}
+
+.op-controls__volume {
+  margin-top: 7px !important;
+}
+
+.alternativeplayers {
+  color: white;
+  text-decoration: none;
 }
