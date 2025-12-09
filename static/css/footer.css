@@ -1,0 +1,89 @@
+:root {
+  --footer-bg-color: #3a3939;
+}
+
+[data-theme="dark"] {
+  --footer-bg-color: #0f0f0f;
+} 
+
+footer.site-footer {
+  padding: 2rem;
+  background-color: var(--footer-bg-color);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #eee;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* LEFT LOGO */
+.footer-left {
+  flex: 0 0 auto;
+}
+
+.footer-left a img {
+  height: 130px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-center {
+  flex: 1;
+  margin-top: 30px;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  margin-top: 30px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.footer-right {
+  margin-top: 50px;
+  flex: 0 0 auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-right img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.footer-right img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-center {
+    order: 3;
+  }
+
+  .footer-right {
+    order: 2;
+  }
+}

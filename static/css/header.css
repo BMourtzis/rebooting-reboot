@@ -1,0 +1,182 @@
+:root {
+  --sun-color: #c6aee4;
+  --moon-color: #ffa700;
+  --menu-font-color: #666;
+}
+
+[data-theme="dark"] {
+  --menu-font-color: #bbb;
+} 
+
+header {
+  padding-top: 0;
+}
+
+.site-header {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-left, .header-right {
+  flex: 0 0 auto;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-left a img {
+  height: 130px; 
+  margin-bottom: 0.5rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--menu-font-color);
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+
+/* slider */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 62px;
+  height: 30px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+/* Icons */
+.slider .icon {
+  font-size: 3px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* The moving knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background: white;
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background: #4a4a4a;
+}
+
+input:checked + .slider::before {
+  transform: translateX(32px);
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.sun svg {
+  color: var(--sun-color);
+}
+.moon svg {
+  color: var(--moon-color);
+}
+
+.header-player {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  align-items: center;
+}
+
+.player-content {
+  background-color: black;
+  max-width: 1000px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.centovaCast-info {
+  flex: 1 1 48%;
+}
+
+.audio__container #audio {
+  min-height: 20px !important;
+}
+
+.op-controls {
+  font-size: 0.50em !important;
+}
+
+.op-controls button {
+  font-size: 80% !important;
+  padding:0 4px !important;
+}
+
+.op-controls__volume {
+  margin-top: 7px !important;
+}
+
+.alternativeplayers {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .player-content {
+    max-width: 800px;
+    padding: 0 0.2rem;
+  }
+}
