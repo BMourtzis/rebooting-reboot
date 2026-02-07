@@ -1,36 +1,28 @@
 {{ define "main" }}
 
-<div class="main-top-row row">
-  <!-- Carousel Column -->
-  {{ partial "shows-of-the-day.html" . }}
+<section class="main-top-row-content">
+  <div class="main-top-row row content">
+    {{ partial "now-on-air.html" . }}
 
-  <!-- Chat Column -->
-  <div id="chat" class="box">
-    <iframe
-      src="https://tlk.io/rebootchat?theme=theme--minimal"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<section id="main-second-row" class="row">
-  {{ partial "carousel.html" . }}
-    <!-- Left: Image -->
-    <!-- <div class="left-image box">
-      <img src="{{ "images/rrwr.png" | absURL  }}" alt="Radio Reboot WR">
-    </div> -->
-    <!-- Right: Facebook Feed -->
-    <div class="right-fb box">
-      <div>
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/radioreboot.gr&tabs=timeline&width=340&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
-          frameborder="0" allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-        </iframe>
-      </div>
+    <div id="chat">
+      <iframe
+        src="https://tlk.io/rebootchat?theme=theme--minimal"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
     </div>
-  </section>
-  {{ partial "weekly-schedule.html" . }}
-</main>
+  </div>
+</section>
+
+<section class="main-mid-bot-row-content">
+  <div class="main-mid-bot-row row content">
+    {{ partial "mixcloud.html" . }}
+  </div>
+</section>
+
+<section class="main-last-row-content">
+  <div class="main-last-row row content">
+    {{ partial "carousel.html" . }}
+  </div>
+</section>
 {{ end }}
