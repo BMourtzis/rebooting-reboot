@@ -29,8 +29,8 @@
   schedule:
     Monday: "00:00 - 06:00"
     Tuesday: "01:00 - 06:00"
-    Wednesday: "00:00 - 06:00"
-    Thursday: "22:00 - 06:00"
+    Wednesday: "22:00 - 06:00"
+    Thursday: "00:00 - 06:00"
     Friday: "00:00 - 06:00"
     Saturday: "21:30 - 06:00"
     Sunday: "22:00 - 06:00"
