@@ -16,12 +16,12 @@
   description: "Σύμφωνα με αμφισβητούμενες μελέτες που βαριόμαστε να παραθέσουμε, οι ώρες του μεσημεριού και του απογεύματος είναι ώρες χαμηλής αποδοτικότητας. Το ευέλικτο δυναμικό του Radio Reboot, τηρώντας τις διεθνείς προδιαγραφές, έχει επιλέξει με αυστηρά κριτήρια μουσική που απλώς κολλάει στις συγκεκριμένες ώρες, χωρίς να υπόσχεται τίποτα."
   schedule:
     Monday: "12:00 - 18:00"
-    Tuesday: "12:00 - 19:00"
+    Tuesday: "12:00 - 18:30"
     Wednesday: "12:00 - 18:00"
     Thursday: "12:00 - 18:00"
     Friday: "12:00 - 18:30"
     Saturday: "12:00 - 18:00"
-    Sunday: "12:00 - 16:00"
+    Sunday: "12:00 - 20:00"
 - id: nocturne
   title: Nocturne
   image: "images/radio-shows/nocturne.png"
@@ -30,10 +30,10 @@
     Monday: "00:00 - 06:00"
     Tuesday: "01:00 - 06:00"
     Wednesday: "00:00 - 06:00"
-    Thursday: "00:00 - 06:00"
+    Thursday: "22:00 - 06:00"
     Friday: "00:00 - 06:00"
     Saturday: "21:30 - 06:00"
-    Sunday: "23:00 - 06:00"
+    Sunday: "20:00 - 06:00"
 - id: asperimenei
   title: Ας περιμένει το hip-hop
   image: "images/radio-shows/asperimenei.jpg"
