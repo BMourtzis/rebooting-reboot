@@ -29,11 +29,11 @@
   schedule:
     Monday: "00:00 - 06:00"
     Tuesday: "01:00 - 06:00"
-    Wednesday: "22:00 - 06:00"
+    Wednesday: "00:00 - 06:00"
     Thursday: "00:00 - 06:00"
     Friday: "00:00 - 06:00"
     Saturday: "21:30 - 06:00"
-    Sunday: "20:00 - 06:00"
+    Sunday: "22:00 - 06:00"
 - id: asperimenei
   title: Ας περιμένει το hip-hop
   image: "images/radio-shows/asperimenei.jpg"
@@ -153,4 +153,22 @@
   image: "images/radio-shows/mintixon.jpg"
   description: "Τσουνάμι στα ραδιοκύματα!! Μην τυχόν! Μια εκπομπή σταθμός στο ελληνικό ραδιόφωνο: επικαιρότητα και παράδοση, χεμ σαμπού χεμ κοντίσιονερ!! Σκληρές αλήθειες και συνταγές μαγειρικής, αποκαλύψεις και συμβουλές για το σπίτι. Πολιτική και αισθησιασμός. Κάθε Τετάρτη, 13:00-14:00."
   schedule:
-    Wednesday: "13:00 - 14:00"    
+    Wednesday: "13:00 - 14:00"
+- id: flux
+  title: Flux
+  image: "images/radio-shows/flux.jpg"
+  description: "Κινείται στο φάσμα της ηλεκτρονικής μουσικής. Σήματα, συχνότητες και υφές που μεταβάλλονται από εκπομπή σε εκπομπή - από ambient και IDM μέχρι techno, breaks και house. Μια μετάδοση χωρίς σταθερό σημείο, που ακολουθεί τη διάθεση της στιγμής."
+  schedule:
+    Wednesday: "22:00 - 00:00"
+- id: sundaystribute
+  title: Sunday's Tribute
+  image: "images/radio-shows/sundaystribute.jpg"
+  description: "Μουσικές από όλον τον κόσμο, κάθε Κυριακή στο καλύτερο web radio του γαλαξία. Κάθε Κυριακή 6.00μ.μ.-8.00μ.μ."
+  schedule:
+    Sunday: "18:00 - 20:00"        
+- id: classcityrockers
+  title: Class City Rockers
+  image: "images/radio-shows/classcityrockers.jpg"
+  description: "Στο Class City Rockers τα βάζουμε με τις εξουσίες και τους καταπιεστές. Και όταν δεν το κάνουμε εμείς, αφήνουμε τους αγαπημένους μας καλλιτέχνες να το κάνουν."
+  schedule:
+    Sunday: "20:00 - 22:00"        
