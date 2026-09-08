@@ -197,19 +197,78 @@ a.box-shows.active {
   margin-top: 0;
 }
 
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  background: var(--main-bg);
+  max-width: 1200px; 
+  margin: auto; 
+  padding: 2rem;
+}
+
+#theme-toggle-light {
+  display: var(--theme-light-display);
+  filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg);
+}
+
+#theme-toggle-dark {
+  display :var(--theme-dark-display);
+  filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(180deg);
+}
+
+#theme-toggle {
+  text-decoration: none;
+  font-size: 1.5rem;
+  filter: var(--icon-filter, none);
+  transition: opacity 0.3s ease;
+}
+
+.day-schedule > summary.day-button {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.day-schedule > summary.day-button::-webkit-details-marker {
+  display: none;
+}
+
 .day-button {
   background-color: var(--day-button-bg);
   color: var(--day-button-color);
   font-weight: bold;
   font-size: 1.4rem;
   padding: 0.7rem 1.5rem;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   width: fit-content;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.day-button::after {
+  content: "";
+  margin-left: 0.75rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.day-schedule[open] > .day-button::after {
+  transform: rotate(-135deg);
 }
 
 .day-content {
   background-color: var(--day-content-bg);
-  padding: 1rem; 
+  padding: 1rem;
   border-radius: 4px;
 }
 
@@ -513,14 +572,56 @@ main section {
     max-width: 100% !important;
     margin: 0 !important;
   }
+}
 
-  #now-on-air {
-    order: 2;
-    flex: 0 1 80%;
+/* Bigger touch targets for mobile phones (min. 44px per WCAG 2.5.5 / iOS HIG) */
+@media (max-width: 768px) {
+  .header-center .player-top-half,
+  .header-center .player-bot-half {
+    height: auto;
+    min-height: 44px;
   }
 
-  .main-top-row #chat {
-    order: 1;
-    flex: 2 1 80%;
+  /* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
+     only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
+     without growing .op-player makes the control bar overflow upward past the
+     black background instead of staying centered in it. */
+  .audio-player .op-player {
+    min-height: 44px;
+  }
+
+  .audio-player .op-controls__playpause {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .alt-players {
+    min-height: 44px;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .header-center .player-bot-half .social-media {
+    padding: 0.25rem 0;
+  }
+
+  .header-center .player-bot-half .social-media a {
+    margin: 0;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+
+  .header-center .player-bot-half .social-media a img {
+    height: 24px;
+  }
+
+  #theme-toggle {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
