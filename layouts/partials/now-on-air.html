@@ -3,7 +3,7 @@
 <section id="now-on-air">
   <h2 id="noa-header" class="text-white">Now On Air</h2>
   <div id="show-image"></div>
-  <div id="show-details" class="text-white" style="position: relative;"></div>
+  <div id="show-details" class="text-white" style="position: relative;" role="button" tabindex="0" aria-expanded="false" aria-label="Show previous and next shows"></div>
 </section>
 
 <script>
@@ -147,4 +147,19 @@ function renderShows() {
 
 renderShows();
 setInterval(renderShows, 60 * 1000);
+
+// :hover never fires on touch devices, so the previous/next shows panel
+// needs a tap/keyboard toggle too, not just the CSS :hover reveal.
+const showDetails = document.getElementById("show-details");
+function togglePanel() {
+    const isOpen = showDetails.classList.toggle("panel-open");
+    showDetails.setAttribute("aria-expanded", isOpen);
+}
+showDetails.addEventListener("click", togglePanel);
+showDetails.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        togglePanel();
+    }
+});
 </script>

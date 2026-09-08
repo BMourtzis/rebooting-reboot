@@ -142,10 +142,36 @@ a.box-shows.active {
 #now-on-air #show-details {
   background-color: var(--day-button-bg);
   padding: 1rem;
+  cursor: pointer;
 }
+
+/* :hover alone never fires on touch devices, so without the .panel-open
+   fallback (toggled on tap by now-on-air.html's script) phones could never
+   see the previous/next shows panel at all. */
 #now-on-air #show-details:hover #show-panel {
     max-height: 600px;
     opacity: 1;
+}
+
+#now-on-air #show-details.panel-open #show-panel {
+    max-height: 600px;
+    opacity: 1;
+}
+
+#now-on-air #show-details::after {
+  content: "";
+  display: inline-block;
+  margin-left: 0.5rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+
+#now-on-air #show-details.panel-open::after {
+  transform: rotate(-135deg);
 }
 
 #now-on-air #show-details #show-panel {
@@ -316,6 +342,7 @@ main section {
 }
 
 #mixcloud-title {
+  display: inline-block;
   background-color: var(--day-button-bg);
   color: var(--day-button-color);
   border-radius: 30px;
@@ -508,120 +535,46 @@ main section {
     gap: 1rem;
   }
 
-  .main-top-row #carousel {
-    max-width: 100%; 
-  }
-
   .glider-contain {
-    width: 100%; 
-    height: 250px; 
+    width: 100%;
+    height: 250px;
   }
 
   .main-top-row #chat {
-    max-width: 100%; 
+    max-width: 100%;
   }
 
-  #main-second-row .right-fb {
-    max-width: 100%; 
-    height: 300px; 
+  /* #now-on-air is set to flex: 0 1 30% for the desktop sidebar layout and
+     has no .box class, so it never picks up the .row .box mobile override
+     above - it was staying pinned at ~30% width (and everything inside it,
+     including the show-panel text, wrapping to a sliver) on phones. */
+  #now-on-air {
+    flex: 1 1 100%;
   }
 
   #main-weekly-schedule .weekly-schedule .day-schedule {
-    min-width: 100%; 
+    min-width: 100%;
     align-self: flex-start;
   }
+
+  .mixcloud-block {
+    width: 100%;
+  }
+
+  /* #show-panel is position:absolute + top:-170%, floating it above
+     #show-details without disturbing layout - a fit for the narrow desktop
+     sidebar this widget was designed for. At full mobile width that just
+     overlaps the current show's own title/time text. Let it sit in normal
+     flow and push the page down instead. */
+  #now-on-air #show-details #show-panel {
+    position: static;
+  }
 }
 
-/* Responsive for main flex columns */
+/* Responsive for the show grids inside each day's schedule (Program page and
+   the weekly-schedule partial both use inline display:grid for these). */
 @media (max-width: 800px) {
-  main > div[style*="display: flex"] {
-    flex-direction: column !important;
-    gap: 1.5rem !important;
-  }
-  main > div[style*="display: flex"] > div {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-  section > div[style*="display: flex"] {
-    flex-direction: column !important;
-    gap: 1.5rem !important;
-  }
-  section > div[style*="display: flex"] > div {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-
   [style*="display: grid"] {
     grid-template-columns: 1fr !important;
-  }
-
-  .header-flex {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 1rem !important;
-  }
-  .header-logo {
-    min-width: 0 !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin-bottom: 1rem !important;
-  }
-  .header-center {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-}
-
-/* Bigger touch targets for mobile phones (min. 44px per WCAG 2.5.5 / iOS HIG) */
-@media (max-width: 768px) {
-  .header-center .player-top-half,
-  .header-center .player-bot-half {
-    height: auto;
-    min-height: 44px;
-  }
-
-  /* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
-     only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
-     without growing .op-player makes the control bar overflow upward past the
-     black background instead of staying centered in it. */
-  .audio-player .op-player {
-    min-height: 44px;
-  }
-
-  .audio-player .op-controls__playpause {
-    min-width: 44px;
-    min-height: 44px;
-  }
-
-  .alt-players {
-    min-height: 44px;
-    padding: 0.4rem 0.5rem;
-  }
-
-  .header-center .player-bot-half .social-media {
-    padding: 0.25rem 0;
-  }
-
-  .header-center .player-bot-half .social-media a {
-    margin: 0;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    box-sizing: border-box;
-  }
-
-  .header-center .player-bot-half .social-media a img {
-    height: 24px;
-  }
-
-  #theme-toggle {
-    display: flex;
-    align-items: center;
-    min-height: 44px;
   }
 }

@@ -180,3 +180,77 @@ input:checked + .slider::before {
     padding: 0 0.2rem;
   }
 }
+
+@media (max-width: 768px) {
+  /* .menu (296px, 3 links at 24px + 2rem gaps) does not fit in .header-center's
+     ~119px flex slot between the logo and the theme switch on a phone-width
+     screen, so it overflows and overlaps both neighbors. Stack the header
+     instead of forcing everything into one row. */
+  .site-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .site-header .header-left,
+  .site-header .header-center,
+  .site-header .header-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-left a img {
+    height: 90px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .menu a {
+    font-size: 18px;
+  }
+
+  .player-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    padding: 0.75rem;
+  }
+
+  .player-content .header-left,
+  .player-content .header-center,
+  .player-content .header-right {
+    width: auto;
+  }
+
+  /* .centovaCast-info (the track-title marquee) is nested inside
+     .header-center, which is the actual flex item here — flex/order on
+     .centovaCast-info itself would be a no-op. */
+  .player-content .header-center {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  /* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
+     only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
+     without growing .op-player makes the control bar overflow upward past the
+     black background instead of staying centered in it. */
+  .player-content .op-player {
+    min-height: 44px;
+  }
+
+  .player-content .op-controls__playpause {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .alternativeplayers {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

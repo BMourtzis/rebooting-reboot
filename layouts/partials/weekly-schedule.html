@@ -1,11 +1,12 @@
-{{/* Weekly schedule partial */}}
+{{/* Weekly schedule partial. Context: (dict "Heading" "..."), Heading defaults to "shows". */}}
 
 {{ $daysGR := site.Data.translations.days }}
 {{ $weekdays := slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" }}
+{{ $heading := .Heading | default "shows" }}
 
 <section id="main-weekly-schedule" class="row">
   <h2 class="weekly-schedule-header box">
-    <span>🎤</span> shows
+    <span>🎤</span> {{ $heading }}
   </h2>
   <div class="weekly-schedule box row">
     {{ range $day := $weekdays }}
