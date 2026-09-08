@@ -36,11 +36,11 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   transition: background 0.3s, color 0.3s;
-  font-family: Arial, sans-serif;
+  font-family: 'Rubik', Arial, sans-serif; /* Rubik covers Greek + Latin, unlike most display-font picks */
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* full viewport height */
+  min-height: 100dvh; /* full viewport height, stable on mobile browser UI */
 }
 
 main {
@@ -137,6 +137,9 @@ a.box-shows.active {
 
 #now-on-air #show-image img {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 }
 
 #now-on-air #show-details {
@@ -223,20 +226,6 @@ a.box-shows.active {
   margin-top: 0;
 }
 
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  transition: background 0.3s, color 0.3s;
-  font-family: Arial, sans-serif;
-}
-
-main {
-  background: var(--main-bg);
-  max-width: 1200px; 
-  margin: auto; 
-  padding: 2rem;
-}
-
 #theme-toggle-light {
   display: var(--theme-light-display);
   filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg);
@@ -276,6 +265,11 @@ main {
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  transition: filter 0.15s ease;
+}
+
+.day-schedule > summary.day-button:hover {
+  filter: brightness(1.15);
 }
 
 .day-button::after {
@@ -399,16 +393,22 @@ main section {
 }
 
 .glider button {
-  background: #222; 
-  color: #fff; 
-  border: none; 
-  border-radius: 50%; 
-  width: 32px; 
-  height: 32px; 
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  top: 50%; 
-  transform: translateY(-50%); 
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.glider button:hover {
+  background: var(--day-button-bg);
 }
 
 .glider-prev {

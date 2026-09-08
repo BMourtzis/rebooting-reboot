@@ -172,6 +172,11 @@ input:checked + .slider::before {
 .alternativeplayers {
   color: white;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.alternativeplayers:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 800px) {
