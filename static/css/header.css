@@ -128,10 +128,16 @@ input:checked + .slider::before {
   color: var(--moon-color);
 }
 
+/* Sticky so the player stays reachable while scrolling the (fairly long)
+   schedule / Mixcloud sections below - this is the station's core action,
+   not a secondary nav item. */
 .header-player {
   background-color: var(--day-button-bg);
   color: var(--day-button-color);
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .player-content {
@@ -148,6 +154,52 @@ input:checked + .slider::before {
   box-sizing: border-box;
 }
 
+.player-content .header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.listen-live-label {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* The station's core action deserves a real button, not the OpenPlayerJS
+   default skin's small transparent icon. */
+.op-controls__playpause {
+  width: 52px !important;
+  height: 52px !important;
+  background-color: var(--day-button-bg) !important;
+  border-radius: 50% !important;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+/* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
+   only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
+   without growing .op-player makes the control bar overflow upward past the
+   black background instead of staying centered in it - now relevant at every
+   width since the button is 52px everywhere, not just on mobile. */
+/* .audio__container #audio (below) also targets this element - OpenPlayerJS
+   reuses the original <audio id="audio"> id on its wrapper div - and its
+   higher-specificity min-height: 20px !important would otherwise win, so
+   this needs an equally-ID-qualified selector to reliably beat it. */
+.player-content .header-left #audio {
+  min-height: 52px !important;
+}
+
+.op-controls__playpause:hover {
+  opacity: 1 !important;
+  background-color: #e50000 !important;
+  transform: scale(1.06);
+}
+
+.op-controls__playpause:active {
+  transform: scale(0.95);
+}
+
 .centovaCast-info {
   flex: 1 1 48%;
 }
@@ -158,6 +210,12 @@ input:checked + .slider::before {
 
 .op-controls {
   font-size: 0.50em !important;
+  /* .op-controls__playpause is stretched to the container's full height
+     (52px, see the .op-controls__playpause rule above) by the default
+     stretch behavior, but the volume icon/slider are their own natural
+     (much shorter) size - center everyone on the cross axis instead of
+     top-aligning the short ones against a tall stretched button. */
+  align-items: center !important;
 }
 
 .op-controls button {
@@ -165,8 +223,12 @@ input:checked + .slider::before {
   padding:0 4px !important;
 }
 
+/* OpenPlayerJS's own CSS puts a 9px top margin on the volume track (tuned for
+   its default small button row); with align-items: center above and our much
+   taller play button, that baked-in margin just pushes the track visibly
+   below-center. */
 .op-controls__volume {
-  margin-top: 7px !important;
+  margin-top: 0 !important;
 }
 
 .alternativeplayers {
@@ -238,19 +300,6 @@ input:checked + .slider::before {
   .player-content .header-center {
     flex: 1 1 100%;
     order: 3;
-  }
-
-  /* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
-     only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
-     without growing .op-player makes the control bar overflow upward past the
-     black background instead of staying centered in it. */
-  .player-content .op-player {
-    min-height: 44px;
-  }
-
-  .player-content .op-controls__playpause {
-    min-width: 44px;
-    min-height: 44px;
   }
 
   .alternativeplayers {
