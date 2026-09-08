@@ -177,6 +177,31 @@ a.box-shows.active {
   transform: rotate(-135deg);
 }
 
+/* Fallback shown when no show is currently live (open schedule hours with
+   nothing registered) - a plain list of today's lineup instead of the red
+   "on air" treatment, which is reserved for an actually-live show. */
+#now-on-air #show-details.schedule-fallback {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: default;
+}
+
+#now-on-air #show-details.schedule-fallback::after {
+  display: none;
+}
+
+.today-schedule-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem 0;
+}
+
+.today-schedule-item + .today-schedule-item {
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+}
+
 #now-on-air #show-details #show-panel {
   position: absolute;
   top: -170%;
@@ -287,7 +312,7 @@ a.box-shows.active {
 }
 
 .day-content {
-  background-color: var(--day-content-bg);
+  background-color: var(--color-bg);
   padding: 1rem;
   border-radius: 4px;
 }

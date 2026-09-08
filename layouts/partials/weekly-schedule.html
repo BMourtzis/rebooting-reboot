@@ -33,7 +33,7 @@
     <div class="day-content">
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
         {{ range $sorted }}
-        <a href="{{ "shows/" | relURL  }}{{ .show.id }}" style="text-decoration: none; color: #000">
+        <a href="{{ "shows/" | relURL  }}{{ .show.id }}" style="text-decoration: none; color: var(--color-text)">
         <div style="display: flex; align-items: center; min-width: 0;">
           <img src="{{ .show.image | relURL }}" alt="{{ .show.title }}" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
           <div style="min-width: 0;">
@@ -45,7 +45,7 @@
               word-break: break-word;
               white-space: normal;
             ">{{ .show.title }}</h6>
-            <div style="color: #444;">{{ index .show.schedule $day}}</div>
+            <div style="color: var(--color-text);">{{ index .show.schedule $day}}</div>
           </div>
         </div>
         </a>
