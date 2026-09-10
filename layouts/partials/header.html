@@ -10,8 +10,6 @@
     <nav class="header-center">
       <ul class="menu">
         <li><a href="/program">Program</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/reboot-with-us">Reboot With Us</a></li>
       </ul>
     </nav>
 
@@ -35,11 +33,13 @@
       </label>
     </div>
   </div>
-  <div class="header-player">
+</header>
+<div class="header-player">
     <div class="player-content">
       <div class="header-left">
+        <span class="listen-live-label">Listen Live</span>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openplayerjs/2.14.10/openplayer.min.css">
-        <div class="audio__container" style="width: 140px;">
+        <div class="audio__container" style="width: 170px;">
           <audio class="op-player__media" controls preload="none" id="audio">
             <source src="https://radioreb.radioca.st/stream" type="audio/mp3">
           </audio>
@@ -57,6 +57,76 @@
               },
             });
             player.init();
+
+            // The live stream occasionally drops mid-playback (proxy/network
+            // hiccups on the hosting side) and nothing here was ever
+            // listening for that, so the player just went silent until the
+            // listener manually refreshed the page. This keeps it alive by
+            // reloading the source and resuming whenever that happens.
+            //
+            // OpenPlayerJS moves the "audio" id onto its own wrapper <div>
+            // and strips it from the real <audio> element, but not
+            // synchronously within init() - so the real element (the one
+            // that actually fires media events) has to be polled for
+            // instead of grabbed immediately.
+            function findAudioEl() {
+              const el = document.getElementById('audio');
+              if (!el) return null;
+              return el.tagName === 'AUDIO' ? el : el.querySelector('audio');
+            }
+
+            (function waitForAudioEl(attempts) {
+              const audio = findAudioEl();
+              if (!audio) {
+                if (attempts > 20) return; // gave it 2s, OpenPlayerJS never finished setting up
+                setTimeout(function () { waitForAudioEl(attempts + 1); }, 100);
+                return;
+              }
+
+              const streamUrl = 'https://radioreb.radioca.st/stream';
+              let reconnecting = false;
+              let lastTime = -1;
+              let stalledChecks = 0;
+
+              function reconnectStream(reason) {
+                if (reconnecting) return;
+                reconnecting = true;
+                console.info('[stream] reconnecting after ' + reason);
+                audio.src = streamUrl + '?_=' + Date.now();
+                audio.load();
+                audio.play().catch(function () {
+                  // Still down - the watchdog below keeps retrying.
+                });
+                stalledChecks = 0;
+                setTimeout(function () { reconnecting = false; }, 5000);
+              }
+
+              audio.addEventListener('error', function () { reconnectStream('error event'); });
+              audio.addEventListener('ended', function () { reconnectStream('ended event'); });
+
+              // A live stream's currentTime should climb continuously while
+              // playing. Some connection failures leave the element
+              // "waiting" without ever firing "error" or "stalled", so this
+              // watchdog is the only reliable way to catch those: no
+              // progress across two checks (~20s) while supposedly playing
+              // means it's stuck.
+              setInterval(function () {
+                if (audio.paused || reconnecting) {
+                  lastTime = audio.currentTime;
+                  stalledChecks = 0;
+                  return;
+                }
+                if (audio.currentTime === lastTime) {
+                  stalledChecks++;
+                  if (stalledChecks >= 2) {
+                    reconnectStream('stalled currentTime');
+                  }
+                } else {
+                  stalledChecks = 0;
+                }
+                lastTime = audio.currentTime;
+              }, 10000);
+            })(0);
           });
         </script>
       </div>
@@ -70,7 +140,7 @@
               };})();
             </script>
             <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
-            <marquee behavior="scroll" direction="left" scrollamount="1" style="color: #fff;">
+            <marquee behavior="scroll" direction="right" scrollamount="4" style="color: #fff;">
               <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
             </marquee>
           </div>
@@ -81,5 +151,4 @@
           </a>
       </div>
     </div>
-  </div>
-</header>
+</div>

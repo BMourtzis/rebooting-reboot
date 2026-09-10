@@ -6,13 +6,56 @@
 
     <div id="chat">
       <iframe
+        id="tlkio-chat"
         src="https://tlk.io/rebootchat?theme=theme--minimal"
         frameborder="0"
         allowfullscreen>
       </iframe>
+      <div class="chat-fallback">
+        <a href="https://tlk.io/rebootchat" target="_blank" rel="noopener noreferrer" class="day-button" id="chat-fallback-link">
+          Δε δουλεύει το chat; Πάτα εδώ!
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    var chat = document.getElementById("chat");
+    var iframe = document.getElementById("tlkio-chat");
+
+    function markFailed() {
+      chat.classList.add("chat-failed");
+    }
+
+    // A cross-origin iframe fires "load" even when the navigation itself
+    // failed (DNS error, offline, connection refused) - the browser just
+    // loads its own error page inside the frame and calls that a successful
+    // load. That makes "load" useless as a success signal here, so instead
+    // we independently probe reachability of the same URL with fetch, which
+    // does reject on those network-level failures. "error" is kept as a
+    // bonus signal for the cases (e.g. some ad blockers) where the browser
+    // does report the frame itself as blocked.
+    iframe.addEventListener("error", markFailed);
+
+    fetch(iframe.src, {
+      mode: "no-cors",
+      cache: "no-store",
+      signal: AbortSignal.timeout(6000),
+    }).catch(markFailed);
+
+    // target="_blank" alone is left in place for graceful degradation
+    // (middle-click, "open in new tab", no-JS), but driving the open
+    // explicitly here removes any dependence on how a given browser
+    // chooses to honor that attribute on its own.
+    var fallbackLink = document.getElementById("chat-fallback-link");
+    fallbackLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.open(fallbackLink.href, "_blank", "noopener,noreferrer");
+    });
+  })();
+</script>
 
 <section class="main-mid-bot-row-content">
   <div class="main-mid-bot-row row content">
