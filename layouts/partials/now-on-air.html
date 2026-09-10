@@ -43,12 +43,10 @@ function findCurrentShow(shows) {
     });
 }
 
-const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-
 function getShowsForDay(shows, dayName) {
     return shows
         .filter(s => s.schedule[dayName])
-        .map(s => ({ ...s, range: parseRange(s.schedule[dayName]), todaysRange: s.schedule[dayName] }))
+        .map(s => ({ ...s, day: dayName, range: parseRange(s.schedule[dayName]), todaysRange: s.schedule[dayName] }))
         .sort((a, b) => a.range.start - b.range.start);
 }
 
@@ -57,50 +55,11 @@ function getAroundShowsSmart(shows, day, currentShowId, prevCount = 2, nextCount
     let currentIndex = todayShows.findIndex(s => s.id === currentShowId);
     if (currentIndex === -1) return { prev: [], current: null, next: [] };
 
-    const result = { prev: [], current: todayShows[currentIndex], next: [] };
-    const lenToday = todayShows.length;
-
-    let neededPrev = prevCount;
-    let prevIdx = currentIndex - 1;
-    let dayIdx = DAYS.indexOf(day);
-
-    while (neededPrev > 0) {
-        if (prevIdx >= 0) {
-            result.prev.unshift(todayShows[prevIdx]);
-            prevIdx--;
-            neededPrev--;
-        } else {
-            dayIdx = (dayIdx - 1 + 7) % 7;
-            const prevDay = DAYS[dayIdx];
-            const prevDayShows = getShowsForDay(shows, prevDay);
-            if (prevDayShows.length === 0) break;
-            const take = Math.min(neededPrev, prevDayShows.length);
-            result.prev = prevDayShows.slice(-take).concat(result.prev);
-            neededPrev -= take;
-            prevIdx = -1;
-        }
-    }
-
-    let neededNext = nextCount;
-    let nextIdx = currentIndex + 1;
-    dayIdx = DAYS.indexOf(day);
-
-    while (neededNext > 0) {
-        if (nextIdx < lenToday) {
-            result.next.push(todayShows[nextIdx]);
-            nextIdx++;
-            neededNext--;
-        } else {
-            dayIdx = (dayIdx + 1) % 7;
-            const nextDay = DAYS[dayIdx];
-            const nextDayShows = getShowsForDay(shows, nextDay);
-            if (nextDayShows.length === 0) break;
-            const take = Math.min(neededNext, nextDayShows.length);
-            result.next = result.next.concat(nextDayShows.slice(0, take));
-            neededNext -= take;
-            nextIdx = 0;
-        }
-    }
+    const result = {
+        prev: todayShows.slice(Math.max(0, currentIndex - prevCount), currentIndex),
+        current: todayShows[currentIndex],
+        next: todayShows.slice(currentIndex + 1, currentIndex + 1 + nextCount),
+    };
     return result;
 }
 
@@ -119,26 +78,21 @@ function renderNowOnAir(enriched, currentShow) {
 
     imageContainer.innerHTML = `<img class="current-show-img" src="/${around.current.image}" alt="${around.current.title}">`;
 
+    const dayLineup = [...around.prev, around.current, ...around.next];
+
     detailsContainer.innerHTML = `
         <div style="min-width: 0;">
             <h6 class="show-header">${around.current.title}</h6>
             <div class="show-time">${around.current.day}, ${around.current.todaysRange}</div>
         </div>
         <div id="show-panel">
-            ${around.prev.map((show) => `
-                <div class="show-panel-details">
-                    <h6 class="show-header">${show.title}</h6>
-                    <div class="show-time">${show.day}, ${show.todaysRange || '-'}</div>
-                </div>
-            `).join('')}
-            <div id="panel-current-show" class="show-panel-details">
-                <h6 class="show-header">${around.current.title}</h6>
-                <div class="show-time">${around.current.day}, ${around.current.todaysRange || '-'}</div>
-            </div>
-            ${around.next.map((show) => `
-                <div class="show-panel-details">
-                    <h6 class="show-header">${show.title}</h6>
-                    <div class="show-time">${show.day}, ${show.todaysRange || '-'}</div>
+            ${dayLineup.map((show) => `
+                <div class="show-panel-details${show.id === around.current.id ? ' active' : ''}">
+                    <img class="show-img" src="/${show.image}" alt="${show.title}">
+                    <div style="min-width: 0;">
+                        <h6 class="show-header">${show.title}</h6>
+                        <div class="show-time">${show.todaysRange || '-'}</div>
+                    </div>
                 </div>
             `).join('')}
         </div>
