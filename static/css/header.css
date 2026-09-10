@@ -16,7 +16,8 @@ header {
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2.5rem;
   padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
@@ -26,10 +27,17 @@ header {
   flex: 0 0 auto;
 }
 
+/* With just one nav link left (the rest of the site's pages were removed),
+   letting this stretch to fill the row (flex: 1) left it floating alone in
+   a huge empty middle strip between the logo and the toggle. Sizing it to
+   its content keeps the nav snug against the logo instead. */
 .header-center {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
-  justify-content: center;
+}
+
+.header-right {
+  margin-left: auto;
 }
 
 .header-left a img {

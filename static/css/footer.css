@@ -13,10 +13,10 @@ footer.site-footer {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   color: #eee;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
@@ -31,10 +31,14 @@ footer.site-footer {
   margin-bottom: 0.5rem;
 }
 
+/* With just one link left (the rest of the site's pages were removed),
+   letting this stretch to fill the row (flex: 1) left it floating alone in
+   a huge empty middle strip between the logo and the social icons. Sizing
+   it to its content keeps it snug against the logo instead. */
 .footer-center {
-  flex: 1;
+  flex: 0 0 auto;
   margin-top: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 .footer-links {
@@ -56,6 +60,7 @@ footer.site-footer {
 
 .footer-right {
   margin-top: 50px;
+  margin-left: auto;
   flex: 0 0 auto;
   display: flex;
   gap: 1rem;
@@ -89,5 +94,6 @@ footer.site-footer {
 
   .footer-right {
     order: 2;
+    margin-left: 0;
   }
 }
