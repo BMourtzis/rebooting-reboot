@@ -12,7 +12,7 @@
         allowfullscreen>
       </iframe>
       <div class="chat-fallback">
-        <a href="https://tlk.io/rebootchat" target="_blank" rel="noopener noreferrer" class="day-button">
+        <a href="https://tlk.io/rebootchat" target="_blank" rel="noopener noreferrer" class="day-button" id="chat-fallback-link">
           Δε δουλεύει το chat; Πάτα εδώ!
         </a>
       </div>
@@ -44,6 +44,16 @@
       cache: "no-store",
       signal: AbortSignal.timeout(6000),
     }).catch(markFailed);
+
+    // target="_blank" alone is left in place for graceful degradation
+    // (middle-click, "open in new tab", no-JS), but driving the open
+    // explicitly here removes any dependence on how a given browser
+    // chooses to honor that attribute on its own.
+    var fallbackLink = document.getElementById("chat-fallback-link");
+    fallbackLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      window.open(fallbackLink.href, "_blank", "noopener,noreferrer");
+    });
   })();
 </script>
 
