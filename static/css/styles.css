@@ -444,10 +444,43 @@ main section {
 }
 
 #chat iframe {
-  width: 100%; 
-  height: 480px; 
-  background: #fff; 
+  width: 100%;
+  height: 480px;
+  background: #fff;
   box-sizing: border-box;
+}
+
+#chat .chat-fallback {
+  display: none;
+  width: 100%;
+  height: 480px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--color-bg);
+  border-radius: 4px;
+}
+
+#chat .chat-fallback a.day-button {
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+#chat .chat-fallback a.day-button::after {
+  display: none;
+}
+
+#chat .chat-fallback a.day-button:hover {
+  filter: brightness(1.15);
+}
+
+#chat.chat-failed iframe {
+  display: none;
+}
+
+#chat.chat-failed .chat-fallback {
+  display: flex;
 }
 
 #main-second-row {
