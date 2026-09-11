@@ -55,6 +55,14 @@
                   right: [],
                 },
               },
+              // OpenPlayerJS hides its volume slider on Android/iOS by
+              // default (useDeviceVolume: true) on the assumption that
+              // listeners will use their hardware buttons instead. This is a
+              // shared radio stream people often listen to with the phone's
+              // ringer/media volume already turned down for other apps, so
+              // keep the on-screen slider everywhere instead of only on
+              // desktop.
+              useDeviceVolume: false,
             });
             player.init();
 
