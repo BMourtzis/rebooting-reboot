@@ -1,0 +1,348 @@
+:root {
+  --sun-color: #c6aee4;
+  --moon-color: #ffa700;
+  --menu-font-color: #666;
+}
+
+[data-theme="dark"] {
+  --menu-font-color: #bbb;
+} 
+
+header {
+  padding-top: 0;
+}
+
+.site-header {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-left, .header-right {
+  flex: 0 0 auto;
+}
+
+/* With just one nav link left (the rest of the site's pages were removed),
+   letting this stretch to fill the row (flex: 1) left it floating alone in
+   a huge empty middle strip between the logo and the toggle. Sizing it to
+   its content keeps the nav snug against the logo instead. */
+.header-center {
+  flex: 0 0 auto;
+  display: flex;
+}
+
+.header-right {
+  margin-left: auto;
+}
+
+.header-left a img {
+  height: 130px; 
+  margin-bottom: 0.5rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--menu-font-color);
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+
+/* slider */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 62px;
+  height: 30px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  box-sizing: border-box;
+}
+
+/* Icons */
+.slider .icon {
+  font-size: 3px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* The moving knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  background: white;
+  border-radius: 50%;
+  left: 3px;
+  top: 3px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background: #4a4a4a;
+}
+
+input:checked + .slider::before {
+  transform: translateX(32px);
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.sun svg {
+  color: var(--sun-color);
+}
+.moon svg {
+  color: var(--moon-color);
+}
+
+/* Sticky so the player stays reachable while scrolling the (fairly long)
+   schedule / Mixcloud sections below - this is the station's core action,
+   not a secondary nav item. */
+.header-player {
+  background-color: var(--day-button-bg);
+  color: var(--day-button-color);
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.player-content {
+  background-color: black;
+  max-width: 1000px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.player-content .header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.listen-live-label {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* The station's core action deserves a real button, not the OpenPlayerJS
+   default skin's small transparent icon. */
+.op-controls__playpause {
+  width: 52px !important;
+  height: 52px !important;
+  background-color: var(--day-button-bg) !important;
+  border-radius: 50% !important;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+/* .op-controls is absolutely positioned (bottom: 0) inside .op-player, which
+   only has min-height: 30px in OpenPlayerJS's own CSS. Growing the button
+   without growing .op-player makes the control bar overflow upward past the
+   black background instead of staying centered in it - now relevant at every
+   width since the button is 52px everywhere, not just on mobile. */
+/* .audio__container #audio (below) also targets this element - OpenPlayerJS
+   reuses the original <audio id="audio"> id on its wrapper div - and its
+   higher-specificity min-height: 20px !important would otherwise win, so
+   this needs an equally-ID-qualified selector to reliably beat it. */
+.player-content .header-left #audio {
+  min-height: 52px !important;
+}
+
+.op-controls__playpause:hover {
+  opacity: 1 !important;
+  background-color: #e50000 !important;
+  transform: scale(1.06);
+}
+
+.op-controls__playpause:active {
+  transform: scale(0.95);
+}
+
+/* .header-center is shared with the top nav (flex: 0 0 auto there, so it
+   hugs its content). In the player bar that same rule left this box only as
+   wide as the "now playing" text itself, so the marquee's scroll track was
+   just that narrow box - the text vanished off its edge long before
+   reaching the actual edge of the black player bar. Stretch it to fill the
+   real space between the play controls and the alternative-players link. */
+.player-content .header-center {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.centovaCast-info {
+  flex: 1 1 48%;
+  width: 100%;
+  min-width: 0;
+}
+
+.centovaCast-info marquee {
+  display: block;
+  width: 100%;
+}
+
+.audio__container #audio {
+  min-height: 20px !important;
+}
+
+.op-controls {
+  font-size: 0.50em !important;
+  /* .op-controls__playpause is stretched to the container's full height
+     (52px, see the .op-controls__playpause rule above) by the default
+     stretch behavior, but the volume icon/slider are their own natural
+     (much shorter) size - center everyone on the cross axis instead of
+     top-aligning the short ones against a tall stretched button. */
+  align-items: center !important;
+}
+
+.op-controls button {
+  font-size: 80% !important;
+  padding:0 4px !important;
+}
+
+/* OpenPlayerJS's own CSS puts a 9px top margin on the volume track (tuned for
+   its default small button row); with align-items: center above and our much
+   taller play button, that baked-in margin just pushes the track visibly
+   below-center. */
+.op-controls__volume {
+  margin-top: 0 !important;
+}
+
+.alternativeplayers {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.alternativeplayers:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+  .player-content {
+    max-width: 800px;
+    padding: 0 0.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* .menu (296px, 3 links at 24px + 2rem gaps) does not fit in .header-center's
+     ~119px flex slot between the logo and the theme switch on a phone-width
+     screen, so it overflows and overlaps both neighbors. Stack the header
+     instead of forcing everything into one row. */
+  .site-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .site-header .header-left,
+  .site-header .header-center,
+  .site-header .header-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-left a img {
+    height: 90px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .menu a {
+    font-size: 18px;
+  }
+
+  /* header-left (play controls) and header-right (alternative players) used
+     to sit side by side on one row, which just happened to push them to
+     opposite edges instead of centering them - there was never enough spare
+     width on a phone screen for justify-content: center to have a visible
+     effect on a two-item row. Stacking each zone on its own full-width line
+     (matching how .site-header above already stacks + centers logo / nav /
+     toggle) lets each one be centered on its own. */
+  .player-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .player-content .header-left,
+  .player-content .header-center,
+  .player-content .header-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* .centovaCast-info (the track-title marquee) is nested inside
+     .header-center, which is the actual flex item here — flex/order on
+     .centovaCast-info itself would be a no-op. */
+  .player-content .header-center {
+    order: 3;
+  }
+
+  .player-content .header-right {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .alternativeplayers {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
