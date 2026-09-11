@@ -208,8 +208,26 @@ input:checked + .slider::before {
   transform: scale(0.95);
 }
 
+/* .header-center is shared with the top nav (flex: 0 0 auto there, so it
+   hugs its content). In the player bar that same rule left this box only as
+   wide as the "now playing" text itself, so the marquee's scroll track was
+   just that narrow box - the text vanished off its edge long before
+   reaching the actual edge of the black player bar. Stretch it to fill the
+   real space between the play controls and the alternative-players link. */
+.player-content .header-center {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .centovaCast-info {
   flex: 1 1 48%;
+  width: 100%;
+  min-width: 0;
+}
+
+.centovaCast-info marquee {
+  display: block;
+  width: 100%;
 }
 
 .audio__container #audio {
