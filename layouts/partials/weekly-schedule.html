@@ -1,18 +1,17 @@
-{{/* Weekly schedule partial */}}
+{{/* Weekly schedule partial. Context: (dict "Heading" "..."), Heading defaults to "shows". */}}
 
 {{ $daysGR := site.Data.translations.days }}
 {{ $weekdays := slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" }}
+{{ $heading := .Heading | default "shows" }}
 
 <section id="main-weekly-schedule" class="row">
   <h2 class="weekly-schedule-header box">
-    <span>🎤</span> shows
+    <span>🎤</span> {{ $heading }}
   </h2>
   <div class="weekly-schedule box row">
     {{ range $day := $weekdays }}
-    <div class="day-schedule box">
-    <a href="{{ "days/" | relURL  }}{{ lower $day }}" >
-      <div class="day-button">{{ index $daysGR $day }}</div>
-    </a>
+    <details class="day-schedule box" data-day="{{ $day }}">
+    <summary class="day-button">{{ index $daysGR $day }}</summary>
 
     {{ $shows := slice }}
     {{ range site.Data.radio_shows }}
@@ -34,7 +33,7 @@
     <div class="day-content">
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
         {{ range $sorted }}
-        <a href="{{ "shows/" | relURL  }}{{ .show.id }}" style="text-decoration: none; color: #000">
+        <a href="{{ "shows/" | relURL  }}{{ .show.id }}" style="text-decoration: none; color: var(--color-text)">
         <div style="display: flex; align-items: center; min-width: 0;">
           <img src="{{ .show.image | relURL }}" alt="{{ .show.title }}" style="width: 60px; height: 60px; object-fit: cover; margin-right: 1rem;">
           <div style="min-width: 0;">
@@ -46,7 +45,7 @@
               word-break: break-word;
               white-space: normal;
             ">{{ .show.title }}</h6>
-            <div style="color: #444;">{{ index .show.schedule $day}}</div>
+            <div style="color: var(--color-text);">{{ index .show.schedule $day}}</div>
           </div>
         </div>
         </a>
@@ -54,7 +53,22 @@
       </div>
     </div>
   {{ end }}
-  </div>
+  </details>
   {{ end }}
 </div>
+
+<script>
+  (function () {
+    var formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Athens",
+      weekday: "long",
+    });
+    var today = formatter.format(new Date());
+    document.querySelectorAll("#main-weekly-schedule details.day-schedule").forEach(function (el) {
+      if (el.dataset.day === today) {
+        el.open = true;
+      }
+    });
+  })();
+</script>
 </section>

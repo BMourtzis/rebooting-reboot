@@ -22,7 +22,6 @@
   }
 
   function getGreekNow() {
-    // Get current time in Europe/Athens
     const formatter = new Intl.DateTimeFormat("en-GB", {
       timeZone: "Europe/Athens",
       weekday: "long",
@@ -83,7 +82,6 @@
 
     if(activeId) {
       const el = document.getElementById(activeId);
-console.log(el);
 
       if(el) {
         el.classList.add("active");

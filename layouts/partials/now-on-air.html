@@ -1,0 +1,170 @@
+{{/* Shows of the day partial */}}
+
+<section id="now-on-air">
+  <h2 id="noa-header" class="text-white">Now On Air</h2>
+  <div id="show-image"></div>
+  <div id="show-details" class="text-white" style="position: relative;"></div>
+</section>
+
+<script>
+  window.shows = {{ site.Data.radio_shows | jsonify }};
+</script>
+
+<script>
+function parseTime(str) {
+    const [h, m] = str.split(":").map(Number);
+    return h * 60 + m;
+}
+
+function parseRange(range) {
+    const [startStr, endStr] = range.split("-").map((s) => s.trim());
+    const start = parseTime(startStr);
+    const end = parseTime(endStr);
+    const wraps = end <= start;
+    return { start, end, wraps };
+}
+
+function isNowInRange({ start, end, wraps }, nowMinutes) {
+    if (!wraps) return nowMinutes >= start && nowMinutes < end;
+    return nowMinutes >= start || nowMinutes < end;
+}
+
+function findCurrentShow(shows) {
+    const now = new Date();
+    const day = now.toLocaleString('en-US', { weekday: 'long' });
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+    return shows.map(show => {
+        const todaysRange = show.schedule[day];
+        if (!todaysRange) return { ...show, day, isPlaying: false };
+        const parsed = parseRange(todaysRange);
+        const isPlaying = isNowInRange(parsed, nowMinutes);
+        return { ...show, day, range: parsed, isPlaying, todaysRange };
+    });
+}
+
+function getShowsForDay(shows, dayName) {
+    return shows
+        .filter(s => s.schedule[dayName])
+        .map(s => ({ ...s, day: dayName, range: parseRange(s.schedule[dayName]), todaysRange: s.schedule[dayName] }))
+        .sort((a, b) => a.range.start - b.range.start);
+}
+
+function getAroundShowsSmart(shows, day, currentShowId, prevCount = 2, nextCount = 3) {
+    let todayShows = getShowsForDay(shows, day);
+    let currentIndex = todayShows.findIndex(s => s.id === currentShowId);
+    if (currentIndex === -1) return { prev: [], current: null, next: [] };
+
+    const result = {
+        prev: todayShows.slice(Math.max(0, currentIndex - prevCount), currentIndex),
+        current: todayShows[currentIndex],
+        next: todayShows.slice(currentIndex + 1, currentIndex + 1 + nextCount),
+    };
+    return result;
+}
+
+function renderNowOnAir(enriched, currentShow) {
+    const header = document.getElementById("noa-header");
+    const imageContainer = document.getElementById("show-image");
+    const detailsContainer = document.getElementById("show-details");
+    const around = getAroundShowsSmart(enriched, currentShow.day, currentShow.id);
+
+    header.textContent = "Now On Air";
+    detailsContainer.classList.remove("schedule-fallback");
+    detailsContainer.setAttribute("role", "button");
+    detailsContainer.setAttribute("tabindex", "0");
+    detailsContainer.setAttribute("aria-expanded", detailsContainer.classList.contains("panel-open") ? "true" : "false");
+    detailsContainer.setAttribute("aria-label", "Show previous and next shows");
+
+    imageContainer.innerHTML = `<img class="current-show-img" src="/${around.current.image}" alt="${around.current.title}">`;
+
+    const dayLineup = [...around.prev, around.current, ...around.next];
+
+    detailsContainer.innerHTML = `
+        <div style="min-width: 0;">
+            <h6 class="show-header">${around.current.title}</h6>
+            <div class="show-time">${around.current.day}, ${around.current.todaysRange}</div>
+        </div>
+        <div id="show-panel">
+            ${dayLineup.map((show) => `
+                <div class="show-panel-details${show.id === around.current.id ? ' active' : ''}">
+                    <img class="show-img" src="/${show.image}" alt="${show.title}">
+                    <div style="min-width: 0;">
+                        <h6 class="show-header">${show.title}</h6>
+                        <div class="show-time">${show.todaysRange || '-'}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+// No show is currently live (the schedule has open hours with no show
+// registered). Fall back to today's full lineup instead of leaving the
+// panel blank.
+function renderTodaysSchedule(enriched, today) {
+    const header = document.getElementById("noa-header");
+    const imageContainer = document.getElementById("show-image");
+    const detailsContainer = document.getElementById("show-details");
+
+    header.textContent = "Today's Schedule";
+    imageContainer.innerHTML = "";
+    detailsContainer.classList.add("schedule-fallback");
+    detailsContainer.classList.remove("panel-open");
+    detailsContainer.removeAttribute("role");
+    detailsContainer.removeAttribute("tabindex");
+    detailsContainer.removeAttribute("aria-expanded");
+    detailsContainer.removeAttribute("aria-label");
+
+    const todayShows = getShowsForDay(enriched, today);
+
+    if (todayShows.length === 0) {
+        detailsContainer.innerHTML = `<div class="show-panel-details">No shows scheduled today.</div>`;
+        return;
+    }
+
+    detailsContainer.innerHTML = todayShows.map((show) => `
+        <a href="/shows/${show.id}" class="today-schedule-item">
+            <img class="show-img" src="/${show.image}" alt="${show.title}">
+            <div style="min-width: 0;">
+                <h6 class="show-header">${show.title}</h6>
+                <div class="show-time">${show.todaysRange}</div>
+            </div>
+        </a>
+    `).join('');
+}
+
+function renderShows() {
+    const now = new Date();
+    const today = now.toLocaleString('en-US', { weekday: 'long' });
+    const enriched = findCurrentShow(JSON.parse(window.shows));
+    const currentShow = enriched.find(s => s.isPlaying);
+
+    if (currentShow) {
+        renderNowOnAir(enriched, currentShow);
+    } else {
+        renderTodaysSchedule(enriched, today);
+    }
+}
+
+renderShows();
+setInterval(renderShows, 60 * 1000);
+
+// :hover never fires on touch devices, so the previous/next shows panel
+// needs a tap/keyboard toggle too, not just the CSS :hover reveal. Only
+// relevant while a show is actually live (see renderNowOnAir) - the
+// schedule-list fallback has nothing to toggle.
+const showDetails = document.getElementById("show-details");
+function togglePanel() {
+    if (!showDetails.hasAttribute("role")) return;
+    const isOpen = showDetails.classList.toggle("panel-open");
+    showDetails.setAttribute("aria-expanded", isOpen);
+}
+showDetails.addEventListener("click", togglePanel);
+showDetails.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        togglePanel();
+    }
+});
+</script>
