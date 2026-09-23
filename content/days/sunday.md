@@ -8,4 +8,4 @@ aliases :
 **Κυριακή**
 
 - 18:00 - 20:00 | **Sunday's Tribute**
-- 20:00 - 22:00 | **Class City Rockers**
+- 20:00 - 21:30 | **Class City Rockers**

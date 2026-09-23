@@ -39,7 +39,7 @@
   image: "images/radio-shows/letmeridenewlogo.png"
   description: "Αισθάνεται μεγαλύτερη άνεση στις παρυφές, παρά στο κέντρο… Εγγενώς αμφίσημη και πολύμορφη, διαπερνά τα συμβατικά όρια και διαφεύγει τον ορισμό…"
   schedule:
-    Wednesday: "18:00 - 19:00"
+    Wednesday: "21:30 - 22:30"
 - id: metaheriastistsepes
   title: Με τα χέρια στις τσέπες
   image: "images/radio-shows/tsepesupd.jpg"
@@ -51,7 +51,7 @@
   image: "images/radio-shows/teenagekicks.jpg"
   description: "Μια περιπλάνηση σε όλο το φάσμα του rock n’ roll {garage, (post) punk, grunge, indie/alternative κ.ά.}, με απαραίτητη προϋπόθεση απ’τα κομμάτια να ξεπηδάνε φλόγα, πάθος, ψυχή και τσαγανό. Κομμάτια που μαζί τους μεγαλώσαμε, ερωτευτήκαμε, πολιτικοποιηθήκαμε, ξενυχτήσαμε, χορέψαμε, κλάψαμε.\nΓιατί τα εφηβικά μας σκιρτήματα και όνειρα δεν ξεπερνιούνται εύκολα.\nΓιατί όλα αυτά μας κάνανε αυτό που είμαστε τώρα.\nΓιατί πατρίδα μας είναι τα παιδικά μας χρόνια."
   schedule:
-    Wednesday: "20:00 - 22:00"
+    Wednesday: "20:00 - 21:30"
 - id: thedudes
   title: The Dudes
   image: "images/radio-shows/thedudes.jpg"
@@ -63,13 +63,13 @@
   image: "images/radio-shows/electricfrequencies.png"
   description: "Μουσικές για ταινίες και ταινίες για συναισθήματα"
   schedule:
-    Monday: "20:00 - 22:00"
+    Thursday: "19:00 - 21:00"
 - id: redflag
   title: Red Flag
   image: "images/radio-shows/redflag.jpg"
   description: "Εκπομπή που δίνει κομμάτια που δεν έχει, σε ακροατές που δεν τα θέλουν. Εβδομαδιαία ανασκόπηση νέων και παλιών μουσικών εμμονών χωρίς δέσμευση στο είδος, αλλά με εμφανή αδυναμία στην post-punk σκηνή και με ξεκάθαρη εξάρτηση από την εκάστοτε διάθεση."
   schedule:
-    Thursday: "20:00 - 22:00"
+    Thursday: "21:00 - 22:00"
 - id: parias
   title: Παρίας
   image: "images/radio-shows/parias.jpg"
@@ -87,7 +87,7 @@
   image: "images/radio-shows/lostandfound.jpg"
   description: "Στα μουσικά απολεσθέντα βρίσκεις ό,τι ψάχνεις και ό,τι δεν ξέρεις πως σου λείπει."
   schedule:
-    Thursday: "18:00 - 20:00"
+    Monday: "20:00 - 22:00"
 - id: canislupus
   title: Canis Lupus
   image: "images/radio-shows/canislupus.jpg"
@@ -118,12 +118,6 @@
   description: "Τσουνάμι στα ραδιοκύματα!! Μην τυχόν! Μια εκπομπή σταθμός στο ελληνικό ραδιόφωνο: επικαιρότητα και παράδοση, χεμ σαμπού χεμ κοντίσιονερ!! Σκληρές αλήθειες και συνταγές μαγειρικής, αποκαλύψεις και συμβουλές για το σπίτι. Πολιτική και αισθησιασμός. Κάθε Τετάρτη, 13:00-14:00."
   schedule:
     Wednesday: "13:00 - 14:00"
-- id: flux
-  title: Flux
-  image: "images/radio-shows/flux.jpg"
-  description: "Κινείται στο φάσμα της ηλεκτρονικής μουσικής. Σήματα, συχνότητες και υφές που μεταβάλλονται από εκπομπή σε εκπομπή - από ambient και IDM μέχρι techno, breaks και house. Μια μετάδοση χωρίς σταθερό σημείο, που ακολουθεί τη διάθεση της στιγμής."
-  schedule:
-    Wednesday: "22:00 - 00:00"
 - id: sundaystribute
   title: Sunday's Tribute
   image: "images/radio-shows/sundaystribute.jpg"
@@ -135,4 +129,22 @@
   image: "images/radio-shows/classcityrockers.jpg"
   description: "Στο Class City Rockers τα βάζουμε με τις εξουσίες και τους καταπιεστές. Και όταν δεν το κάνουμε εμείς, αφήνουμε τους αγαπημένους μας καλλιτέχνες να το κάνουν."
   schedule:
-    Sunday: "20:00 - 22:00"        
+    Sunday: "20:00 - 21:30" 
+- id: roomnoir
+  title: Room Noir
+  image: "images/radio-shows/roomnoir.jpg"
+  description: "Το Room Noir είναι μια μουσική εκπομπή με την Kuro Neko στα decks (ενίοτε και με παρέα) να μοιράζει σκοτεινή μουσική και τριχόμπαλες!"
+  schedule:
+    Tuesday: "18:30 - 19:30"
+- id: coolcat
+  title: Cool Cat
+  image: "images/radio-shows/coolcat.png"
+  description: "Θεωρεί πως από μικρή ηλικία είχε ήδη βρει την αγάπη της για το ραδιόφωνο και μπορεί να μιλάει για αυτήν πολλές ώρες. Κάθε Τετάρτη από τις 18.00 και για μια ώρα βρίσκεται πίσω από τα μικρόφωνα του Radio Reboot επιλέγοντας αγαπημένες μουσικές και πολλές πολλές φρέσκιες. Άλλωστε ένα αγαπημένο της χόμπι είναι να ανακαλύπτει νέους μουσικούς!"
+  schedule:
+    Wednesday: "18:00 - 19:00"              
+- id: ektos
+  title: Εκτός
+  image: "images/radio-shows/ektos.jpg"
+  description: "Πέρα από το συμβάν, πέρα από το γεγονός, η ουσία βρίσκεται εκτός. Εβδομαδιαίο ενημερωτικό μαγκαζίνο με περίσσευμα μουσικής, στο Radio Reboot."
+  schedule:
+    Friday: "16:30 - 18:30"          
