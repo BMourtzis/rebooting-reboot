@@ -13,4 +13,7 @@ theme = "blowfish"
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true 
+      unsafe = true
+
+[security]
+  allowContent = ["^text/markdown$", "^text/html$"]       
