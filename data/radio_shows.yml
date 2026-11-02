@@ -135,7 +135,7 @@
   image: "images/radio-shows/roomnoir.jpg"
   description: "Το Room Noir είναι μια μουσική εκπομπή με την Kuro Neko στα decks (ενίοτε και με παρέα) να μοιράζει σκοτεινή μουσική και τριχόμπαλες!"
   schedule:
-    Tuesday: "18:30 - 19:30"
+    Friday: "16:00 - 17:00"
 - id: coolcat
   title: Cool Cat
   image: "images/radio-shows/coolcat.png"
@@ -147,7 +147,7 @@
   image: "images/radio-shows/ektos.jpg"
   description: "Πέρα από το συμβάν, πέρα από το γεγονός, η ουσία βρίσκεται εκτός. Εβδομαδιαίο ενημερωτικό μαγκαζίνο με περίσσευμα μουσικής, στο Radio Reboot."
   schedule:
-    Friday: "16:30 - 18:30"
+    Friday: "17:00 - 18:30"
 - id: morsfrequency
   title: Mors Frequency
   image: "images/radio-shows/morsfrequency.jpg"
