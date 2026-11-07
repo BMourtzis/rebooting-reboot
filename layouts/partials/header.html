@@ -148,9 +148,49 @@
               };})();
             </script>
             <script language="javascript" type="text/javascript" src="https://centauri.shoutca.st/system/streaminfo.js"></script>
-            <marquee behavior="scroll" direction="right" scrollamount="4" style="color: #fff;">
-              <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
-            </marquee>
+            <div class="song-crawl" id="song-crawl">
+              <span class="song-crawl-track" id="song-crawl-track">
+                <a href="https://centauri.shoutca.st/tunein/radioreb.pls" id="cc_strinfo_song_radioreb" class="cc_streaminfo" style="color: #fff;">Loading ...</a>
+              </span>
+            </div>
+            <script>
+              // Replaces <marquee>, which only accepts whole-number speeds and
+              // can't be told to stay still. The song text is swapped in by
+              // streaminfo.js, so fit is re-measured every frame.
+              (function () {
+                var viewport = document.getElementById('song-crawl');
+                var track = document.getElementById('song-crawl-track');
+                // 2.5px per 85ms (marquee's default scrolldelay) ~= 29.4px/s
+                var SPEED = 2.5 / 0.085;
+                var x = 0;
+                var crawling = false;
+                var last = null;
+
+                function frame(now) {
+                  var dt = last === null ? 0 : Math.min(now - last, 100) / 1000;
+                  last = now;
+                  var viewW = viewport.clientWidth;
+                  var trackW = track.offsetWidth;
+
+                  if (trackW <= viewW) {
+                    if (crawling) {
+                      crawling = false;
+                      track.style.transform = '';
+                    }
+                  } else {
+                    if (!crawling) {
+                      crawling = true;
+                      x = -trackW;
+                    }
+                    x += SPEED * dt;
+                    if (x > viewW || x < -trackW) x = -trackW;
+                    track.style.transform = 'translateX(' + x + 'px)';
+                  }
+                  requestAnimationFrame(frame);
+                }
+                requestAnimationFrame(frame);
+              })();
+            </script>
           </div>
         </div>
       <div class="header-right">
