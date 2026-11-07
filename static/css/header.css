@@ -225,9 +225,17 @@ input:checked + .slider::before {
   min-width: 0;
 }
 
-.centovaCast-info marquee {
+.centovaCast-info .song-crawl {
   display: block;
   width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.centovaCast-info .song-crawl-track {
+  display: inline-block;
+  will-change: transform;
 }
 
 .audio__container #audio {
